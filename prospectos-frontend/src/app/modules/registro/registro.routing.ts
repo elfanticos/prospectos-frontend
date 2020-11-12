@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { FiltroBusquedaComponent } from './components/filtro-busqueda/filtro-busqueda.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroProspectoComponent } from './components/registro-prospecto/registro-prospecto.component';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegistroProspectoComponent
+  },
+  {
+    path: 'busqueda',
+    component: FiltroBusquedaComponent
   }
 ];
 
