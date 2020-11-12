@@ -1,0 +1,41 @@
+:root {
+    --COLOR_DEFAULT: #EFFDFF;
+    --COLOR_PRIMARY: #00E19F;
+    --COLOR_TITLE: #051C2C;
+    --COLOR_TEXT: #707070;
+} 
+.bg-blue{
+    background-color: var(--COLOR_DEFAULT);
+}
+.m-button{
+    background-color: #F6F6F6;
+    outline: none;
+    box-shadow: none;
+}
+.m-section{
+    padding: 40px 20px;
+    position: relative;
+}
+.m-container{
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+.m-login{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.m-card__login{
+    padding: 40px;
+    box-shadow: 0px 3px 15px #00000029;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+.m-card__loging .m-card__actions{
+    text-align: right;
+}
