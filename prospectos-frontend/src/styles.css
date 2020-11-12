@@ -1,16 +1,60 @@
+@import url('../src/assets/fonts/fonts.css');
+
 :root {
-    --COLOR_DEFAULT: #EFFDFF;
+    --COLOR_PASTEL: #EFFDFF;
+    --COLOR_DEFAULT: #00B5E2;
     --COLOR_PRIMARY: #00E19F;
     --COLOR_TITLE: #051C2C;
     --COLOR_TEXT: #707070;
+    --FUTURA_LIGHT: 'Futura-Light';
+    --FUTURA_MEDIUM: 'Futura-Medium';
+    --FUTURA_BOLD: 'Futura-Bold';
+    --FUTURA_EXTRABLACK: 'Futura-ExtraBlack';
+    --RUBIK_LIGHT: 'Rubik-Light';
+    --RUBIK_REGULAR: 'Rubik-Regular';
+    --RUBIK_MEDIUM: 'Rubik-Medium';
+    --RUBIK_BOLD: 'Rubik-Bold';
+    --RUBIK_EXTRABOLD: 'Rubik-ExtraBold';
+}
+*{
+    box-sizing: border-box;
 } 
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--FUTURA_MEDIUM);
+    color: var(--COLOR_TITLE);
+    font-size:  16px;
+    overflow-x: hidden;
+}
 .bg-blue{
-    background-color: var(--COLOR_DEFAULT);
+    background-color: var(--COLOR_PASTEL);
+}
+.m-input{
+    margin: 10px 0;
+}
+.m-input input{
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 52px;
+    padding: 0 12px;
 }
 .m-button{
     background-color: #F6F6F6;
     outline: none;
     box-shadow: none;
+    border: none;
+    height: 60px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.m-button span{
+    font-family: var(--FUTURA_BOLD);
+    font-size: 20px;
+    display: block;
+    border-bottom: 2px solid var(--COLOR_DEFAULT);
+    padding: 0 20px 0 8px;
 }
 .m-section{
     padding: 40px 20px;
@@ -26,7 +70,7 @@
     display: -webkit-flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: calc(100vh - 80px);
 }
 .m-card__login{
     padding: 40px;
@@ -36,6 +80,41 @@
     max-width: 500px;
     text-align: center;
 }
-.m-card__loging .m-card__actions{
+.m-card__login .m-card__title{
+    margin-bottom: 30px;
+}
+.m-card__login .m-card__title span{
+    display: block;
+    color: #FFFFFF;
+    background-color: var(--COLOR_PRIMARY);
+    font-family: var(--FUTURA_BOLD);
+    width: 100%;
+    font-size: 25px;
+    max-width: 148px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.m-card__login .m-card__title h2{
+    font-family: var(--FUTURA_BOLD);
+    font-size: 50px;
+    line-height: 48px;
+    margin: 0;
+}
+.m-card__login .m-card__content{
+    width: 100%;
+    max-width: 375px;
+    margin: auto;
+}
+.m-card__login .m-card__content .m-input{
+    margin: 20px 0;
+}
+.m-card__login .m-card__content .m-input input{
+    box-shadow: 2px 2px 15px #00B5E226;
+    border: 1px solid #051C2C;
+    border-radius: 9px;
+}
+.m-card__login .m-card__actions{
+    max-width: 375px;
+    margin: auto;
     text-align: right;
 }
