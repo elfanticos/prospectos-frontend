@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroProspectoComponent } from './pages/registro-prospecto/registro-prospecto.component';
 import { RegistroRoutingModule } from './registro-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -10,6 +11,7 @@ import { InformacionMapaComponent } from './components/informacion-mapa/informac
 import { InformacionAudioComponent } from './components/informacion-audio/informacion-audio.component';
 import { InformacionEnvioCorreoComponent } from './components/informacion-envio-correo/informacion-envio-correo.component';
 import { InformacionPcComponent } from './components/informacion-pc/informacion-pc.component';
+import { RegistroFormService } from './services/registro-form.service';
 
 
 
@@ -26,8 +28,13 @@ import { InformacionPcComponent } from './components/informacion-pc/informacion-
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RegistroRoutingModule,
     SharedModule
+  ],
+  providers: [
+    RegistroFormService
   ]
 })
 export class RegistroModule { }

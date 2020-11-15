@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
   selector: 'app-informacion-conectividad',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformacionConectividadComponent implements OnInit {
 
-  constructor() { }
+  infoConectividadForm: FormGroup;
+  constructor(
+    private _registroFormService: RegistroFormService
+  ) {
+    this.infoConectividadForm = this._registroFormService.formInfoConectividad;
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
   }
 
 }

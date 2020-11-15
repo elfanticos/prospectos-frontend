@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
   selector: 'app-registro-prospecto',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroProspectoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _registroFormService: RegistroFormService
+  ) { 
+    this._registroFormService.initForm();
+  }
 
   ngOnInit(): void {
   }

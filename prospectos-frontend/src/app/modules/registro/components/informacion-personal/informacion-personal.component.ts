@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
   selector: 'app-informacion-personal',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informacion-personal.component.css']
 })
 export class InformacionPersonalComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  infoPersForm: FormGroup;
+  constructor(
+    private _registroFormService: RegistroFormService
+  ) {
+    this.infoPersForm = this._registroFormService.formInfoPersonal;
   }
 
+  ngOnInit(): void {
+
+  }
+
+
+  get nombresPostulante() { return this.infoPersForm.controls['nombresPostulante']; }
+  get apellidosPostulante() { return this.infoPersForm.controls['apellidosPostulante']; }
+  get fecNacimiento() { return this.infoPersForm.controls['fecNacimiento']; }
+  get sexo() { return this.infoPersForm.controls['sexo']; }
+  get tipoDocumento() { return this.infoPersForm.controls['tipoDocumento']; }
+  get numeroDocumento() { return this.infoPersForm.controls['numeroDocumento']; }
+
+
+  prueba(): void {
+    console.log(this.infoPersForm.value);
+  }
 }

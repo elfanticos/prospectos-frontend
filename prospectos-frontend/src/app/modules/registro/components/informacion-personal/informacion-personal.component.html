@@ -4,26 +4,56 @@
             <h2>INFORMACI&Oacute;N PERSONAL</h2>
         </div>
         <div class="m-content">
-            <div class="m-grid--2">
+            <div class="m-grid--2" [formGroup]="infoPersForm">
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Nombres" />
+                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" (keyup)="prueba()" autocomplete="none" required/>
+                    <span *ngIf="nombresPostulante.errors">
+                        <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">nombresPostulante is required</ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="nombresPostulante.errors.exception;"> nombresPostulante is exception</ng-container>
+                        </ng-template>
+                    </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Apellidos" />
+                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" (keyup)="prueba()"  autocomplete="none" required/>
+                    <span *ngIf="apellidosPostulante.errors">
+                        <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">apellidosPostulante is required</ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="apellidosPostulante.errors.exception;"> apellidosPostulante is exception</ng-container>
+                        </ng-template>
+                    </span>
                 </div>
                 <div class="m-select m-0">
-                    <select>
+                    <select formControlName="tipoDocumento" required>
                         <option>Tipo de documento</option>
                         <option>DNI</option>
                         <option>RUC</option>
                         <option>CEX</option>
                     </select>
+                    <span *ngIf="tipoDocumento.errors">
+                        <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">tipoDocumento is required</ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="tipoDocumento.errors.exception;"> tipoDocumento is exception</ng-container>
+                        </ng-template>
+                    </span>
                 </div>
                 <div class="m-input m-0">
-                   <input type="input" placeholder="N&uacute;mero de documento" />
+                    <input type="input" placeholder="N&uacute;mero de documento" formControlName="numeroDocumento" autocomplete="none" required/>
+                    <span *ngIf="numeroDocumento.errors">
+                        <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">numeroDocumento is required</ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="numeroDocumento.errors.exception;"> numeroDocumento is exception</ng-container>
+                        </ng-template>
+                    </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Fecha de nacimiento" />
+                    <input type="input" placeholder="Fecha de nacimiento" formControlName="fecNacimiento" autocomplete="none"  required/>
+                    <span *ngIf="fecNacimiento.errors">
+                        <ng-container *ngIf="fecNacimiento.errors.required; else elseif1">fecNacimiento is required</ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="fecNacimiento.errors.exception;"> fecNacimiento is exception</ng-container>
+                        </ng-template>
+                    </span>
                 </div>
             </div>
         </div>
