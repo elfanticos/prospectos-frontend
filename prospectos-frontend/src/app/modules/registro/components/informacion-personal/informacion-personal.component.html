@@ -47,13 +47,20 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Fecha de nacimiento" formControlName="fecNacimiento" autocomplete="none"  required/>
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp"formControlName="fecNacimiento" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    <!-- <input type="input" placeholder="Fecha de nacimiento" formControlName="fecNacimiento" autocomplete="none"  required/>
                     <span *ngIf="fecNacimiento.errors">
                         <ng-container *ngIf="fecNacimiento.errors.required; else elseif1">fecNacimiento is required</ng-container>
                         <ng-template #elseif1>
                             <ng-container *ngIf="fecNacimiento.errors.exception;"> fecNacimiento is exception</ng-container>
                         </ng-template>
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </div>

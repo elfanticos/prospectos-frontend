@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistroProspectoComponent } from './pages/registro-prospecto/registro-prospecto.component';
 import { RegistroRoutingModule } from './registro-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -30,6 +31,7 @@ import { RegistroFormService } from './services/registro-form.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     RegistroRoutingModule,
     SharedModule
   ],

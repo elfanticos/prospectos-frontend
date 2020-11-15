@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RegistroFormService } from '../../services/registro-form.service';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-informacion-personal',
@@ -9,6 +10,7 @@ import { RegistroFormService } from '../../services/registro-form.service';
 })
 export class InformacionPersonalComponent implements OnInit {
   infoPersForm: FormGroup;
+  model: NgbDateStruct;
   constructor(
     private _registroFormService: RegistroFormService
   ) {
