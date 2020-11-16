@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PASOS } from '../../constants/step';
 import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { RegistroFormService } from '../../services/registro-form.service';
   styleUrls: ['./registro-prospecto.component.css']
 })
 export class RegistroProspectoComponent implements OnInit {
-
+  PASOS = PASOS;
+  pasoSeleccionado = PASOS.PASO_1;
   constructor(
     private _registroFormService: RegistroFormService
   ) { 
@@ -15,6 +17,10 @@ export class RegistroProspectoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  seleccionarPaso(value: number): void {
+    this.pasoSeleccionado = value;
   }
 
 }
