@@ -19,4 +19,8 @@ export class RegistroProspectoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get imageForStep(): string {
+    return `../../../../../assets/images/fondo/fondo-home${this.pasoSeleccionado}.png`;
+  }
+
 }
