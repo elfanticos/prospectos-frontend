@@ -19,8 +19,4 @@ export class RegistroProspectoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  seleccionarPaso(value: number): void {
-    this.pasoSeleccionado = value;
-  }
-
 }

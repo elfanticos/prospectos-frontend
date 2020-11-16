@@ -10,29 +10,15 @@
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. parturient
                 montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
             <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary" (click)="seleccionarPaso(PASOS.PASO_1)">1</button>
-                <button type="button" class="btn btn-primary" (click)="seleccionarPaso(PASOS.PASO_2)">2</button>
-                <button type="button" class="btn btn-primary" (click)="seleccionarPaso(PASOS.PASO_3)">3</button>
-                <button type="button" class="btn btn-primary" (click)="seleccionarPaso(PASOS.PASO_4)">4</button>
+                <a class="btn btn-primary" [routerLink]="PASOS.PASO_1">1</a>
+                <a class="btn btn-primary" [routerLink]="PASOS.PASO_2">2</a>
+                <a class="btn btn-primary" [routerLink]="PASOS.PASO_3">3</a>
+                <a class="btn btn-primary" [routerLink]="PASOS.PASO_4">4</a>
             </div>
             <button type="button" class="m-button"><span>VER M&Aacute;S</span></button>
         </div>
     </div>
 </div>
-<ng-container [ngSwitch]="pasoSeleccionado">
-    <ng-container *ngSwitchCase="PASOS.PASO_1">
-        <app-informacion-personal></app-informacion-personal>
-        <app-informacion-contacto></app-informacion-contacto>
-        <app-informacion-mapa></app-informacion-mapa>
-    </ng-container>
-    <ng-container *ngSwitchCase="PASOS.PASO_2">
-        <app-informacion-conectividad></app-informacion-conectividad>
-    </ng-container>
-    <ng-container *ngSwitchCase="PASOS.PASO_3">
-        <app-informacion-audio></app-informacion-audio>
-    </ng-container>
-    <ng-container *ngSwitchCase="PASOS.PASO_3">
-        <app-informacion-pc></app-informacion-pc>
-        <app-informacion-envio-correo></app-informacion-envio-correo>
-    </ng-container>
-</ng-container>
+<div>
+    <router-outlet></router-outlet>
+</div>

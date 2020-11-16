@@ -13,12 +13,20 @@ import { InformacionAudioComponent } from './components/informacion-audio/inform
 import { InformacionEnvioCorreoComponent } from './components/informacion-envio-correo/informacion-envio-correo.component';
 import { InformacionPcComponent } from './components/informacion-pc/informacion-pc.component';
 import { RegistroFormService } from './services/registro-form.service';
+import { StepOneComponent } from './components/step-one/step-one.component';
+import { StepTwoComponent } from './components/step-two/step-two.component';
+import { StepThreeComponent } from './components/step-three/step-three.component';
+import { StepFourComponent } from './components/step-four/step-four.component';
 
 
 
 @NgModule({
   declarations: [
     RegistroProspectoComponent,
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent,
     InformacionPersonalComponent,
     InformacionContactoComponent,
     InformacionConectividadComponent,
