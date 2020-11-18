@@ -33,6 +33,9 @@ body{
 .p-20{
     padding: 20px !important;
 }
+.m-b-50{
+    margin-bottom: 50px !important;
+}
 img{
     width: 100%;
 }
@@ -199,4 +202,44 @@ img{
 .m-listado .m-title{
     max-width: 900px;
     margin: auto;
+}
+.m-steps{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 6px 6px 20px #00000029;
+    border-radius: 9px;
+    width: 100%;
+}
+.m-steps a{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 30px;
+    font-family: var(--RUBIK_BOLD);
+    border-right: 1px dotted var(--COLOR_TEXT);
+    height: 50px;
+    position: relative;
+}
+.m-steps a.active{
+    background-color: #C2F7ED;
+}
+.m-steps a:last-child{
+    border: none;
+}
+.m-steps a.active::after{
+    content: '';
+    display: block;
+    background-color: var(--COLOR_PRIMARY);
+    height: 5px;
+    width: 100%;
+    max-width: 50px;
+    position: absolute;
+    bottom: 5px;
+    border-radius: 20px;
 }
