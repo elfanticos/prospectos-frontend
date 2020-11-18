@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistroProspectoComponent } from './pages/registro-prospecto/registro-prospecto.component';
 import { RegistroRoutingModule } from './registro-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -17,6 +17,9 @@ import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
 import { StepFourComponent } from './components/step-four/step-four.component';
+import { CustomAdapter } from 'src/app/core/providers/datepicker/custom-adapter';
+import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/custom-date-parser-formatter';
+import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
 
 
 
@@ -44,7 +47,11 @@ import { StepFourComponent } from './components/step-four/step-four.component';
     SharedModule
   ],
   providers: [
-    RegistroFormService
+    RegistroFormService,
+    { provide: LOCALE_ID, useValue: 'es-PR' } ,
+    [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }], // define custom NgbDatepickerI18n provider
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ]
 })
 export class RegistroModule { }

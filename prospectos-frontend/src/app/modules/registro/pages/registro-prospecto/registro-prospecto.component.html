@@ -10,10 +10,10 @@
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. parturient
                 montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
             <div class="btn-group mr-2 m-steps" role="group" aria-label="First group">
-                <a class="btn active" [routerLink]="PASOS.PASO_1" (click)="pasoSeleccionado=PASOS.PASO_1">01</a>
-                <a class="btn" [routerLink]="PASOS.PASO_2" (click)="pasoSeleccionado=PASOS.PASO_2">02</a>
-                <a class="btn" [routerLink]="PASOS.PASO_3" (click)="pasoSeleccionado=PASOS.PASO_3">03</a>
-                <a class="btn" [routerLink]="PASOS.PASO_4" (click)="pasoSeleccionado=PASOS.PASO_4">04</a>
+                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_1" (click)="pasoSeleccionado=PASOS.PASO_1">01</a>
+                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_2" (click)="pasoSeleccionado=PASOS.PASO_2">02</a>
+                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_3" (click)="pasoSeleccionado=PASOS.PASO_3">03</a>
+                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_4" (click)="pasoSeleccionado=PASOS.PASO_4">04</a>
             </div>
             <button type="button" class="m-button"><span>VER M&Aacute;S</span></button>
         </div>
