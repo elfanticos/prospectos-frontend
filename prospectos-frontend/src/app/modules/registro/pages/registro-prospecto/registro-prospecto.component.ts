@@ -23,4 +23,8 @@ export class RegistroProspectoComponent implements OnInit {
     return `../../../../../assets/images/fondo/fondo-home${this.pasoSeleccionado}.png`;
   }
 
+
+  get validStep1(): boolean {
+    return this._registroFormService.formValidStep1;
+  }
 }

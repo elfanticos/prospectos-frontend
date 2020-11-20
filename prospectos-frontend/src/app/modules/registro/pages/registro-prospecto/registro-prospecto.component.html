@@ -11,7 +11,10 @@
                 montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
             <div class="btn-group mr-2 m-steps" role="group" aria-label="First group">
                 <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_1" (click)="pasoSeleccionado=PASOS.PASO_1">01</a>
-                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_2" (click)="pasoSeleccionado=PASOS.PASO_2">02</a>
+
+                <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_2" (click)="pasoSeleccionado=PASOS.PASO_2" *ngIf="validStep1">02</a>
+                <a class="btn disabled" disabled *ngIf="!validStep1">02</a>
+
                 <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_3" (click)="pasoSeleccionado=PASOS.PASO_3">03</a>
                 <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_4" (click)="pasoSeleccionado=PASOS.PASO_4">04</a>
             </div>

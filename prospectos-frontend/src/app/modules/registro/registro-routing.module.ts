@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path:'',
-        component: StepOneComponent
+        redirectTo: '1'
       },
       {
         path:'1',

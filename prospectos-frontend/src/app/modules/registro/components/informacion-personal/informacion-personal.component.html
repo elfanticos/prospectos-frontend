@@ -6,20 +6,50 @@
         <div class="m-content">
             <div class="m-grid--2" [formGroup]="infoPersForm">
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" (keyup)="prueba()" autocomplete="none" required/>
+                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" (keyup)="prueba()"
+                        autocomplete="none" required />
                     <span *ngIf="nombresPostulante.errors">
-                        <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">nombresPostulante is required</ng-container>
+                        <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">El campo no puede estar
+                            vacio</ng-container>
                         <ng-template #elseif1>
-                            <ng-container *ngIf="nombresPostulante.errors.exception;"> nombresPostulante is exception</ng-container>
+                            <ng-container *ngIf="nombresPostulante.errors.minlength; else elseif2">M&iacute;nimo
+                                {{nombresPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <ng-container *ngIf="nombresPostulante.errors.maxlength; else elseif3">M&aacute;ximo
+                                {{nombresPostulante.errors.maxlength.requiredLength}} caracteres</ng-container>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <ng-container *ngIf="nombresPostulante.errors.pattern; else elseif4">Caracteres
+                                inv&aacute;lidos</ng-container>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <ng-container *ngIf="nombresPostulante.errors.exception; else elseif4">
+                                {{nombresPostulante.errors.exception.msj}}</ng-container>
                         </ng-template>
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" (keyup)="prueba()"  autocomplete="none" required/>
+                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" (keyup)="prueba()"
+                        autocomplete="none" required />
                     <span *ngIf="apellidosPostulante.errors">
-                        <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">apellidosPostulante is required</ng-container>
+                        <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">El campo no puede estar
+                            vacio</ng-container>
                         <ng-template #elseif1>
-                            <ng-container *ngIf="apellidosPostulante.errors.exception;"> apellidosPostulante is exception</ng-container>
+                            <ng-container *ngIf="apellidosPostulante.errors.minlength; else elseif2">M&iacute;nimo
+                                {{apellidosPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <ng-container *ngIf="apellidosPostulante.errors.maxlength; else elseif3">M&aacute;ximo
+                                {{apellidosPostulante.errors.maxlength.requiredLength}} caracteres</ng-container>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <ng-container *ngIf="apellidosPostulante.errors.pattern; else elseif4">Caracteres
+                                inv&aacute;lidos</ng-container>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <ng-container *ngIf="apellidosPostulante.errors.exception; else elseif4">
+                                {{apellidosPostulante.errors.exception.msj}}</ng-container>
                         </ng-template>
                     </span>
                 </div>
@@ -31,29 +61,54 @@
                         <option>CEX</option>
                     </select>
                     <span *ngIf="tipoDocumento.errors">
-                        <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">tipoDocumento is required</ng-container>
+                        <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">Seleccione el tipo doc.
+                        </ng-container>
                         <ng-template #elseif1>
-                            <ng-container *ngIf="tipoDocumento.errors.exception;"> tipoDocumento is exception</ng-container>
+                            <ng-container *ngIf="tipoDocumento.errors.exception;">
+                                {{tipoDocumento.errors.exception.msj}}
+                            </ng-container>
                         </ng-template>
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="N&uacute;mero de documento" formControlName="numeroDocumento" autocomplete="none" required/>
+                    <input type="input" placeholder="N&uacute;mero de documento" formControlName="numeroDocumento"
+                        autocomplete="none" required />
                     <span *ngIf="numeroDocumento.errors">
-                        <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">numeroDocumento is required</ng-container>
+                        <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">El campo no puede estar
+                            vacio</ng-container>
                         <ng-template #elseif1>
-                            <ng-container *ngIf="numeroDocumento.errors.exception;"> numeroDocumento is exception</ng-container>
+                            <ng-container *ngIf="numeroDocumento.errors.minlength; else elseif2">M&iacute;nimo
+                                {{numeroDocumento.errors.minlength.requiredLength}} dígitos</ng-container>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <ng-container *ngIf="numeroDocumento.errors.maxlength; else elseif3">M&aacute;ximo
+                                {{numeroDocumento.errors.maxlength.requiredLength}} dígitos</ng-container>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <ng-container *ngIf="numeroDocumento.errors.pattern; else elseif4">nro. documento invalido</ng-container>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <ng-container *ngIf="numeroDocumento.errors.exception; else elseif4">
+                                {{numeroDocumento.errors.exception.msj}}</ng-container>
                         </ng-template>
                     </span>
                 </div>
                 <div class="m-input m-0">
                     <div class="input-group">
-                        <input class="form-control" placeholder="dd/mm/yyyy"
-                               name="dp"formControlName="fecNacimiento" ngbDatepicker #d="ngbDatepicker">
+                        <input
+                            class="form-control" 
+                            placeholder="dd/mm/yyyy"
+                            name="dp"
+                            formControlName="fecNacimiento"
+                            ngbDatepicker #d="ngbDatepicker"
+                            [minDate]="minDate"
+                            [maxDate]="maxDate"
+                        >
                         <div class="input-group-append">
-                          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                type="button"></button>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>

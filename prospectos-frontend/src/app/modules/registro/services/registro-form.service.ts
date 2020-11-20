@@ -62,13 +62,29 @@ export class RegistroFormService {
   }
 
   private _buildInfoPersonalForm(): FormGroup {
+    let nomPattern = /^[ a-zA-Z0-9_áéíóúàèìòùÀÈÌÒÙñÁÉÍÓÚÑÜü\'.\s]*$/;
     return this._fb.group({
-      nombresPostulante: [null, [Validators.required]],
-      apellidosPostulante: [null, [Validators.required]],
+      nombresPostulante: [null, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(75),
+        Validators.pattern(nomPattern)
+      ]],
+      apellidosPostulante: [null, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(75),
+        Validators.pattern(nomPattern)
+      ]],
       fecNacimiento: [null, [Validators.required]],
       sexo: [null, Validators.required],
       tipoDocumento: [null, [Validators.required]],
-      numeroDocumento: [null, [Validators.required]],
+      numeroDocumento: [null, [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(18),
+        Validators.pattern(/^[0-9]{1,15}$/)
+      ]],
     });
     // "nombresPostulante":"Jose Luis",
     //     "apellidosPostulante":"Minaya Castañeda",
@@ -81,13 +97,26 @@ export class RegistroFormService {
 
   private _buildInfoContactoForm(): FormGroup {
     return this._fb.group({
-      telefono: [null, [Validators.required]],
-      correo: [null, [Validators.required]],
+      telefono: [null, [
+        Validators.required,
+        Validators.pattern(/^[0-9]{1,15}$/),
+        Validators.minLength(7),
+        Validators.maxLength(12)
+      ]],
+      correo: [null, [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(75),
+        Validators.pattern("^([a-z]+[a-z0-9._-]*)@{1}([a-z1-9\.]{3,})\.([a-z]{2,4})$")
+      ]],
       pais: [null, [Validators.required]],
       departamento: [null, [Validators.required]],
       provincia: [null, [Validators.required]],
       distrito: [null, [Validators.required]],
-      direccion: [null, [Validators.required]],
+      direccion: [null, [
+        Validators.required,
+        Validators.maxLength(75)
+      ]],
       latitud: [null, [Validators.required]],
       longitud: [null, [Validators.required]]
     });
@@ -167,7 +196,7 @@ export class RegistroFormService {
       image: this._fb.group({
         urlImagen: [null, [Validators.required]],
         nombreImagen: [null, [Validators.required]]
-      })  
+      })
     });
     // "equipo": {
     //   "procesador": "intel core i3",
@@ -183,5 +212,11 @@ export class RegistroFormService {
     //     "urlImagen": "D:/PROYECTOS/PROSPECTOS/Base de datos",
     //     "nombreImagen": "nombre de imagen de prueba"
     // }
+  }
+
+
+
+  get formValidStep1(): boolean {
+    return this.formInfoPersonal.valid || this.formInfoContacto.valid;
   }
 }

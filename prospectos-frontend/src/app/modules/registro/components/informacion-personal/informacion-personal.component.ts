@@ -11,9 +11,13 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class InformacionPersonalComponent implements OnInit {
   infoPersForm: FormGroup;
   model: NgbDateStruct;
+  minDate: NgbDateStruct;
+  maxDate: NgbDateStruct;
   constructor(
     private _registroFormService: RegistroFormService
   ) {
+    this.minDate = {year: (2002 - 100), month:11, day: 20};
+    this.maxDate = {year: 2002, month:11, day: 20};
     this.infoPersForm = this._registroFormService.formInfoPersonal;
   }
 
