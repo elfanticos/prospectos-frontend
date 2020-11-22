@@ -56,9 +56,7 @@
                 <div class="m-select m-0">
                     <select formControlName="tipoDocumento" required>
                         <option>Tipo de documento</option>
-                        <option>DNI</option>
-                        <option>RUC</option>
-                        <option>CEX</option>
+                        <option *ngFor="let tipoDoc of tiposDocumentos" [value]="tipoDoc.value">{{tipoDoc.desc}}</option>
                     </select>
                     <span *ngIf="tipoDocumento.errors">
                         <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">Seleccione el tipo doc.

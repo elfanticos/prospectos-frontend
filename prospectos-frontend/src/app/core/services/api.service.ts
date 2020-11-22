@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Response } from 'selenium-webdriver/http';
-// import { HelpersService } from 'src/app/helpers';
 // ----------------
 export interface IResponse {
   body: {};
@@ -15,7 +14,7 @@ export interface IResponse {
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(public http: HttpClient/* , private utils: HelpersService */) {}
+  constructor(public http: HttpClient) {}
   // ----------------
   get<T>(obj: {path?: string; _params?: HttpParams }): Observable<Response> {
     const _GET$ = this.http.get<Response>(obj.path, {

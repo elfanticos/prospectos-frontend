@@ -17,7 +17,15 @@
       "dom"
     ],
     "paths": {
-      "@assets/*": ["./assets/*"],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ]
     },
   }
 }

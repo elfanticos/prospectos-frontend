@@ -13,6 +13,11 @@ export class InformacionPersonalComponent implements OnInit {
   model: NgbDateStruct;
   minDate: NgbDateStruct;
   maxDate: NgbDateStruct;
+  tiposDocumentos:any[] = [
+    {value: '0', desc: 'DNI'},
+    {value: '1', desc: 'RUC'},
+    {value: '2', desc: 'CEX'}
+  ];
   constructor(
     private _registroFormService: RegistroFormService
   ) {
