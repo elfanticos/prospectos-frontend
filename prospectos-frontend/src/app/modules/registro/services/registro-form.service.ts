@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ValidatorsExtend} from '@app/shared/validators/validators-extend';
 
 @Injectable()
 export class RegistroFormService {
@@ -78,7 +79,7 @@ export class RegistroFormService {
       ]],
       fecNacimiento: [null, [Validators.required]],
       sexo: [null, Validators.required],
-      tipoDocumento: [null, [Validators.required]],
+      tipoDocumento: ['', [Validators.required]],
       numeroDocumento: [null, [
         Validators.required,
         Validators.minLength(8),
@@ -99,7 +100,7 @@ export class RegistroFormService {
     return this._fb.group({
       telefono: [null, [
         Validators.required,
-        Validators.pattern(/^[0-9]{1,15}$/),
+        ValidatorsExtend.isNumeric,
         Validators.minLength(7),
         Validators.maxLength(12)
       ]],
@@ -107,7 +108,7 @@ export class RegistroFormService {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(75),
-        Validators.pattern("^([a-z]+[a-z0-9._-]*)@{1}([a-z1-9\.]{3,})\.([a-z]{2,4})$")
+        ValidatorsExtend.isOptionalEmail
       ]],
       pais: [null, [Validators.required]],
       departamento: [null, [Validators.required]],
@@ -117,8 +118,8 @@ export class RegistroFormService {
         Validators.required,
         Validators.maxLength(75)
       ]],
-      latitud: [null, [Validators.required]],
-      longitud: [null, [Validators.required]]
+      latitud: ['null', [Validators.required]],
+      longitud: ['null', [Validators.required]]
     });
     // "telefono": "012684759",
     // "correo": "corre@gmail.com",
@@ -217,6 +218,18 @@ export class RegistroFormService {
 
 
   get formValidStep1(): boolean {
-    return this.formInfoPersonal.valid || this.formInfoContacto.valid;
+    return this.formInfoPersonal.valid && this.formInfoContacto.valid;
+  }
+
+  get formValidStep2(): boolean {
+    return this.formValidStep1 && this.formInfoConectividad.valid;
+  }
+
+  get formValidStep3(): boolean {
+    return this.formValidStep2 && this.formInfoAudio.valid;
+  }
+
+  get formValidStepConfirm(): boolean {
+    return this.formValidStep3 && this.formInfoPc.valid;
   }
 }

@@ -32,6 +32,14 @@ export class RegistroProspectoComponent implements OnInit {
     return this._registroFormService.formValidStep1;
   }
 
+  get validStep2(): boolean {
+    return this._registroFormService.formValidStep2;
+  }
+
+  get validStep3(): boolean {
+    return this._registroFormService.formValidStep3;
+  }
+
   open() {
     const modalRef = this.modalService.open(ModalConfirmComponent, {
       centered: true,

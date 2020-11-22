@@ -4,7 +4,7 @@ import { FiltroBusquedaComponent } from './pages/filtro-busqueda/filtro-busqueda
 import { ProspectoRoutingModule } from './prospecto-routing.module';
 import { DetalleProspectoComponent } from './pages/detalle-prospecto/detalle-prospecto.component';
 import { FiltroProspectoComponent } from './components/filtro-prospecto/filtro-prospecto.component';
-import { ListaProspectoComponent } from './components/lista-prospecto/lista-prospecto.component';
+import { ListaProspectoComponent, NgbdSortableHeader } from './components/lista-prospecto/lista-prospecto.component';
 
 @NgModule({
   imports: [
@@ -15,6 +15,7 @@ import { ListaProspectoComponent } from './components/lista-prospecto/lista-pros
     FiltroBusquedaComponent,
     DetalleProspectoComponent,
     FiltroProspectoComponent,
+    NgbdSortableHeader,
     ListaProspectoComponent
   ]
 })

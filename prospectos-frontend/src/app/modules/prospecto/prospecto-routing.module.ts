@@ -7,7 +7,7 @@ const routes: Routes = [
   {  
     path:'prospectos',
     component: FiltroBusquedaComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
 ];
 

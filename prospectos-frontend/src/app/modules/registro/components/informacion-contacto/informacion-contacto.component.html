@@ -7,20 +7,14 @@
             <div class="m-grid--2" [formGroup]="infoContactoForm">
                 <div class="m-input m-0">
                     <input type="input" placeholder="Tel&eacute;fono" formControlName="telefono" required />
-                    <span *ngIf="telefono.errors">
-                        <ng-container *ngIf="telefono.errors.required; else elseif1">telefono is required</ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="telefono.errors.exception;"> telefono is exception</ng-container>
-                        </ng-template>
+                    <span *ngIf="telefono.errors && telefono.dirty">
+                        <control-messages [control]="telefono"></control-messages>
                     </span>
                 </div>
                 <div class="m-input m-0">
                     <input type="input" placeholder="Correo electr&oacute;nico" formControlName="correo" required />
-                    <span *ngIf="correo.errors">
-                        <ng-container *ngIf="correo.errors.required; else elseif1">correo is required</ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="correo.errors.exception;"> correo is exception</ng-container>
-                        </ng-template>
+                    <span *ngIf="correo.errors && correo.dirty">
+                        <control-messages [control]="correo"></control-messages>
                     </span>
                 </div>
                 <div class="m-select m-0">
@@ -30,11 +24,8 @@
                         <option>Pa&iacute;s2</option>
                         <option>Pa&iacute;s3</option>
                     </select>
-                    <span *ngIf="pais.errors">
-                        <ng-container *ngIf="pais.errors.required; else elseif1">pais is required</ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="pais.errors.exception;"> pais is exception</ng-container>
-                        </ng-template>
+                    <span *ngIf="pais.errors && pais.dirty">
+                        <control-messages [control]="pais"></control-messages>
                     </span>
                 </div>
                 <div class="m-select m-0">
@@ -44,13 +35,8 @@
                         <option>Departamento2</option>
                         <option>Departamento3</option>
                     </select>
-                    <span *ngIf="departamento.errors">
-                        <ng-container *ngIf="departamento.errors.required; else elseif1">departamento is required
-                        </ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="departamento.errors.exception;"> departamento is exception
-                            </ng-container>
-                        </ng-template>
+                    <span *ngIf="departamento.errors && departamento.dirty">
+                        <control-messages [control]="departamento"></control-messages>
                     </span>
                 </div>
                 <div class="m-select m-0">
@@ -60,13 +46,8 @@
                         <option>Provincia2</option>
                         <option>Provincia3</option>
                     </select>
-                    <span *ngIf="provincia.errors">
-                        <ng-container *ngIf="provincia.errors.required; else elseif1">provincia is required
-                        </ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="provincia.errors.exception;"> provincia is exception
-                            </ng-container>
-                        </ng-template>
+                    <span *ngIf="provincia.errors && provincia.dirty">
+                        <control-messages [control]="provincia"></control-messages>
                     </span>
                 </div>
                 <div class="m-select m-0">
@@ -76,24 +57,14 @@
                         <option>Distrito2</option>
                         <option>Distrito3</option>
                     </select>
-                    <span *ngIf="distrito.errors">
-                        <ng-container *ngIf="distrito.errors.required; else elseif1">distrito is required
-                        </ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="distrito.errors.exception;"> distrito is exception
-                            </ng-container>
-                        </ng-template>
+                    <span *ngIf="distrito.errors && distrito.dirty">
+                        <control-messages [control]="distrito"></control-messages>
                     </span>
                 </div>
                 <div class="m-input m-0">
                     <input type="input" placeholder="Dirección" formControlName="direccion" required />
-                    <span *ngIf="direccion.errors">
-                        <ng-container *ngIf="direccion.errors.required; else elseif1">direccion is required
-                        </ng-container>
-                        <ng-template #elseif1>
-                            <ng-container *ngIf="direccion.errors.exception;"> direccion is exception
-                            </ng-container>
-                        </ng-template>
+                    <span *ngIf="direccion.errors && direccion.dirty">
+                        <control-messages [control]="direccion"></control-messages>
                     </span>
                 </div>
             </div>

@@ -6,9 +6,8 @@
         <div class="m-content">
             <div class="m-grid--2" [formGroup]="infoPersForm">
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" (keyup)="prueba()"
-                        autocomplete="none" required />
-                    <span *ngIf="nombresPostulante.errors">
+                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" autocomplete="none" required />
+                    <span *ngIf="nombresPostulante.errors && nombresPostulante.dirty">
                         <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
                         <ng-template #elseif1>
@@ -30,9 +29,8 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" (keyup)="prueba()"
-                        autocomplete="none" required />
-                    <span *ngIf="apellidosPostulante.errors">
+                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" autocomplete="none" required />
+                    <span *ngIf="apellidosPostulante.errors && apellidosPostulante.dirty">
                         <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
                         <ng-template #elseif1>
@@ -55,10 +53,11 @@
                 </div>
                 <div class="m-select m-0">
                     <select formControlName="tipoDocumento" required>
-                        <option>Tipo de documento</option>
-                        <option *ngFor="let tipoDoc of tiposDocumentos" [value]="tipoDoc.value">{{tipoDoc.desc}}</option>
+                        <option value="">Tipo de documento</option>
+                        <option *ngFor="let tipoDoc of tiposDocumentos" [value]="tipoDoc.value">{{tipoDoc.desc}}
+                        </option>
                     </select>
-                    <span *ngIf="tipoDocumento.errors">
+                    <span *ngIf="tipoDocumento.errors && tipoDocumento.dirty">
                         <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">Seleccione el tipo doc.
                         </ng-container>
                         <ng-template #elseif1>
@@ -71,7 +70,7 @@
                 <div class="m-input m-0">
                     <input type="input" placeholder="N&uacute;mero de documento" formControlName="numeroDocumento"
                         autocomplete="none" required />
-                    <span *ngIf="numeroDocumento.errors">
+                    <span *ngIf="numeroDocumento.errors && numeroDocumento.dirty">
                         <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
                         <ng-template #elseif1>
@@ -83,30 +82,56 @@
                                 {{numeroDocumento.errors.maxlength.requiredLength}} dígitos</ng-container>
                         </ng-template>
                         <ng-template #elseif3>
-                            <ng-container *ngIf="numeroDocumento.errors.pattern; else elseif4">nro. documento invalido</ng-container>
+                            <ng-container *ngIf="numeroDocumento.errors.pattern; else elseif4">nro. documento invalido
+                            </ng-container>
                         </ng-template>
                         <ng-template #elseif4>
-                            <ng-container *ngIf="numeroDocumento.errors.exception; else elseif4">
+                            <ng-container *ngIf="numeroDocumento.errors.exception;">
                                 {{numeroDocumento.errors.exception.msj}}</ng-container>
                         </ng-template>
                     </span>
                 </div>
                 <div class="m-input m-0">
                     <div class="input-group">
-                        <input
-                            class="form-control" 
-                            placeholder="dd/mm/yyyy"
-                            name="dp"
-                            formControlName="fecNacimiento"
-                            ngbDatepicker #d="ngbDatepicker"
-                            [minDate]="minDate"
-                            [maxDate]="maxDate"
-                        >
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dp" formControlName="fecNacimiento"
+                            ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
                                 type="button"></button>
                         </div>
                     </div>
+                    <span *ngIf="fecNacimiento.errors && fecNacimiento.dirty">
+                        <ng-container *ngIf="fecNacimiento.errors.required; else elseif1;">
+                            El campo no puede estar vacio
+                        </ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="fecNacimiento.errors.exception; else elseif2;">
+                                {{fecNacimiento.errors.exception.msj}}</ng-container>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif3;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif4;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.minDate; else elseif5;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.minDate.minDate.day}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.month}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif5>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.invalid;">
+                                Fecha inválida
+                            </ng-container>
+                        </ng-template>
+                    </span>
                 </div>
             </div>
         </div>

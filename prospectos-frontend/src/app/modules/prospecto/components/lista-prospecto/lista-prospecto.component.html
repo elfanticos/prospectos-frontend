@@ -1,3 +1,42 @@
-<p>
-  lista-prospecto works!
-</p>
+<div class="m-listado">
+  <div class="m-title">
+    <h2>LISTADO DE PROSPECTOS</h2>
+  </div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" sortable="proyecto" (sort)="onSort($event)">Proyecto</th>
+          <th scope="col" sortable="nombre" (sort)="onSort($event)">NOM.</th>
+          <th scope="col" sortable="apellido" (sort)="onSort($event)">APELLIDO</th>
+          <th scope="col" sortable="tipo_documento" (sort)="onSort($event)">TIP.DOC.</th>
+          <th scope="col" sortable="nro_documento" (sort)="onSort($event)">NUM.DOC.</th>
+          <th scope="col" sortable="distrito" (sort)="onSort($event)">DISTRITO</th>
+          <th scope="col" sortable="descaga" (sort)="onSort($event)">DESCARGA</th>
+          <th scope="col" sortable="carga" (sort)="onSort($event)">CARGA</th>
+          <th scope="col" sortable="auricular" (sort)="onSort($event)">AURICULAR</th>
+          <th scope="col" sortable="fecha_registro" (sort)="onSort($event)">F.REGISTRO</th>
+          <th scope="col" sortable="cantidad_post" (sort)="onSort($event)">CANT. POST</th>
+          <th scope="col">VER DETALLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prospecto of prospectos">
+          <!-- <th scope="row">{{ country.id }}</th> -->
+          <th>{{prospecto.proyecto}}</th>
+          <th>{{prospecto.nombre}}</th>
+          <th>{{prospecto.apellido}}</th>
+          <th>{{prospecto.tipo_documento}}</th>
+          <th>{{prospecto.nro_documento}}</th>
+          <th>{{prospecto.distrito}}</th>
+          <th>{{prospecto.descaga}}</th>
+          <th>{{prospecto.carga}}</th>
+          <th>{{prospecto.auricular}}</th>
+          <th>{{prospecto.fecha_registro}}</th>
+          <th>{{prospecto.cantidad_post}}</th>
+          <th>-</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

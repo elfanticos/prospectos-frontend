@@ -37,9 +37,4 @@ export class InformacionPersonalComponent implements OnInit {
   get sexo() { return this.infoPersForm.controls['sexo']; }
   get tipoDocumento() { return this.infoPersForm.controls['tipoDocumento']; }
   get numeroDocumento() { return this.infoPersForm.controls['numeroDocumento']; }
-
-
-  prueba(): void {
-    console.log(this.infoPersForm.value);
-  }
 }

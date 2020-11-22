@@ -9,11 +9,13 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   imports: [
-    CommonModule
-  ],
-  declarations: [LoginComponent],
-  exports: [
+    CommonModule,
     HttpClientModule,
+  ],
+  declarations: [
+    LoginComponent
+  ],
+  exports: [
     LoginComponent
   ],
   providers: [
