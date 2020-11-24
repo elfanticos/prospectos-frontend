@@ -1,1 +1,7 @@
 <app-informacion-audio></app-informacion-audio>
+<div class="m-container">
+    <div class="m-actions text-right m-b-50">
+        <button type="button" class="m-button" [disabled]="!registroFormService.formValidStep3"
+            (click)=" registroFormService.formValidStep3 && redirectNextStep(4)"><span>PASO 4</span></button>
+    </div>
+</div>

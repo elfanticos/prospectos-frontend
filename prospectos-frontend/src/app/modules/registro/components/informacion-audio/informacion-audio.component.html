@@ -1,7 +1,14 @@
 <section class="m-section p-20">
   <div class="m-container min-width">
-      <div class="m-title">
-          <h2>DISPOSITIVOS</h2>
-      </div>
+    <div class="m-title">
+      <h2>DISPOSITIVOS</h2>
+    </div>
+    <div class="m-select m-0">
+      <select required>
+        <option value="" selected>Tipo de documento</option>
+        <option *ngFor="let tipoAuricular of tipoAuriculares" [value]="tipoAuricular.value">{{tipoAuricular.desc}}
+        </option>
+      </select>
+    </div>
   </div>
 </section>

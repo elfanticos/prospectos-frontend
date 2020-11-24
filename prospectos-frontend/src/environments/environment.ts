@@ -8,7 +8,11 @@ export const environment = {
       pais: '/api/combo/pais',
       departamento: '/api/combo/departamento',
       provincia: '/api/combo/provincia',
-      distrito: '/api/combo/distrito'
+      distrito: '/api/combo/distrito',
+      procesador: '/api/combo/procesador',
+      ram: '/api/combo/ram',
+      disco: '/api/combo/disco',
+      sistema: '/api/combo/sistema'
     },
     oauth: {
       token: '/oauth/token'

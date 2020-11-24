@@ -9,6 +9,24 @@ import { RegistroFormService } from '../../services/registro-form.service';
 })
 export class InformacionAudioComponent implements OnInit {
   infoAudioForm: FormGroup;
+  tipoAuriculares: any[] = [
+    {
+      valor: 1,
+      desc: 'AURICULARES DE DIADEMA'
+    },
+    {
+      valor: 2,
+      desc: 'AURICULARES IN EAR'
+    },
+    {
+      valor: 3,
+      desc: 'AURICULARES CON CABLE'
+    },
+    {
+      valor: 4,
+      desc: 'AURICULARES INALÁMBRICOS'
+    }
+  ];
   constructor(
     private _registroFormService: RegistroFormService
   ) {

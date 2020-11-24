@@ -5,9 +5,13 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
 import { IDepartamento } from '../entities/combos/departamento';
+import { IDisco } from '../entities/combos/disco';
 import { IDistrito } from '../entities/combos/distrito';
 import { IPais } from '../entities/combos/pais';
+import { IProcesador } from '../entities/combos/procesador';
 import { IProvincia } from '../entities/combos/provincia';
+import { IRam } from '../entities/combos/ram';
+import { ISistema } from '../entities/combos/sistema';
 
 @Injectable()
 export class CombosService {
@@ -37,5 +41,21 @@ constructor(
     const _params: HttpParams = new HttpParams()
     .set('idProvincia', idProvincia);
     return this._http.get<IDistrito[]>({path: `${environment.api}${environment.apiService.combos.distrito}`,_params });
+  }
+
+  comboProcesador(): Observable<IProcesador[]> {
+    return this._http.get<IProcesador[]>({path: `${environment.api}${environment.apiService.combos.procesador}`});
+  }
+
+  comboRam(): Observable<IRam[]> {
+    return this._http.get<IRam[]>({path: `${environment.api}${environment.apiService.combos.ram}`});
+  }
+
+  comboDisco(): Observable<IDisco[]> {
+    return this._http.get<IDisco[]>({path: `${environment.api}${environment.apiService.combos.disco}`});
+  }
+
+  comboSistema(): Observable<ISistema[]> {
+    return this._http.get<ISistema[]>({path: `${environment.api}${environment.apiService.combos.sistema}`});
   }
 }
