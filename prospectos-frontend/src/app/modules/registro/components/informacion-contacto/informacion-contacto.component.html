@@ -19,10 +19,8 @@
                 </div>
                 <div class="m-select m-0">
                     <select formControlName="pais" required>
-                        <option>Pa&iacute;s</option>
-                        <option>Pa&iacute;s1</option>
-                        <option>Pa&iacute;s2</option>
-                        <option>Pa&iacute;s3</option>
+                        <option value="">Pa&iacute;s</option>
+                        <option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</option>
                     </select>
                     <span *ngIf="pais.errors && pais.dirty">
                         <control-messages [control]="pais"></control-messages>
@@ -30,10 +28,8 @@
                 </div>
                 <div class="m-select m-0">
                     <select formControlName="departamento" required>
-                        <option>Departamento</option>
-                        <option>Departamento1</option>
-                        <option>Departamento2</option>
-                        <option>Departamento3</option>
+                        <option value="">Departamento</option>
+                        <option *ngFor="let d of departamentos;" [value]="d.idDepartamento">{{d.nombreDepartamento}}</option>
                     </select>
                     <span *ngIf="departamento.errors && departamento.dirty">
                         <control-messages [control]="departamento"></control-messages>
@@ -41,10 +37,8 @@
                 </div>
                 <div class="m-select m-0">
                     <select formControlName="provincia" required>
-                        <option>Provincia</option>
-                        <option>Provincia1</option>
-                        <option>Provincia2</option>
-                        <option>Provincia3</option>
+                        <option value="">Provincia</option>
+                        <option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}</option>
                     </select>
                     <span *ngIf="provincia.errors && provincia.dirty">
                         <control-messages [control]="provincia"></control-messages>
@@ -52,10 +46,8 @@
                 </div>
                 <div class="m-select m-0">
                     <select formControlName="distrito" required>
-                        <option>Distrito</option>
-                        <option>Distrito1</option>
-                        <option>Distrito2</option>
-                        <option>Distrito3</option>
+                        <option value="">Distrito</option>
+                        <option *ngFor="let d of distritos;" [value]="d.idDistrito">{{d.nombreDistrito}}</option>
                     </select>
                     <span *ngIf="distrito.errors && distrito.dirty">
                         <control-messages [control]="distrito"></control-messages>

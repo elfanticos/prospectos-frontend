@@ -14,18 +14,24 @@ export class JwtInterceptor implements HttpInterceptor {
         const user = this.authenticationService.userValue;
         const isLoggedIn = user && user.jwtToken;
         const isApiUrl = request.url.startsWith(environment.api);
+        let headers = request.headers
+            .set('Content-Type', 'application/json')
+        //   .set('Authorization_App', 'Bearer ' + environment.crypto.app_token);
+
         if (isLoggedIn && isApiUrl) {
             request = request.clone({
-                setHeaders: { Authorization: `Bearer ${user.jwtToken}` }
+                setHeaders: {
+                    Authorization: `Bearer ${user.jwtToken}`
+                }
             });
         }
 
         if (request.url.includes(environment.apiService.oauth.token)) {
-            request = request.clone({
-                setHeaders: { Authorization: ' Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg=' }
-            });
+            headers = headers
+                .set('Authorization', 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg=');
         }
-
-        return next.handle(request);
+        const _PARAMS = { headers };
+        const req$ = request.clone(_PARAMS);
+        return next.handle(req$);
     }
 }

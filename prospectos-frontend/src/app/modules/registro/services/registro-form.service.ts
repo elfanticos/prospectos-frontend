@@ -110,10 +110,10 @@ export class RegistroFormService {
         Validators.maxLength(75),
         ValidatorsExtend.isOptionalEmail
       ]],
-      pais: [null, [Validators.required]],
-      departamento: [null, [Validators.required]],
-      provincia: [null, [Validators.required]],
-      distrito: [null, [Validators.required]],
+      pais: ['', [Validators.required]],
+      departamento: [{value: '', disabled: true}, [Validators.required]],
+      provincia: [{value: '', disabled: true}, [Validators.required]],
+      distrito: [{value: '', disabled: true}, [Validators.required]],
       direccion: [null, [
         Validators.required,
         Validators.maxLength(75)
@@ -137,13 +137,13 @@ export class RegistroFormService {
 
   private _buildInfoConectividad(): FormGroup {
     return this._fb.group({
-      operador: [null, [Validators.required]],
-      carga: [null, [Validators.required]],
-      descarga: [null, [Validators.required]],
-      ping: [null, [Validators.required]],
-      latencia: [null, [Validators.required]],
-      ip: [null, [Validators.required]],
-      isp: [null, [Validators.required]]
+      operador: ['null', [Validators.required]],
+      carga: ['null', [Validators.required]],
+      descarga: ['null', [Validators.required]],
+      ping: ['null', [Validators.required]],
+      latencia: ['null', [Validators.required]],
+      ip: ['null', [Validators.required]],
+      isp: ['null', [Validators.required]]
     });
     // "operador": "movistar",
     // "carga": "35 mb",

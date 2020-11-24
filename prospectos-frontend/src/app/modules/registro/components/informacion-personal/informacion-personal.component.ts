@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RegistroFormService } from '../../services/registro-form.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { CombosService } from '../../services/combos.service';
 
 @Component({
   selector: 'app-informacion-personal',
@@ -15,11 +16,16 @@ export class InformacionPersonalComponent implements OnInit {
   maxDate: NgbDateStruct;
   tiposDocumentos:any[] = [
     {value: '0', desc: 'DNI'},
-    {value: '1', desc: 'RUC'},
-    {value: '2', desc: 'CEX'}
+    {value: '1', desc: 'CARNET DE EXTRANJERÍA'},
+  ];
+  sexos: any[] = [
+    {value: 1, desc: 'Masculino'},
+    {value: 2, desc: 'Femenino'},
+    {value: 3, desc: 'Otro'}
   ];
   constructor(
-    private _registroFormService: RegistroFormService
+    private _registroFormService: RegistroFormService,
+    private _comboService: CombosService
   ) {
     this.minDate = {year: (2002 - 100), month:11, day: 20};
     this.maxDate = {year: 2002, month:11, day: 20};
@@ -27,7 +33,6 @@ export class InformacionPersonalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
 

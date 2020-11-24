@@ -6,7 +6,8 @@
         <div class="m-content">
             <div class="m-grid--2" [formGroup]="infoPersForm">
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" autocomplete="none" required />
+                    <input type="input" placeholder="Nombres" formControlName="nombresPostulante" autocomplete="none"
+                        required />
                     <span *ngIf="nombresPostulante.errors && nombresPostulante.dirty">
                         <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
@@ -29,7 +30,8 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante" autocomplete="none" required />
+                    <input type="input" placeholder="Apellidos" formControlName="apellidosPostulante"
+                        autocomplete="none" required />
                     <span *ngIf="apellidosPostulante.errors && apellidosPostulante.dirty">
                         <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
@@ -132,6 +134,21 @@
                             </ng-container>
                         </ng-template>
                     </span>
+                </div>
+                <div class="m-input m-0">
+                    <div>
+                        <span>Sexo:</span>
+                    </div>
+
+                    <div class="form-check form-check-inline" *ngFor="let s of sexos;let i = index;">
+                        <input class="form-check-input" type="radio" formControlName="sexo" name="sexo" [id]="'inlineRadio'+i" [value]="s.value">
+                        <label class="form-check-label" for="inlineRadio1">{{s.desc}}</label>
+                    </div>
+                    <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="option3" disabled>
+                        <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+                    </div> -->
                 </div>
             </div>
         </div>
