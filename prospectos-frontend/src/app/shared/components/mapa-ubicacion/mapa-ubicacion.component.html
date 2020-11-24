@@ -1,8 +1,9 @@
-<div class="m-mapa">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.673477625447!2d-76.99777718523814!3d-12.134479091408924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b80ed38d3521%3A0x3f3aa17cbae23621!2sSurco!5e0!3m2!1ses!2spe!4v1605302736149!5m2!1ses!2spe" width="100%" height="275" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-</div>
-<div class="m-container">
-    <div class="m-actions text-right m-b-50">
-        <button type="button" class="m-button"><span>PASO 2</span></button>
-    </div>
-</div>
+<agm-map class="height-map" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="false" [zoom]="zoom" (mapClick)="mapClicked($event)" (mapReady)="mapReading($event)">
+    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
+        [longitude]="m.lng" [title]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)"
+        [iconUrl]="m.iconUrl" [animation]="m.animation">
+        <agm-info-window>
+            <strong>{{m.label}}</strong>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>

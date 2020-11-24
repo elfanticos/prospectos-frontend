@@ -9,6 +9,9 @@ export const environment = {
       departamento: '/api/combo/departamento',
       provincia: '/api/combo/provincia',
       distrito: '/api/combo/distrito'
+    },
+    oauth: {
+      token: '/oauth/token'
     }
   }
 };
