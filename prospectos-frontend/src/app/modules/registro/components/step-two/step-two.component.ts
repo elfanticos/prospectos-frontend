@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
   selector: 'app-step-two',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepTwoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public registroFormService: RegistroFormService,
+    private _route: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  redirectNextStep(stepIndex: number): void {
+    this._route.navigate([`${stepIndex}`])
   }
 
 }

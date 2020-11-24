@@ -176,27 +176,27 @@ export class RegistroFormService {
 
   private _buildInfoDispositivo(): FormGroup {
     return this._fb.group({
-      tipoDispositivo: [null, [Validators.required]],
-      marca: [null, [Validators.required]],
-      modelo: [null, [Validators.required]],
-      fec_hora_disp: [null, [Validators.required]],
-      idPostulante: [null, [Validators.required]],
-      urlImagen: [null, [Validators.required]],
-      nombreImagen: [null, [Validators.required]]
+      tipoDispositivo: ['null', [Validators.required]],
+      marca: ['null', [Validators.required]],
+      modelo: ['null', [Validators.required]],
+      fec_hora_disp: ['null', [Validators.required]],
+      idPostulante: ['null', [Validators.required]],
+      urlImagen: ['null', [Validators.required]],
+      nombreImagen: ['null', [Validators.required]]
     });
   }
 
   private _buildInfoPc(): FormGroup {
     return this._fb.group({
       equipo: this._fb.group({
-        procesador: [null, [Validators.required]],
-        memoriaRam: [null, [Validators.required]],
-        discoDuro: [null, [Validators.required]],
-        sistOperativo: [null, [Validators.required]]
+        procesador: ['', [Validators.required]],
+        memoriaRam: ['', [Validators.required]],
+        discoDuro: ['', [Validators.required]],
+        sistOperativo: ['', [Validators.required]]
       }),
       image: this._fb.group({
-        urlImagen: [null, [Validators.required]],
-        nombreImagen: [null, [Validators.required]]
+        urlImagen: ['', [Validators.required]],
+        nombreImagen: ['', [Validators.required]]
       })
     });
     // "equipo": {

@@ -1,43 +1,48 @@
 <section class="m-section p-20">
-  <div class="m-container min-width">
-      <div class="m-title">
-          <h2>INFORMACI&Oacute;N DE LA PC</h2>
-      </div>
-      <div class="m-content">
-          <div class="m-grid--2">
-              <div class="m-select m-0">
-                  <select>
-                      <option>Procesador</option>
-                      <option>Procesador1</option>
-                      <option>Procesador2</option>
-                      <option>Procesador3</option>
-                  </select>
-              </div>
-              <div class="m-select m-0">
-                  <select>
-                      <option>Memoria RAM</option>
-                      <option>Memoria1</option>
-                      <option>Memoria2</option>
-                      <option>Memoria3</option>
-                  </select>
-              </div>
-              <div class="m-select m-0">
-                  <select>
-                      <option>Disco duro</option>
-                      <option>Disco1</option>
-                      <option>Disco2</option>
-                      <option>Disco3</option>
-                  </select>
-              </div>
-              <div class="m-select m-0">
-                  <select>
-                      <option>Sistema operativo</option>
-                      <option>Sistema1</option>
-                      <option>Sistema2</option>
-                      <option>Sistema3</option>
-                  </select>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="m-container min-width">
+        <div class="m-title">
+            <h2>INFORMACI&Oacute;N DE LA PC</h2>
+        </div>
+        <div class="m-content" [formGroup]="infoPcForm">
+            <div class="m-grid--2" formGroupName="equipo">
+                <div class="m-select m-0">
+                    <select formControlName="procesador">
+                        <option value="">Procesador</option>
+                        <option *ngFor="let procesador of procesadores" [value]="procesador.idProcesador">
+                            {{procesador.tipoProcesador}}</option>
+                    </select>
+                    <span *ngIf="procesador.errors && procesador.dirty">
+                        <control-messages [control]="procesador"></control-messages>
+                    </span>
+                </div>
+                <div class="m-select m-0">
+                    <select formControlName="memoriaRam">
+                        <option value="">Memoria RAM</option>
+                        <option *ngFor="let ram of memoriasRam" [value]="ram.idram">{{ram.tamano}}</option>
+                    </select>
+                    <span *ngIf="memoriaRam.errors && memoriaRam.dirty">
+                        <control-messages [control]="memoriaRam"></control-messages>
+                    </span>
+                </div>
+                <div class="m-select m-0">
+                    <select formControlName="discoDuro">
+                        <option value="">Disco duro</option>
+                        <option *ngFor="let disco of discos" [value]="disco.idDisco">{{disco.capacidad}}</option>
+                    </select>
+                    <span *ngIf="discoDuro.errors && discoDuro.dirty">
+                        <control-messages [control]="discoDuro"></control-messages>
+                    </span>
+                </div>
+                <div class="m-select m-0">
+                    <select formControlName="sistOperativo">
+                        <option value="">Sistema operativo</option>
+                        <option *ngFor="let sistema of sistemas" [value]="sistema.idSistema">{{sistema.ssoo}}</option>
+                    </select>
+                    <span *ngIf="sistOperativo.errors && sistOperativo.dirty">
+                        <control-messages [control]="sistOperativo"></control-messages>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
