@@ -106,7 +106,19 @@ export class MapaUbicacionComponent {
       let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeLatLng(a);
       let [data] = GeoCodeDireccion.results;
       let latlng = data.geometry.location;
-      this.setPosition(latlng.lat, latlng.lng);
+      this.setPosition(latlng.lat, latlng.lng, false);
+      // this.coordenates = {
+      //   lat: latlng.lat,
+      //   lng: latlng.lng
+      // };
+      // this.markers[0] = {
+      //   lat: latlng.lat,
+      //   lng: latlng.lng,
+      //   iconUrl: this.icon_map,
+      //   draggable: true,
+      //   label: 'Mi hogar',
+      //   // animation : this.animation.bounce
+      // };
     })
   }
 
@@ -117,7 +129,7 @@ export class MapaUbicacionComponent {
    * @param {*} lng
    * @returns {void}
    */
-  async setPosition(lat, lng) {
+  async setPosition(lat, lng, reset = true) {
     if (this.markers.length == 0) {
       this.markers.push({
         lat,
@@ -142,8 +154,7 @@ export class MapaUbicacionComponent {
     // this.datos.metadata.lat = lat;
     this.coordenates.lng = lng;
     // this.datos.metadata.lng = lng;
-    this.mapReading(this.coordenates);
-
+    reset && this.mapReading(this.coordenates);
     await this.centerView();
     // this.changedPosition = true;
 
@@ -159,16 +170,21 @@ export class MapaUbicacionComponent {
 
   mapReading(event) {
     setTimeout(() => {
-      this.markers[0] = {
-        lat: null,
-        lng: null,
-        iconUrl: this.icon_map,
-        label: 'Mi hogar',
-        draggable: true,
-        // animation : this.animation.bounce
+      if (!navigator.geolocation){
+        return;
+      }
+      let success = (position) => {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        this.setPosition(latitude, longitude, false);
       };
+
+      function error(err) {
+        console.log('error', err);
+      };
+      navigator.geolocation.getCurrentPosition(success, error);
       this.show = true;
-    }, 800);
+    }, 1);
   }
 
   /**
@@ -194,10 +210,6 @@ export class MapaUbicacionComponent {
           }
         }
       });
-
-
-    } else {
-
     }
   }
 
