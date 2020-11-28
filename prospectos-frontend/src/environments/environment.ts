@@ -13,5 +13,6 @@ export const environment = {
     oauth: {
       token: '/oauth/token'
     }
-  }
+  },
+  geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'
 };

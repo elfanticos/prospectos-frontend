@@ -3,6 +3,8 @@ import { MouseEvent, MapsAPILoader, StreetViewControlOptions, MapTypeControlOpti
 import { __getPosition } from './mapa-ubicacion-helper';
 import { IMapCoordinates } from './mapa-ubicacion.model';
 import { SharedConstants } from '@app/shared/shared.constants';
+import { MapaUbicacionService } from './mapa-ubicacion.service';
+import { filter } from 'rxjs/internal/operators/filter';
 
 @Component({
   selector: 'app-mapa-ubicacion',
@@ -64,6 +66,7 @@ export class MapaUbicacionComponent {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
+    private mapaUbicacionSrv: MapaUbicacionService
   ) {
     // this.datos = data;
     // if (this.data.type) {
@@ -99,6 +102,12 @@ export class MapaUbicacionComponent {
         let res: IMapCoordinates = await __getPosition();
         if(res) this.setPosition(res.latitude, res.longitude)
     }
+    this.mapaUbicacionSrv.direccionCoordenates.pipe(filter(a => a != null)).subscribe(async(a) => {
+      let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeLatLng(a);
+      let [data] = GeoCodeDireccion.results;
+      let latlng = data.geometry.location;
+      this.setPosition(latlng.lat, latlng.lng);
+    })
   }
 
   /**
@@ -192,8 +201,13 @@ export class MapaUbicacionComponent {
     }
   }
 
-  mapClicked($event: MouseEvent) {
+  async mapClicked($event: MouseEvent) {
     this.activeButton($event.coords.lat, $event.coords.lng);
+    // console.log("🚀 ~ file: mapa-ubicacion.component.ts ~ line 198 ~ MapaUbicacionComponent ~ mapClicked ~ $event.coords", $event.coords);
+    let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
+    let [direccion] = GeoCodeDireccion.results;
+    this.mapaUbicacionSrv.direccionState.next(direccion.formatted_address)
+
     this.coordenates = {
       lat: $event.coords.lat,
       lng: $event.coords.lng

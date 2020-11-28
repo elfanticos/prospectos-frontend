@@ -54,7 +54,7 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Dirección" formControlName="direccion" required />
+                    <input type="input" placeholder="Dirección" formControlName="direccion" required (keypress)="onKeypressEvent($event)"/>
                     <span *ngIf="direccion.errors && direccion.dirty">
                         <control-messages [control]="direccion"></control-messages>
                     </span>
