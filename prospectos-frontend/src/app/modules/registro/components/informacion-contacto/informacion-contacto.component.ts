@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Globals } from '@app/globals';
+import { MapaUbicacionService } from '@app/shared/components/mapa-ubicacion/mapa-ubicacion.service';
+import { filter } from 'rxjs/internal/operators/filter';
 import { IDepartamento } from '../../entities/combos/departamento';
 import { IDistrito } from '../../entities/combos/distrito';
 import { IPais } from '../../entities/combos/pais';
@@ -23,7 +25,8 @@ export class InformacionContactoComponent implements OnInit {
   constructor(
     private _registroFormService: RegistroFormService,
     private _comboService: CombosService,
-    private _globals: Globals
+    private _globals: Globals,
+    private mapaUbicacionSrv: MapaUbicacionService
   ) {
     this.infoContactoForm = this._registroFormService.formInfoContacto;
   }
@@ -37,6 +40,9 @@ export class InformacionContactoComponent implements OnInit {
     this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'));
     this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'));
     this.setDistritos(JSON.parse(localStorage.getItem('distritos') || '[]'));
+    this.mapaUbicacionSrv.direccionState.pipe(filter(a => a != null)).subscribe(a => {
+      this.direccion.setValue(a)
+    })
   }
 
   get telefono() { return this.infoContactoForm.controls['telefono']; }
@@ -96,5 +102,11 @@ export class InformacionContactoComponent implements OnInit {
     this.distritos = distritos || [];
     if (this.distritos.length > 0) this.distrito.enable();
     else this.distrito.disable();
+  }
+
+  onKeypressEvent(event) {
+    if(event.code == 'Enter') {
+      this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
+    }
   }
 }

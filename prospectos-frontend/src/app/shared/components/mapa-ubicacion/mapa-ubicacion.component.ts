@@ -3,6 +3,8 @@ import { MouseEvent, MapsAPILoader, StreetViewControlOptions, MapTypeControlOpti
 import { __getPosition } from './mapa-ubicacion-helper';
 import { IMapCoordinates } from './mapa-ubicacion.model';
 import { SharedConstants } from '@app/shared/shared.constants';
+import { MapaUbicacionService } from './mapa-ubicacion.service';
+import { filter } from 'rxjs/internal/operators/filter';
 
 @Component({
   selector: 'app-mapa-ubicacion',
@@ -64,6 +66,7 @@ export class MapaUbicacionComponent {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
+    private mapaUbicacionSrv: MapaUbicacionService
   ) {
     // this.datos = data;
     // if (this.data.type) {
@@ -99,6 +102,24 @@ export class MapaUbicacionComponent {
         let res: IMapCoordinates = await __getPosition();
         if(res) this.setPosition(res.latitude, res.longitude)
     }
+    this.mapaUbicacionSrv.direccionCoordenates.pipe(filter(a => a != null)).subscribe(async(a) => {
+      let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeLatLng(a);
+      let [data] = GeoCodeDireccion.results;
+      let latlng = data.geometry.location;
+      this.setPosition(latlng.lat, latlng.lng, false);
+      // this.coordenates = {
+      //   lat: latlng.lat,
+      //   lng: latlng.lng
+      // };
+      // this.markers[0] = {
+      //   lat: latlng.lat,
+      //   lng: latlng.lng,
+      //   iconUrl: this.icon_map,
+      //   draggable: true,
+      //   label: 'Mi hogar',
+      //   // animation : this.animation.bounce
+      // };
+    })
   }
 
   /**
@@ -108,7 +129,7 @@ export class MapaUbicacionComponent {
    * @param {*} lng
    * @returns {void}
    */
-  async setPosition(lat, lng) {
+  async setPosition(lat, lng, reset = true) {
     if (this.markers.length == 0) {
       this.markers.push({
         lat,
@@ -133,8 +154,7 @@ export class MapaUbicacionComponent {
     // this.datos.metadata.lat = lat;
     this.coordenates.lng = lng;
     // this.datos.metadata.lng = lng;
-    this.mapReading(this.coordenates);
-
+    reset && this.mapReading(this.coordenates);
     await this.centerView();
     // this.changedPosition = true;
 
@@ -150,16 +170,21 @@ export class MapaUbicacionComponent {
 
   mapReading(event) {
     setTimeout(() => {
-      this.markers[0] = {
-        lat: null,
-        lng: null,
-        iconUrl: this.icon_map,
-        label: 'Mi hogar',
-        draggable: true,
-        // animation : this.animation.bounce
+      if (!navigator.geolocation){
+        return;
+      }
+      let success = (position) => {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        this.setPosition(latitude, longitude, false);
       };
+
+      function error(err) {
+        console.log('error', err);
+      };
+      navigator.geolocation.getCurrentPosition(success, error);
       this.show = true;
-    }, 800);
+    }, 1);
   }
 
   /**
@@ -185,15 +210,16 @@ export class MapaUbicacionComponent {
           }
         }
       });
-
-
-    } else {
-
     }
   }
 
-  mapClicked($event: MouseEvent) {
+  async mapClicked($event: MouseEvent) {
     this.activeButton($event.coords.lat, $event.coords.lng);
+    // console.log("🚀 ~ file: mapa-ubicacion.component.ts ~ line 198 ~ MapaUbicacionComponent ~ mapClicked ~ $event.coords", $event.coords);
+    let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
+    let [direccion] = GeoCodeDireccion.results;
+    this.mapaUbicacionSrv.direccionState.next(direccion.formatted_address)
+
     this.coordenates = {
       lat: $event.coords.lat,
       lng: $event.coords.lng
