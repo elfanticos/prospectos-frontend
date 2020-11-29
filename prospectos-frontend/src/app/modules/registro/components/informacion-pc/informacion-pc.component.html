@@ -44,5 +44,10 @@
                 </div>
             </div>
         </div>
+        <div>
+            <p>subir imagen</p>
+            <button type="button" (click)="adjuntarImagen()">subir imagen</button>
+        </div>
     </div>
 </section>
+<input type="file" style="display:none" #fileTxt (change)="fileChangeEvent($event)" />
