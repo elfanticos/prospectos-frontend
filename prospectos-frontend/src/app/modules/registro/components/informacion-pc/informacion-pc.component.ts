@@ -19,6 +19,7 @@ export class InformacionPcComponent implements OnInit {
   discos: IDisco[] = [];
   sistemas: ISistema[] = [];
   @ViewChild('fileTxt') fileTxt: ElementRef;
+  @ViewChild('inputText') inputText: ElementRef;
   filesToUpload: Array<File>;
   constructor(
     private _registroFormService: RegistroFormService,
@@ -40,12 +41,11 @@ export class InformacionPcComponent implements OnInit {
 
   }
 
-  get procesador() { return this.infoPcForm.get('equipo').get('procesador'); }
-  get memoriaRam() { return this.infoPcForm.get('equipo').get('memoriaRam'); }
-  get discoDuro() { return this.infoPcForm.get('equipo').get('discoDuro'); }
-  get sistOperativo() { return this.infoPcForm.get('equipo').get('sistOperativo'); }
-  get urlImagen() { return this.infoPcForm.get('image').get('urlImagen'); }
-  get nombreImagen() { return this.infoPcForm.get('image').get('nombreImagen'); }
+  get procesador() { return this.infoPcForm.controls['procesador']; }
+  get memoriaRam() { return this.infoPcForm.controls['memoriaRam']; }
+  get discoDuro() { return this.infoPcForm.controls['discoDuro']; }
+  get sistOperativo() { return this.infoPcForm.controls['sistOperativo']; }
+  get file() { return this.infoPcForm.controls['file']; }
 
   loadProcesadores(): void {
     this._combosService.comboProcesador().subscribe(procesadores => {
@@ -124,6 +124,9 @@ export class InformacionPcComponent implements OnInit {
     }
     /*******************************************************/
 
+    this.inputText.nativeElement.value = nameFile;
+    console.log(this.filesToUpload);
+    this.file.setValue(this.filesToUpload);
     // Renderizar el archivo subido para obtener el base64
     let render = new FileReader();
     render.readAsDataURL(this.filesToUpload[0]);
@@ -132,4 +135,5 @@ export class InformacionPcComponent implements OnInit {
       console.log(event);
     };
   }
+
 }

@@ -12,10 +12,12 @@ export const environment = {
       procesador: '/api/combo/procesador',
       ram: '/api/combo/ram',
       disco: '/api/combo/disco',
-      sistema: '/api/combo/sistema'
+      sistema: '/api/combo/sistema',
+      auricular: '/api/combo/auricular'
     },
     oauth: {
       token: '/oauth/token'
     }
-  }
+  },
+  geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'
 };

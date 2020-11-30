@@ -1,14 +1,22 @@
 <section class="m-section p-20">
-  <div class="m-container min-width">
+  <div class="m-container min-width" [formGroup]="infoAudioForm">
     <div class="m-title">
       <h2>DISPOSITIVOS</h2>
     </div>
     <div class="m-select m-0">
-      <select required>
+      <select required formControlName="tipoDispositivo">
         <option value="" selected>Tipo de documento</option>
-        <option *ngFor="let tipoAuricular of tipoAuriculares" [value]="tipoAuricular.value">{{tipoAuricular.desc}}
+        <option *ngFor="let auricular of auriculares" [value]="auricular.idAuricular">{{auricular.tipoAuricular}}
         </option>
       </select>
     </div>
+    <div style="height: 500px; width: 300px; background-color: aqua;"></div>
+    <div>
+      <div class="m-input m-0" (click)="adjuntarImagen()">
+        <input type="input" placeholder="Adjuntar imagen" #inputText disabled/>
+      </div>
+      <button type="button" (click)="adjuntarImagen()">subir imagen</button>
+    </div>
   </div>
 </section>
+<input type="file" #fileTxt style="display:none" (change)="fileChangeEvent($event)" />

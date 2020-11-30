@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ValidatorsExtend} from '@app/shared/validators/validators-extend';
+import { ValidatorsExtend } from '@app/shared/validators/validators-extend';
 
 @Injectable()
 export class RegistroFormService {
@@ -111,9 +111,9 @@ export class RegistroFormService {
         ValidatorsExtend.isOptionalEmail
       ]],
       pais: ['', [Validators.required]],
-      departamento: [{value: '', disabled: true}, [Validators.required]],
-      provincia: [{value: '', disabled: true}, [Validators.required]],
-      distrito: [{value: '', disabled: true}, [Validators.required]],
+      departamento: [{ value: '', disabled: true }, [Validators.required]],
+      provincia: [{ value: '', disabled: true }, [Validators.required]],
+      distrito: [{ value: '', disabled: true }, [Validators.required]],
       direccion: [null, [
         Validators.required,
         Validators.maxLength(75)
@@ -159,12 +159,13 @@ export class RegistroFormService {
   }
 
   private _buildInfoAudio(): FormGroup {
-    return this._fb.group({
-      dispositivos: this._fb.array([
-        this._buildInfoDispositivo(),
-        this._buildInfoDispositivo()
-      ])
-    });
+    return this._buildInfoDispositivo();
+    // return this._fb.group({
+    //   dispositivos: this._fb.array([
+    //     this._buildInfoDispositivo(),
+    //     this._buildInfoDispositivo()
+    //   ])
+    // });
     // "tipoDispositivo": "Microfono",
     // "marca": "microphone ",
     // "modelo": "del mercado",
@@ -176,29 +177,40 @@ export class RegistroFormService {
 
   private _buildInfoDispositivo(): FormGroup {
     return this._fb.group({
-      tipoDispositivo: ['null', [Validators.required]],
-      marca: ['null', [Validators.required]],
-      modelo: ['null', [Validators.required]],
-      fec_hora_disp: ['null', [Validators.required]],
-      idPostulante: ['null', [Validators.required]],
-      urlImagen: ['null', [Validators.required]],
-      nombreImagen: ['null', [Validators.required]]
+      tipoDispositivo: [null, [Validators.required]],
+      file: [null, [Validators.required]]
     });
+    // return this._fb.group({
+    //   tipoDispositivo: ['null', [Validators.required]],
+    //   marca: ['null', [Validators.required]],
+    //   modelo: ['null', [Validators.required]],
+    //   fec_hora_disp: ['null', [Validators.required]],
+    //   idPostulante: ['null', [Validators.required]],
+    //   urlImagen: ['null', [Validators.required]],
+    //   nombreImagen: ['null', [Validators.required]]
+    // });
   }
 
   private _buildInfoPc(): FormGroup {
     return this._fb.group({
-      equipo: this._fb.group({
-        procesador: ['', [Validators.required]],
-        memoriaRam: ['', [Validators.required]],
-        discoDuro: ['', [Validators.required]],
-        sistOperativo: ['', [Validators.required]]
-      }),
-      image: this._fb.group({
-        urlImagen: ['', [Validators.required]],
-        nombreImagen: ['', [Validators.required]]
-      })
+      procesador: [null, [Validators.required]],
+      memoriaRam: [null, [Validators.required]],
+      discoDuro: [null, [Validators.required]],
+      sistOperativo: [null, [Validators.required]],
+      file: [null, [Validators.required]]
     });
+    // return this._fb.group({
+    //   equipo: this._fb.group({
+    //     procesador: ['', [Validators.required]],
+    //     memoriaRam: ['', [Validators.required]],
+    //     discoDuro: ['', [Validators.required]],
+    //     sistOperativo: ['', [Validators.required]]
+    //   }),
+    //   image: this._fb.group({
+    //     urlImagen: ['', [Validators.required]],
+    //     nombreImagen: ['', [Validators.required]]
+    //   })
+    // });
     // "equipo": {
     //   "procesador": "intel core i3",
     //   "memoriaRam": "8 GB de RAM",

@@ -4,6 +4,7 @@ import { Globals } from '@app/globals';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
+import { IAuricular } from '../entities/combos/auricular';
 import { IDepartamento } from '../entities/combos/departamento';
 import { IDisco } from '../entities/combos/disco';
 import { IDistrito } from '../entities/combos/distrito';
@@ -58,4 +59,10 @@ constructor(
   comboSistema(): Observable<ISistema[]> {
     return this._http.get<ISistema[]>({path: `${environment.api}${environment.apiService.combos.sistema}`});
   }
+
+  comboAuricular(): Observable<IAuricular[]> {
+    return this._http.get<IAuricular[]>({path: `${environment.api}${environment.apiService.combos.auricular}`});
+  }
 }
+
+
