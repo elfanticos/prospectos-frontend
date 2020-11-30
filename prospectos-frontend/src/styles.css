@@ -278,8 +278,20 @@ img{
     padding: 20px 50px;
 }
 .modal-body p{
-    font-size: 16px;
+    font-size: 14px;
     color: #707070;
+    font-family: var(--RUBIK_MEDIUM);
+}
+.modal-body .form-check{
+    width: 100%;
+    max-width: 235px;
+    margin: auto;
+    text-align: left;
+}
+.modal-body .form-check .form-check-label{
+    color: #707070;
+    font-family: var(--RUBIK_MEDIUM);
+    font-size: 14px;
 }
 .modal-footer{
     justify-content: center;
