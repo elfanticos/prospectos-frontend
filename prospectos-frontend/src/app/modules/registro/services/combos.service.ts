@@ -26,9 +26,9 @@ constructor(
     return this._http.get<IPais[]>({path: `${environment.api}${environment.apiService.combos.pais}`});
   }
 
-  comboDepartamento(): Observable<IDepartamento[]> {
+  comboDepartamento(idPais: number): Observable<IDepartamento[]> {
     const _params: HttpParams = new HttpParams()
-    .set('idPais', String(this._globals.__ID_PAIS_PERU));
+    .set('idPais', String(idPais));
     return this._http.get<IDepartamento[]>({path: `${environment.api}${environment.apiService.combos.departamento}`,_params});
   }
 

@@ -18,7 +18,7 @@
                     </span>
                 </div>
                 <div class="m-select m-0">
-                    <select formControlName="pais" required>
+                    <select formControlName="pais" required (change)="selectedPais()">
                         <option value="">Pa&iacute;s</option>
                         <option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</option>
                     </select>
@@ -27,7 +27,7 @@
                     </span>
                 </div>
                 <div class="m-select m-0">
-                    <select formControlName="departamento" required>
+                    <select formControlName="departamento" required (change)="selectedDepartamento()">
                         <option value="">Departamento</option>
                         <option *ngFor="let d of departamentos;" [value]="d.idDepartamento">{{d.nombreDepartamento}}</option>
                     </select>
@@ -36,7 +36,7 @@
                     </span>
                 </div>
                 <div class="m-select m-0">
-                    <select formControlName="provincia" required>
+                    <select formControlName="provincia" required (change)="selectedProvincia()">
                         <option value="">Provincia</option>
                         <option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}</option>
                     </select>

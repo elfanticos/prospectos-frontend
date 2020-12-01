@@ -33,10 +33,6 @@ export class InformacionContactoComponent implements OnInit {
 
   ngOnInit(): void {
     this._comboService.comboPais().subscribe(paises => this.paises = paises || []);
-    this.pais.valueChanges.subscribe(() => this.loadDepartamentos());
-    this.departamento.valueChanges.subscribe(() => this.loadProvincias());
-    this.provincia.valueChanges.subscribe(() => this.loadDistritos());
-
     this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'));
     this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'));
     this.setDistritos(JSON.parse(localStorage.getItem('distritos') || '[]'));
@@ -55,30 +51,49 @@ export class InformacionContactoComponent implements OnInit {
   get latitud() { return this.infoContactoForm.controls['latitud']; }
   get longitud() { return this.infoContactoForm.controls['longitud']; }
 
+  selectedPais(): void {
+    this.departamento.setValue('');
+    this.loadDepartamentos();
+  }
+
+  selectedDepartamento(): void {
+    this.loadProvincias();
+  }
+
+  selectedProvincia(): void {
+    this.loadDistritos();
+  }
 
   loadDepartamentos(): void {
-    if (this.pais.value === String(this._globals.__ID_PAIS_PERU)) {
-      this._comboService.comboDepartamento().subscribe(departamentos => {
-        localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
-        this.setDepartamentos(departamentos);
-      });
-      this.departamento.enable();
-    } else {
-      this.setDepartamentos([]);
-    }
+    this._comboService.comboDepartamento(this.pais.value).subscribe(departamentos => {
+      localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
+      this.setDepartamentos(departamentos);
+    });
+    this.departamento.enable();
+    // if (this.pais.value === String(this._globals.__ID_PAIS_PERU)) {
+    //   this._comboService.comboDepartamento().subscribe(departamentos => {
+    //     localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
+    //     this.setDepartamentos(departamentos);
+    //   });
+    //   this.departamento.enable();
+    // } else {
+    //   this.setDepartamentos([]);
+    // }
   }
 
   setDepartamentos(departamentos: IDepartamento[]): void {
     this.departamentos = departamentos || [];
-    if (this.departamentos.length > 0) this.departamento.enable();
+    if (this.departamentos.length > 0 && this.pais.value) this.departamento.enable();
     else this.departamento.disable();
+    this.provincia.setValue('');
+    this.distrito.setValue('');
     this.provincia.disable();
     this.distrito.disable();
   }
 
   loadProvincias(): void {
     this._comboService.comboProvincia(this.departamento.value).subscribe(provincias => {
-      localStorage.setItem('provincias', JSON.stringify(provincias ||[]));
+      localStorage.setItem('provincias', JSON.stringify(provincias || []));
       this.setProvincias(provincias);
     });
   }
@@ -86,26 +101,27 @@ export class InformacionContactoComponent implements OnInit {
 
   setProvincias(provincias: IProvincia[]): void {
     this.provincias = provincias || [];
-    if (this.provincias.length > 0) this.provincia.enable();
+    if (this.provincias.length > 0 && this.departamento.value) this.provincia.enable();
     else this.provincia.disable();
+    this.distrito.setValue('');
     this.distrito.disable();
   }
 
   loadDistritos(): void {
     this._comboService.comboDistrito(this.provincia.value).subscribe(distritos => {
-      localStorage.setItem('distritos', JSON.stringify(distritos ||[]));
+      localStorage.setItem('distritos', JSON.stringify(distritos || []));
       this.setDistritos(distritos);
     });
   }
 
   setDistritos(distritos: IDistrito[]): void {
     this.distritos = distritos || [];
-    if (this.distritos.length > 0) this.distrito.enable();
+    if (this.distritos.length > 0 && this.provincia.value) this.distrito.enable();
     else this.distrito.disable();
   }
 
   onKeypressEvent(event) {
-    if(event.code == 'Enter') {
+    if (event.code == 'Enter') {
       this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
     }
   }
