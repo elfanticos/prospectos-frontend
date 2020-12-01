@@ -22,7 +22,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: var(--FUTURA_MEDIUM);
+    font-family: var(--RUBIK_REGULAR);
     color: var(--COLOR_TITLE);
     font-size:  16px;
     overflow-x: hidden;
@@ -98,12 +98,19 @@ img{
 }
 .m-button{
     background-color: #F6F6F6;
-    outline: none;
+    outline: none !important;
     box-shadow: none;
     border: none;
     height: 60px;
     padding: 0 20px;
     cursor: pointer;
+}
+.m-invalid{
+    color: red;
+    font-size: 14px;
+}
+.m-button[disabled]{
+    cursor: default;
 }
 .m-button span{
     font-family: var(--FUTURA_BOLD);
@@ -279,14 +286,16 @@ img{
 }
 .modal-body p{
     font-size: 14px;
-    color: #707070;
+    color: #000000;
     font-family: var(--RUBIK_MEDIUM);
 }
 .modal-body .form-check{
     width: 100%;
-    max-width: 235px;
     margin: auto;
     text-align: left;
+}
+.modal-body .form-check input{
+    outline: none;
 }
 .modal-body .form-check .form-check-label{
     color: #707070;
