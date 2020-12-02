@@ -84,7 +84,7 @@ export class RegistroFormService {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(18),
-        Validators.pattern(/^[0-9]{1,15}$/)
+        Validators.pattern(/^[0-9]{1,18}$/)
       ]],
     });
     // "nombresPostulante":"Jose Luis",

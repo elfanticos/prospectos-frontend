@@ -17,6 +17,9 @@ export const environment = {
     },
     oauth: {
       token: '/oauth/token'
+    },
+    postulante: {
+      registrarProspecto: '/api/postulante/registrar-prospecto'
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'

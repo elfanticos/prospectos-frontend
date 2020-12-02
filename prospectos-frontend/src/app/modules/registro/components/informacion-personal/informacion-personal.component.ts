@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RegistroFormService } from '../../services/registro-form.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import { CombosService } from '../../services/combos.service';
 
 @Component({
   selector: 'app-informacion-personal',
@@ -25,10 +24,15 @@ export class InformacionPersonalComponent implements OnInit {
   ];
   constructor(
     private _registroFormService: RegistroFormService,
-    private _comboService: CombosService
   ) {
-    this.minDate = {year: (2002 - 100), month:11, day: 20};
-    this.maxDate = {year: 2002, month:11, day: 20};
+    const dateNow = new Date();
+    const day = dateNow.getDay() - 1;
+    const month = dateNow.getMonth();
+    const year = dateNow.getFullYear();
+    this.minDate = {year: (year - 100), month:month, day: day};
+    this.maxDate = {year: year, month:month, day: day};
+    console.log(this.minDate);
+    console.log(this.maxDate);
     this.infoPersForm = this._registroFormService.formInfoPersonal;
   }
 

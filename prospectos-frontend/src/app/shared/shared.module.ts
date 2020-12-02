@@ -4,6 +4,7 @@ import { MapaUbicacionComponent } from './components/mapa-ubicacion/mapa-ubicaci
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
 import { AgmCoreModule } from '@agm/core';
+import { CsNumberDirective } from './directives/cs-number.directive';
 
 @NgModule({
   imports: [
@@ -16,12 +17,14 @@ import { AgmCoreModule } from '@agm/core';
   declarations: [
     MapaUbicacionComponent,
     ModalConfirmComponent,
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    CsNumberDirective
   ],
   exports: [
     MapaUbicacionComponent,
     ModalConfirmComponent,
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    CsNumberDirective
   ],
   entryComponents: [
     ModalConfirmComponent

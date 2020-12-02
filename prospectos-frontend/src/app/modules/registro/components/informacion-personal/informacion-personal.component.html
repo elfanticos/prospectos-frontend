@@ -70,8 +70,8 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="N&uacute;mero de documento" formControlName="numeroDocumento"
-                        autocomplete="none" required />
+                    <input type="input" onNumber placeholder="N&uacute;mero de documento" formControlName="numeroDocumento"
+                        autocomplete="none" maxlength="18" required />
                     <span *ngIf="numeroDocumento.errors && numeroDocumento.dirty">
                         <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">El campo no puede estar
                             vacio</ng-container>
