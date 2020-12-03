@@ -177,8 +177,8 @@ export class RegistroFormService {
 
   private _buildInfoDispositivo(): FormGroup {
     return this._fb.group({
-      tipoDispositivo: [null, [Validators.required]],
-      file: [null, [Validators.required]]
+      tipoDispositivo: ['', [Validators.required]],
+      file: [, [Validators.required]]
     });
     // return this._fb.group({
     //   tipoDispositivo: ['null', [Validators.required]],
@@ -193,10 +193,10 @@ export class RegistroFormService {
 
   private _buildInfoPc(): FormGroup {
     return this._fb.group({
-      procesador: [null, [Validators.required]],
-      memoriaRam: [null, [Validators.required]],
-      discoDuro: [null, [Validators.required]],
-      sistOperativo: [null, [Validators.required]],
+      procesador: ['', [Validators.required]],
+      memoriaRam: ['', [Validators.required]],
+      discoDuro: ['', [Validators.required]],
+      sistOperativo: ['', [Validators.required]],
       file: [null, [Validators.required]]
     });
     // return this._fb.group({
