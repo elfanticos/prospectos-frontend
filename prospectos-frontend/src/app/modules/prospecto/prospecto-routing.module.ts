@@ -4,11 +4,11 @@ import { AuthGuard } from '@app/core/helpers';
 import { FiltroBusquedaComponent } from './pages/filtro-busqueda/filtro-busqueda.component';
 
 const routes: Routes = [
-  {  
-    path:'prospectos',
-    component: FiltroBusquedaComponent,
+  {
+    path: 'prospectos',
+    component: FiltroBusquedaComponent
     // canActivate: [AuthGuard]
-  },
+  }
 ];
 
 @NgModule({

@@ -131,6 +131,10 @@ img{
 .m-container.min-width{
     max-width: 800px;
 }
+.m-container.max-width{
+    max-width: 1450px;
+    padding: 15px;
+}
 .m-login{
     display: flex;
     display: -webkit-flex;
@@ -307,10 +311,27 @@ img{
 }
    /* Datepicker popup icon */
 
-   button.calendar, button.calendar:active {
+button.calendar, button.calendar:active {
     width: 2.75rem;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
     background-repeat: no-repeat;
     background-size: 23px;
     background-position: center;
-  }
+}
+.table{
+    border: 1px solid #000000;
+}
+.table tr th{
+    background-color: var(--COLOR_PRIMARY);
+    font-size: 15px;
+    font-family: var(--RUBIK_BOLD);
+    padding: 3px 10px;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+.table tr td{
+    font-size: 15px;
+    font-family: var(--RUBIK_LIGHT);
+    padding: 3px 10px;
+    border: none;
+}
