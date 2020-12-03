@@ -1,9 +1,9 @@
 <div class="m-filtro">
-  <div class="m-title">
-      <h2>FILTRO DE B&Uacute;SQUEDA</h2>
-  </div>
-  <div class="m-content">
-      <div class="m-grid--3">
+    <div class="m-title">
+        <h2>FILTRO DE B&Uacute;SQUEDA</h2>
+    </div>
+    <div class="m-content">
+        <div class="m-grid--3">
             <div class="m-select m-0">
                 <select>
                     <option>Tipo de documento</option>
@@ -13,7 +13,7 @@
                 </select>
             </div>
             <div class="m-input m-0">
-                <input type="text" placeholder="N&uacute;mero de documento"/>
+                <input type="text" placeholder="N&uacute;mero de documento" />
             </div>
             <div class="m-select m-0">
                 <select>
@@ -55,6 +55,30 @@
                     <option>Proyecto3</option>
                 </select>
             </div>
+            <div>
+                <div class="m-input m-0">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dateInit" ngbDatepicker
+                            #dateInit="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dateInit.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="m-input m-0">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dateEnd" ngbDatepicker
+                            #dateEnd="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dateEnd.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- <div class="input-group">
                 <input class="form-control" placeholder="dd/mm/yyyy" name="dp" formControlName="fecNacimiento"
                     ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate">
@@ -63,9 +87,9 @@
                         type="button"></button>
                 </div>
             </div> -->
-      </div>
-  </div>
-  <div class="m-actions text-right">
-      <button type="button" class="m-button"><span>BUSCAR</span></button>
-  </div>
+        </div>
+    </div>
+    <div class="m-actions text-right">
+        <button type="button" class="m-button"><span>BUSCAR</span></button>
+    </div>
 </div>
