@@ -5,10 +5,12 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
 import { AgmCoreModule } from '@agm/core';
 import { CsNumberDirective } from './directives/cs-number.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule, ReactiveFormsModule,
     AgmCoreModule.forRoot({
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyBG7wY_OKvdf_bsw3HyKnnK7vlFotNEKxk'
