@@ -363,5 +363,50 @@ button.calendar, button.calendar:active {
 .m-actions{
     margin: 20px 0;
 }
+.m-pasos__pc{
+    margin-top: 30px;
+    border-top: 3px dotted #868F98;
+    padding: 25px 0;
+}
+.m-title__pc{
+    background-color: #00B5E2;
+    color: #FFFFFF;
+    width: 100%;
+    max-width: max-content;
+    margin: auto;
+    padding: 5px 15px;
+}
+.m-title__pc p{
+    margin: 0;
+    font-size: 16px;
+    font-family: var(--RUBIK_LIGHT);
+}
+.m-datos__pc{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,125px));
+    grid-gap: 25px;
+    justify-content: center;
+    text-align: center;
+}
+.m-datos__pc .m-pasos__item{
+    padding: 10px;
+}
+.m-datos__pc .m-pasos__item span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--COLOR_PRIMARY);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-family: var(--FUTURA_BOLD);
+    font-size: 20px;
+    margin: 20px auto;
+}
+.m-datos__pc .m-pasos__item p{
+    color: #868F98;
+    font-size: 16px;
+}
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
