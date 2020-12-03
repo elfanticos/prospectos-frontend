@@ -1,6 +1,5 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Globals } from '@app/globals';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
@@ -19,7 +18,6 @@ export class CombosService {
 
 constructor(
   private _http: ApiService,
-  private _globals: Globals
 ) { }
 
   comboPais(): Observable<IPais[]> {

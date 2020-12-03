@@ -17,6 +17,13 @@ export const environment = {
     },
     oauth: {
       token: '/oauth/token'
+    },
+    postulante: {
+      registrarProspecto: '/api/postulante/registrar-prospecto',
+      registrarConectividad: '/api/postulante/registrar-conectividad',
+      registrarDispositivos: '/api/postulante/registrar-dispositivos',
+      registrarEquipo: '/api/postulante/registrar-equipo',
+      
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'

@@ -23,13 +23,17 @@ export class AuthenticationService {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.api}/users/authenticate`, { username, password }, { withCredentials: true })
-            .pipe(map(user => {
-                this.userSubject.next(user);
-                this.startRefreshTokenTimer();
-                return user;
-            }));
+    login() {
+        const obj = {
+            grant_type: 'password',
+            username: 'UsuAdmin',
+            password: '123'
+        };
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa('rrhhprospectoapp:rrhhprospectocodex')
+        });
+        return this.http.post<any>(`http://ec2-54-90-30-216.compute-1.amazonaws.com:9090/oauth/token`, { headers });
     }
 
     logout() {

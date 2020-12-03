@@ -22,6 +22,7 @@ import { CustomAdapter } from 'src/app/core/providers/datepicker/custom-adapter'
 import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/custom-date-parser-formatter';
 import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
 import { CombosService } from './services/combos.service';
+import { RegistroProspectoService } from './services/registro-prospecto.service';
 
 
 
@@ -52,6 +53,7 @@ import { CombosService } from './services/combos.service';
   providers: [
     RegistroFormService,
     CombosService,
+    RegistroProspectoService,
     { provide: LOCALE_ID, useValue: 'es-PR' } ,
     [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }], // define custom NgbDatepickerI18n provider
     {provide: NgbDateAdapter, useClass: CustomAdapter},

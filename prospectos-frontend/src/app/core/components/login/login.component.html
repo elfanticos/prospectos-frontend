@@ -1,6 +1,6 @@
 <section class="m-section">
     <div class="m-container bg-blue">
-        <div class="m-login">
+        <div class="m-login" [formGroup]="formLogin">
             <div class="m-card__login">
                 <div class="m-card__title">
                     <span>INTRANET</span>
@@ -8,14 +8,20 @@
                 </div>
                 <div class="m-card__content">
                     <div class="m-input">
-                        <input type="text" />
+                        <input type="text" formControlName="username" placeholder="Usuario" />
+                        <control-messages [control]="username"></control-messages>
                     </div>
                     <div class="m-input">
-                        <input type="text" />
+                        <input type="text" formControlName="password" placeholder="Contraseña"/>
+                        <control-messages [control]="password"></control-messages>
                     </div>
                 </div>
                 <div class="m-card__actions">
-                    <button type="button" class="m-button" (click)="login()"><span>INGRESAR</span></button>
+                    <button type="button" class="m-button" [disabled]="formLogin.invalid || service"
+                        (click)="formLogin.invalid || service || login()"><span>INGRESAR</span></button>
+                </div>
+                <div class="text-error">
+                    <p> {{msj}}</p>
                 </div>
             </div>
         </div>

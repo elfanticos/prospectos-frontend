@@ -18,7 +18,7 @@ import { AgmCoreModule } from '@agm/core';
     NgbModule,
     AgmCoreModule.forRoot({
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
-      apiKey: 'AIzaSyBG7wY_OKvdf_bsw3HyKnnK7vlFotNEKxk'
+      apiKey: 'AIzaSyBOhg8YYoI8oFGAGTrP1O_4r9b4i_KUNH0'
   }),
   ],
   providers: [],
