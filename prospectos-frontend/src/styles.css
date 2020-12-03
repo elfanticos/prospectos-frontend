@@ -133,8 +133,9 @@ img{
     font-family: var(--FUTURA_BOLD);
     font-size: 20px;
     display: block;
-    border-bottom: 2px solid var(--COLOR_DEFAULT);
-    padding: 0 20px 0 8px;
+    padding: 5px 20px 0px 8px;
+    text-align: left;
+    margin-bottom: -8px;
 }
 .m-section{
     padding: 40px 20px;
@@ -178,6 +179,7 @@ img{
     max-width: 148px;
     margin: auto;
     margin-bottom: 20px;
+    line-height: normal;
 }
 .m-card__login .m-card__title h2{
     font-family: var(--FUTURA_BOLD);
@@ -356,6 +358,9 @@ button.calendar, button.calendar:active {
     font-family: var(--RUBIK_LIGHT);
     padding: 4px 10px;
     border: none;
+}
+.m-actions{
+    margin: 20px 0;
 }
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
