@@ -54,7 +54,7 @@ img{
     background-color: var(--COLOR_PASTEL);
 }
 .m-title{
-    margin: 20px 0;
+    margin: 30px 0;
 }
 .m-title h2{
     font-size: 26px;
@@ -104,6 +104,23 @@ img{
     height: 60px;
     padding: 0 20px;
     cursor: pointer;
+}
+.m-button--icon{
+    background-color: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 50%;
+    width: 50px;
+    height: 50%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin: auto;
+}
+.m-button--icon img{
+    max-width: 23px;
 }
 .m-invalid{
     color: red;
@@ -210,9 +227,14 @@ img{
     max-width: 900px;
     margin: auto;
 }
+.m-filtro .m-title,
 .m-listado .m-title{
+    padding: 20px;
+}
+.m-listado .m-title{
+    border-top: 2px dashed #868F98;
     max-width: 900px;
-    margin: auto;
+    margin: 30px auto;
 }
 .m-steps{
     display: flex;
@@ -332,6 +354,6 @@ button.calendar, button.calendar:active {
 .table tr td{
     font-size: 15px;
     font-family: var(--RUBIK_LIGHT);
-    padding: 3px 10px;
+    padding: 4px 10px;
     border: none;
 }
