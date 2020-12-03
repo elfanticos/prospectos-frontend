@@ -9,11 +9,14 @@ import { ListaProspectoComponent, NgbdSortableHeader } from './components/lista-
 import { CustomAdapter } from 'src/app/core/providers/datepicker/custom-adapter';
 import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/custom-date-parser-formatter';
 import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ProspectoRoutingModule
+    NgbModule,
+    ProspectoRoutingModule,
+    SharedModule
   ],
   declarations: [
     FiltroBusquedaComponent,
