@@ -23,6 +23,7 @@ import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/cus
 import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
 import { CombosService } from './services/combos.service';
 import { RegistroProspectoService } from './services/registro-prospecto.service';
+import { MenuStepComponent } from './components/menu-step/menu-step.component';
 
 
 
@@ -39,7 +40,8 @@ import { RegistroProspectoService } from './services/registro-prospecto.service'
     InformacionMapaComponent,
     InformacionAudioComponent,
     InformacionEnvioCorreoComponent,
-    InformacionPcComponent
+    InformacionPcComponent,
+    MenuStepComponent
   ],
   imports: [
     CommonModule,

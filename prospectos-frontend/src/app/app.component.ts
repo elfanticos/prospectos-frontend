@@ -9,8 +9,8 @@ import { AuthenticationService } from './core/services';
 export class AppComponent {
   title = 'prospectos-frontend';
   constructor(private _authenticationService: AuthenticationService) {
-    this._authenticationService.refreshToken().subscribe(data => {
-      console.log(data);
-    });
+    // this._authenticationService.refreshToken().subscribe(data => {
+    //   console.log(data);
+    // });
   }
 }

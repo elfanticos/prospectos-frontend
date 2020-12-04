@@ -1,0 +1,12 @@
+<div class="btn-group mr-2 m-steps" role="group" aria-label="First group">
+  <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_1">01</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_2" *ngIf="validStep1">02</a>
+  <a class="btn disabled" disabled *ngIf="!validStep1">02</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_3" *ngIf="validStep2">03</a>
+  <a class="btn disabled" disabled *ngIf="!validStep2">03</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="PASOS.PASO_4" *ngIf="validStep3">04</a>
+  <a class="btn disabled" disabled *ngIf="!validStep3">04</a>
+</div>

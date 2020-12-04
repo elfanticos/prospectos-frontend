@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./step-four.component.css']
 })
 export class StepFourComponent implements OnInit {
-
+  finalizarActivate: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  finalizarRegistro(): void {
+    this.finalizarActivate = true;
+  }
 }

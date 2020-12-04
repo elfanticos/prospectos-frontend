@@ -31,8 +31,6 @@ export class InformacionPersonalComponent implements OnInit {
     const year = dateNow.getFullYear();
     this.minDate = {year: (year - 100), month:month, day: day};
     this.maxDate = {year: year, month:month, day: day};
-    console.log(this.minDate);
-    console.log(this.maxDate);
     this.infoPersForm = this._registroFormService.formInfoPersonal;
   }
 
