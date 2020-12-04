@@ -3,7 +3,6 @@ import { ModalConfirmComponent } from '@app/shared/components/modal-confirm/moda
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PASOS } from '../../constants/step';
 import { RegistroFormService } from '../../services/registro-form.service';
-import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
 @Component({
   selector: 'app-registro-prospecto',
@@ -15,13 +14,9 @@ export class RegistroProspectoComponent implements OnInit {
   pasoSeleccionado = PASOS.PASO_1;
   constructor(
     private _registroFormService: RegistroFormService,
-    private modalService: NgbModal,
-    private _registroProspectoService: RegistroProspectoService
+    private modalService: NgbModal
   ) { 
     this._registroFormService.initForm();
-    this._registroProspectoService.registrarProspecto().subscribe(data => {
-      console.log(data);
-    });
   }
 
   ngOnInit(): void {
