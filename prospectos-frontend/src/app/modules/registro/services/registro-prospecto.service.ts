@@ -11,19 +11,19 @@ export class RegistroProspectoService {
   ) { }
 
   registrarProspecto(body: any): Observable<any> {
-    return this._http.post<any>(`${environment.api}/${environment.apiService.postulante.registrarProspecto}`,body);
+    return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarProspecto}`,body);
   }
 
   registrarConectividad(body: any): Observable<any> {
-    return this._http.post<any>(`${environment.api}/${environment.apiService.postulante.registrarConectividad}`,body);
+    return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarConectividad}`,body);
   }
 
   registrarDispositivos(body: any): Observable<any> {
-    return this._http.post<any>(`${environment.api}/${environment.apiService.postulante.registrarDispositivos}`,body);
+    return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarDispositivos}`,body);
   }
 
   registrarEquipo(body: any): Observable<any> {
-    return this._http.post<any>(`${environment.api}/${environment.apiService.postulante.registrarEquipo}`,body);
+    return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`,body);
   }
 
 }
