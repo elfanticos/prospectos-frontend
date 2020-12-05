@@ -218,7 +218,7 @@ export class MapaUbicacionComponent {
     // console.log("🚀 ~ file: mapa-ubicacion.component.ts ~ line 198 ~ MapaUbicacionComponent ~ mapClicked ~ $event.coords", $event.coords);
     let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
     let [direccion] = GeoCodeDireccion.results;
-    this.mapaUbicacionSrv.direccionState.next(direccion.formatted_address)
+    this.mapaUbicacionSrv.direccionState.next({direccion: direccion.formatted_address, lat: $event.coords.lat, lng: $event.coords.lng});
 
     this.coordenates = {
       lat: $event.coords.lat,

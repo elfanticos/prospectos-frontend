@@ -37,7 +37,9 @@ export class InformacionContactoComponent implements OnInit {
     this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'));
     this.setDistritos(JSON.parse(localStorage.getItem('distritos') || '[]'));
     this.mapaUbicacionSrv.direccionState.pipe(filter(a => a != null)).subscribe(a => {
-      this.direccion.setValue(a)
+      this.direccion.setValue(a.direccion);
+      this.latitud.setValue(a.lat);
+      this.longitud.setValue(a.lng);
     })
   }
 
@@ -65,7 +67,8 @@ export class InformacionContactoComponent implements OnInit {
   }
 
   loadDepartamentos(): void {
-    this._comboService.comboDepartamento(this.pais.value).subscribe(departamentos => {
+    const objPaisSelected = this.paises.find(f => f.nombrePais == this.pais.value);
+    this._comboService.comboDepartamento(objPaisSelected.idPais).subscribe(departamentos => {
       localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
       this.setDepartamentos(departamentos);
     });
@@ -92,7 +95,8 @@ export class InformacionContactoComponent implements OnInit {
   }
 
   loadProvincias(): void {
-    this._comboService.comboProvincia(this.departamento.value).subscribe(provincias => {
+    const objDepartamentoSelected = this.departamentos.find(f => f.nombreDepartamento == this.departamento.value);
+    this._comboService.comboProvincia(objDepartamentoSelected.idDepartamento).subscribe(provincias => {
       localStorage.setItem('provincias', JSON.stringify(provincias || []));
       this.setProvincias(provincias);
     });
@@ -108,7 +112,8 @@ export class InformacionContactoComponent implements OnInit {
   }
 
   loadDistritos(): void {
-    this._comboService.comboDistrito(this.provincia.value).subscribe(distritos => {
+    const objProvinciaSelected = this.provincias.find(f => f.nombreProvincia == this.provincia.value);
+    this._comboService.comboDistrito(objProvinciaSelected.idProvincia).subscribe(distritos => {
       localStorage.setItem('distritos', JSON.stringify(distritos || []));
       this.setDistritos(distritos);
     });

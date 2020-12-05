@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RegistroFormService } from '../../services/registro-form.service';
 
@@ -17,7 +17,6 @@ export class InformacionConectividadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
 }

@@ -20,7 +20,7 @@
                 <div class="m-select m-0">
                     <select formControlName="pais" required (change)="selectedPais()">
                         <option value="">Pa&iacute;s</option>
-                        <option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</option>
+                        <option *ngFor="let p of paises;" [value]="p.nombrePais">{{p.nombrePais}}</option>
                     </select>
                     <span *ngIf="pais.errors && pais.dirty">
                         <control-messages [control]="pais"></control-messages>
@@ -29,7 +29,7 @@
                 <div class="m-select m-0">
                     <select formControlName="departamento" required (change)="selectedDepartamento()">
                         <option value="">Departamento</option>
-                        <option *ngFor="let d of departamentos;" [value]="d.idDepartamento">{{d.nombreDepartamento}}</option>
+                        <option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">{{d.nombreDepartamento}}</option>
                     </select>
                     <span *ngIf="departamento.errors && departamento.dirty">
                         <control-messages [control]="departamento"></control-messages>
@@ -38,7 +38,7 @@
                 <div class="m-select m-0">
                     <select formControlName="provincia" required (change)="selectedProvincia()">
                         <option value="">Provincia</option>
-                        <option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}</option>
+                        <option *ngFor="let p of provincias;" [value]="p.nombreProvincia">{{p.nombreProvincia}}</option>
                     </select>
                     <span *ngIf="provincia.errors && provincia.dirty">
                         <control-messages [control]="provincia"></control-messages>
@@ -47,7 +47,7 @@
                 <div class="m-select m-0">
                     <select formControlName="distrito" required>
                         <option value="">Distrito</option>
-                        <option *ngFor="let d of distritos;" [value]="d.idDistrito">{{d.nombreDistrito}}</option>
+                        <option *ngFor="let d of distritos;" [value]="d.nombreDistrito">{{d.nombreDistrito}}</option>
                     </select>
                     <span *ngIf="distrito.errors && distrito.dirty">
                         <control-messages [control]="distrito"></control-messages>

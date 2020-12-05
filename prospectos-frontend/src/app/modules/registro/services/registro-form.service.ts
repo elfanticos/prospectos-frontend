@@ -9,6 +9,7 @@ export class RegistroFormService {
   private _formInfoConectividad: FormGroup;
   private _formInfoAudio: FormGroup;
   private _formInfoPc: FormGroup;
+  private _proyecto: string = 'prospectos - b12';
   constructor(
     private _fb: FormBuilder
   ) { }
@@ -118,8 +119,8 @@ export class RegistroFormService {
         Validators.required,
         Validators.maxLength(75)
       ]],
-      latitud: ['null', [Validators.required]],
-      longitud: ['null', [Validators.required]]
+      latitud: [null, [Validators.required]],
+      longitud: [null, [Validators.required]]
     });
     // "telefono": "012684759",
     // "correo": "corre@gmail.com",
@@ -199,32 +200,6 @@ export class RegistroFormService {
       sistOperativo: ['', [Validators.required]],
       file: [null, [Validators.required]]
     });
-    // return this._fb.group({
-    //   equipo: this._fb.group({
-    //     procesador: ['', [Validators.required]],
-    //     memoriaRam: ['', [Validators.required]],
-    //     discoDuro: ['', [Validators.required]],
-    //     sistOperativo: ['', [Validators.required]]
-    //   }),
-    //   image: this._fb.group({
-    //     urlImagen: ['', [Validators.required]],
-    //     nombreImagen: ['', [Validators.required]]
-    //   })
-    // });
-    // "equipo": {
-    //   "procesador": "intel core i3",
-    //   "memoriaRam": "8 GB de RAM",
-    //   "discoDuro": "512 GB SSD",
-    //   "sistOperativo": "Windows 10 PRO",
-    //   "fec_hora_equipo": "2020-09-25T03:30",
-    //   "postulante": {
-    //       "idPostulante": "1"
-    //   }
-    // },
-    // "imagen": {
-    //     "urlImagen": "D:/PROYECTOS/PROSPECTOS/Base de datos",
-    //     "nombreImagen": "nombre de imagen de prueba"
-    // }
   }
 
 
@@ -243,5 +218,22 @@ export class RegistroFormService {
 
   get formValidStepConfirm(): boolean {
     return this.formValidStep3 && this.formInfoPc.valid;
+  }
+
+  get valuesFormStepOne(): any {
+    const fecha_hora_post = new Date().toISOString();
+    return {
+      postulante: {
+        ...this._formInfoPersonal.value,
+        tipoDocumento: parseInt(this._formInfoPersonal.controls['tipoDocumento'].value, 10),
+        fecha_hora_post
+      },
+      datosPersonales: {
+        ...this.formInfoContacto.value,
+        fec_hora_datos: fecha_hora_post,
+        postulante: {}
+      },
+      proyecto: this._proyecto
+    }
   }
 }

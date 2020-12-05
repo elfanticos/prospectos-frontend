@@ -30,15 +30,15 @@ constructor(
     return this._http.get<IDepartamento[]>({path: `${environment.api}${environment.apiService.combos.departamento}`,_params});
   }
 
-  comboProvincia(idDepartamento: string): Observable<IProvincia[]> {
+  comboProvincia(idDepartamento: number): Observable<IProvincia[]> {
     const _params: HttpParams = new HttpParams()
-    .set('idDepartamento', idDepartamento);
+    .set('idDepartamento', String(idDepartamento));
     return this._http.get<IProvincia[]>({path:`${environment.api}${environment.apiService.combos.provincia}`, _params});
   }
 
-  comboDistrito(idProvincia: string): Observable<IDistrito[]> {
+  comboDistrito(idProvincia: number): Observable<IDistrito[]> {
     const _params: HttpParams = new HttpParams()
-    .set('idProvincia', idProvincia);
+    .set('idProvincia', String(idProvincia));
     return this._http.get<IDistrito[]>({path: `${environment.api}${environment.apiService.combos.distrito}`,_params });
   }
 
