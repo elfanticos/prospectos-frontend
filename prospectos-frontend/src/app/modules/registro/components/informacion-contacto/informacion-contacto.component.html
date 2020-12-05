@@ -7,7 +7,7 @@
 
             <div class="m-grid--2" [formGroup]="infoContactoForm">
                 <div>
-                    <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-form-field appearance="outline">
                         <mat-label>Tel&eacute;fono</mat-label>
                         <input type="text" matInput placeholder="" formControlName="telefono" required>
                         <mat-error *ngIf="telefono.errors && telefono.dirty">
@@ -17,11 +17,11 @@
                 </div>
 
                 <div>
-                    <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Tel&eacute;fono</mat-label>
-                        <input type="text" matInput placeholder="" formControlName="telefono" required>
-                        <mat-error *ngIf="telefono.errors && telefono.dirty">
-                            <control-messages [control]="telefono"></control-messages>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Correo electr&oacute;nico</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="correo" required />
+                        <mat-error *ngIf="correo.errors && correo.dirty">
+                            <control-messages [control]="correo"></control-messages>
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -86,7 +86,7 @@
                 </div>
 
                 <div>
-                    <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
                         <input type="text" matInput placeholder="" formControlName="direccion" required
                             (keypress)="onKeypressEvent($event)">

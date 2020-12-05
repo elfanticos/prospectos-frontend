@@ -6,7 +6,7 @@
         <div class="m-content">
             <div class="m-grid--2" [formGroup]="infoPersForm">
                 <div>
-                    <mat-form-field  appearance="outline">
+                    <mat-form-field appearance="outline">
                         <mat-label>Nombres</mat-label>
                         <input type="text" matInput placeholder="" formControlName="nombresPostulante"
                             autocomplete="none" required>
@@ -33,7 +33,7 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field  appearance="outline">
+                    <mat-form-field appearance="outline">
                         <mat-label>Apellidos</mat-label>
                         <input type="text" matInput placeholder="" formControlName="apellidosPostulante"
                             autocomplete="none" required>
@@ -80,7 +80,7 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field  appearance="outline">
+                    <mat-form-field appearance="outline">
                         <mat-label>"N&uacute;mero de documento</mat-label>
                         <input type="text" matInput placeholder="" formControlName="numeroDocumento" autocomplete="none"
                             maxlength="18" required>
@@ -108,6 +108,48 @@
                     </mat-form-field>
                 </div>
 
+                <div class="m-input m-0">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dp" formControlName="fecNacimiento"
+                            ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                    <span *ngIf="fecNacimiento.errors && fecNacimiento.dirty">
+                        <ng-container *ngIf="fecNacimiento.errors.required; else elseif1;">
+                            El campo no puede estar vacio
+                        </ng-container>
+                        <ng-template #elseif1>
+                            <ng-container *ngIf="fecNacimiento.errors.exception; else elseif2;">
+                                {{fecNacimiento.errors.exception.msj}}</ng-container>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif3;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif4;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.minDate; else elseif5;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.minDate.minDate.day}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.month}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.year}}
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #elseif5>
+                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.invalid;">
+                                Fecha inválida
+                            </ng-container>
+                        </ng-template>
+                    </span>
+                </div>
                 
                 <div class="m-input m-0">
                     <div>
@@ -115,7 +157,7 @@
                     </div>
                     <div>
                         <mat-radio-group formControlName="sexo">
-                            <mat-radio-button  *ngFor="let s of sexos"[value]="s.value">{{s.desc}}</mat-radio-button>
+                            <mat-radio-button *ngFor="let s of sexos" [value]="s.value">{{s.desc}}</mat-radio-button>
                         </mat-radio-group>
                     </div>
                 </div>

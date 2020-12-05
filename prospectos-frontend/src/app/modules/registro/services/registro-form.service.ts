@@ -236,4 +236,10 @@ export class RegistroFormService {
       proyecto: this._proyecto
     }
   }
+
+  get valuesFormStepThree(): any {
+    return {
+      ...this.formInfoAudio.value
+    }
+  }
 }

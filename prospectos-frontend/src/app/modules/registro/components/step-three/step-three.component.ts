@@ -20,6 +20,7 @@ export class StepThreeComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
+    console.log(this.registroFormService.valuesFormStepThree);
     this._route.navigate([`${stepIndex}`])
   }
 
