@@ -4,62 +4,96 @@
             <h2>INFORMACI&Oacute;N DE CONTACTO</h2>
         </div>
         <div class="m-content">
+
             <div class="m-grid--2" [formGroup]="infoContactoForm">
-                <div class="m-input m-0">
-                    <input type="input" placeholder="Tel&eacute;fono" formControlName="telefono" required />
-                    <span *ngIf="telefono.errors && telefono.dirty">
-                        <control-messages [control]="telefono"></control-messages>
-                    </span>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Tel&eacute;fono</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="telefono" required>
+                        <mat-error *ngIf="telefono.errors && telefono.dirty">
+                            <control-messages [control]="telefono"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-input m-0">
-                    <input type="input" placeholder="Correo electr&oacute;nico" formControlName="correo" required />
-                    <span *ngIf="correo.errors && correo.dirty">
-                        <control-messages [control]="correo"></control-messages>
-                    </span>
+
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Tel&eacute;fono</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="telefono" required>
+                        <mat-error *ngIf="telefono.errors && telefono.dirty">
+                            <control-messages [control]="telefono"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="pais" required (change)="selectedPais()">
-                        <option value="">Pa&iacute;s</option>
-                        <option *ngFor="let p of paises;" [value]="p.nombrePais">{{p.nombrePais}}</option>
-                    </select>
-                    <span *ngIf="pais.errors && pais.dirty">
-                        <control-messages [control]="pais"></control-messages>
-                    </span>
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Pa&iacute;s</mat-label>
+                        <mat-select formControlName="pais" required (selectionChange)="selectedPais()">
+                            <mat-option>Pa&iacute;s</mat-option>
+                            <mat-option *ngFor="let p of paises;" [value]="p.nombrePais">{{p.nombrePais}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="pais.errors && pais.dirty">
+                            <control-messages [control]="pais"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="departamento" required (change)="selectedDepartamento()">
-                        <option value="">Departamento</option>
-                        <option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">{{d.nombreDepartamento}}
-                        </option>
-                    </select>
-                    <span *ngIf="departamento.errors && departamento.dirty">
-                        <control-messages [control]="departamento"></control-messages>
-                    </span>
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Departamento</mat-label>
+                        <mat-select formControlName="departamento" required (selectionChange)="selectedDepartamento()">
+                            <mat-option>Departamento</mat-option>
+                            <mat-option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">
+                                {{d.nombreDepartamento}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="departamento.errors && departamento.dirty">
+                            <control-messages [control]="departamento"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="provincia" required (change)="selectedProvincia()">
-                        <option value="">Provincia</option>
-                        <option *ngFor="let p of provincias;" [value]="p.nombreProvincia">{{p.nombreProvincia}}</option>
-                    </select>
-                    <span *ngIf="provincia.errors && provincia.dirty">
-                        <control-messages [control]="provincia"></control-messages>
-                    </span>
+
+
+
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Provincia</mat-label>
+                        <mat-select formControlName="provincia" required (selectionChange)="selectedProvincia()">
+                            <mat-option>Provincia</mat-option>
+                            <mat-option *ngFor="let p of provincias;" [value]="p.nombreProvincia">{{p.nombreProvincia}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="provincia.errors && provincia.dirty">
+                            <control-messages [control]="provincia"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="distrito" required>
-                        <option value="">Distrito</option>
-                        <option *ngFor="let d of distritos;" [value]="d.nombreDistrito">{{d.nombreDistrito}}</option>
-                    </select>
-                    <span *ngIf="distrito.errors && distrito.dirty">
-                        <control-messages [control]="distrito"></control-messages>
-                    </span>
+
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Distrito</mat-label>
+                        <mat-select formControlName="distrito" required>
+                            <mat-option>Distrito</mat-option>
+                            <mat-option *ngFor="let d of distritos;" [value]="d.nombreDistrito">{{d.nombreDistrito}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="distrito.errors && distrito.dirty">
+                            <control-messages [control]="distrito"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-input m-0">
-                    <input type="input" placeholder="Dirección" formControlName="direccion" required
-                        (keypress)="onKeypressEvent($event)" />
-                    <span *ngIf="direccion.errors && direccion.dirty">
-                        <control-messages [control]="direccion"></control-messages>
-                    </span>
+
+                <div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Dirección</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="direccion" required
+                            (keypress)="onKeypressEvent($event)">
+                        <mat-error *ngIf="direccion.errors && direccion.dirty">
+                            <control-messages [control]="direccion"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
             </div>
         </div>

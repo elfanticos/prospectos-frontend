@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +20,9 @@ import {MatInputModule} from '@angular/material/input';
       apiKey: 'AIzaSyBG7wY_OKvdf_bsw3HyKnnK7vlFotNEKxk'
   }),
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule
   ],
   declarations: [
     MapaUbicacionComponent,
@@ -32,7 +36,9 @@ import {MatInputModule} from '@angular/material/input';
     ControlMessagesComponent,
     CsNumberDirective,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule
   ],
   entryComponents: [
     ModalConfirmComponent
