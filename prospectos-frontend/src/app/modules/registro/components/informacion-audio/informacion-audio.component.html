@@ -3,19 +3,22 @@
     <div class="m-title">
       <h2>DISPOSITIVOS</h2>
     </div>
-    <div class="m-select m-0">
-      <select required formControlName="tipoDispositivo">
-        <option value="" selected>Tipo de documento</option>
-        <option *ngFor="let auricular of auriculares" [value]="auricular.idAuricular">{{auricular.tipoAuricular}}
-        </option>
-      </select>
-    </div>
-    <div style="height: 500px; width: 300px; background-color: aqua;"></div>
-    <div>
-      <div class="m-input m-0" (click)="adjuntarImagen()">
-        <input type="input" placeholder="Adjuntar imagen" #inputText disabled/>
-      </div>
-      <button type="button" (click)="adjuntarImagen()">subir imagen</button>
+    <div class="m-dispositivos">
+        <div class="m-select m-0">
+          <select required formControlName="tipoDispositivo">
+              <option value="" selected>Tipo de auricular</option>
+              <option *ngFor="let auricular of auriculares" [value]="auricular.idAuricular">{{auricular.tipoAuricular}}</option>
+          </select>
+        </div>
+        <div class="m-dispositivos__image">
+            <img src="../../../../../assets/images/fondo/fondo-auriculares.png" />
+        </div>
+        <div>
+          <div class="m-input m-0" (click)="adjuntarImagen()">
+            <input type="input" placeholder="Adjuntar imagen" #inputText disabled/>
+          </div>
+          <button type="button" (click)="adjuntarImagen()">subir imagen</button>
+        </div>
     </div>
   </div>
 </section>
