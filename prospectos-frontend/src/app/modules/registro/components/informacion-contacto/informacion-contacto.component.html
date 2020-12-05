@@ -29,7 +29,8 @@
                 <div class="m-select m-0">
                     <select formControlName="departamento" required (change)="selectedDepartamento()">
                         <option value="">Departamento</option>
-                        <option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">{{d.nombreDepartamento}}</option>
+                        <option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">{{d.nombreDepartamento}}
+                        </option>
                     </select>
                     <span *ngIf="departamento.errors && departamento.dirty">
                         <control-messages [control]="departamento"></control-messages>
@@ -54,7 +55,8 @@
                     </span>
                 </div>
                 <div class="m-input m-0">
-                    <input type="input" placeholder="Dirección" formControlName="direccion" required (keypress)="onKeypressEvent($event)"/>
+                    <input type="input" placeholder="Dirección" formControlName="direccion" required
+                        (keypress)="onKeypressEvent($event)" />
                     <span *ngIf="direccion.errors && direccion.dirty">
                         <control-messages [control]="direccion"></control-messages>
                     </span>

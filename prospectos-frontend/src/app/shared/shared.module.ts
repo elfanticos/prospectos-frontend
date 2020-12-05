@@ -7,6 +7,8 @@ import { AgmCoreModule } from '@agm/core';
 import { CsNumberDirective } from './directives/cs-number.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyBG7wY_OKvdf_bsw3HyKnnK7vlFotNEKxk'
   }),
+  MatFormFieldModule,
+  MatInputModule
   ],
   declarations: [
     MapaUbicacionComponent,
@@ -26,7 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MapaUbicacionComponent,
     ModalConfirmComponent,
     ControlMessagesComponent,
-    CsNumberDirective
+    CsNumberDirective,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [
     ModalConfirmComponent
