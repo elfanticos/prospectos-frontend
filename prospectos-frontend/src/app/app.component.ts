@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,6 @@ import { AuthenticationService } from './core/services';
 })
 export class AppComponent {
   title = 'prospectos-frontend';
-  constructor(private _authenticationService: AuthenticationService) {
-    // this._authenticationService.refreshToken().subscribe(data => {
-    //   console.log(data);
-    // });
+  constructor() {
   }
 }

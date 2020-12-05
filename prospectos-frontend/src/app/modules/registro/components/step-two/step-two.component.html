@@ -16,8 +16,10 @@
 <app-informacion-conectividad></app-informacion-conectividad>
 <div class="m-container">
     <div class="m-actions text-right m-b-50">
-        <button type="button" class="m-button" [disabled]="!registroFormService.formValidStep2"
-            (click)=" registroFormService.formValidStep2&& redirectNextStep(3)"><span>PASO 3</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+        <button type="button" class="m-button"
+            (click)="redirectNextStep(3)"><span>PASO 3</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+        <!-- <button type="button" class="m-button" [disabled]="!registroFormService.formValidStep2"
+            (click)=" registroFormService.formValidStep2&& redirectNextStep(3)"><span>PASO 3</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button> -->
     </div>
 </div>
 <div class="m-footer__login">

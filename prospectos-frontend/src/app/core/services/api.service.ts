@@ -17,6 +17,7 @@ export class ApiService {
   constructor(public http: HttpClient) {}
   // ----------------
   get<T>(obj: {path?: string; _params?: HttpParams }): Observable<T> {
+
     const _GET$ = this.http.get<T>(obj.path, {
       params: obj._params
     });

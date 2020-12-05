@@ -10,25 +10,23 @@ export class JwtInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // add auth header with jwt if user is logged in and request is to the api url
-        const user = this.authenticationService.userValue;
-        const isLoggedIn = user && user.jwtToken;
         const isApiUrl = request.url.startsWith(environment.api);
-        let headers = request.headers
-            .set('Content-Type', 'application/json')
-        //   .set('Authorization_App', 'Bearer ' + environment.crypto.app_token);
+        const token = localStorage.getItem('token');
+        let headers = request.headers;
+        if (!request.headers.has('Content-Type')) {
+            headers = request.headers
+                .set('Content-Type', 'application/json');
+        }
 
-        if (isLoggedIn && isApiUrl) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${user.jwtToken}`
-                }
-            });
+        if (token && isApiUrl) {
+            headers = request.headers
+                .set('Authorization', `Bearer ${token}`);
         }
 
         if (request.url.includes(environment.apiService.oauth.token)) {
             headers = headers
-                .set('Authorization', 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg=');
+                .set('Authorization', 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg=')
+                .set('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
         }
         const _PARAMS = { headers };
         const req$ = request.clone(_PARAMS);

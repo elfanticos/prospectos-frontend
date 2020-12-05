@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegistroFormService } from '../../services/registro-form.service';
+import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
 @Component({
   selector: 'app-step-three',
@@ -11,7 +12,8 @@ export class StepThreeComponent implements OnInit {
 
   constructor(
     public registroFormService: RegistroFormService,
-    private _route: Router
+    private _route: Router,
+    private _registroProspectoService: RegistroProspectoService
   ) { }
 
   ngOnInit() {

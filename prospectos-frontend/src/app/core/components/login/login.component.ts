@@ -28,10 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // this._authenticationService.login().subscribe(data => {
-    //   console.log(data);
-    // });
     this.formLogin.valueChanges.subscribe(() => { this.service = false; this.msj = ''; });
   }
 
@@ -43,13 +39,14 @@ export class LoginComponent implements OnInit {
     if (this.formLogin.invalid) return;
 
     this.service = true;
-    if (this.username.value != 'UsuAdmin' && this.password.value != '123') {
+    
+    this._authenticationService.login(this.username.value, this.password.value).subscribe((data: any) => {
+      localStorage.setItem('token', data.access_token);
+      this._router.navigate(['intranet/prospectos']);
+    }, err => {
       this.msj = 'No existe el usuario';
-      return;
-    }
-    console.log("Usuario logueado");
-    this._router.navigate(['intranet/prospectos']);
-
+      console.log(err);
+    });
   }
 
 }

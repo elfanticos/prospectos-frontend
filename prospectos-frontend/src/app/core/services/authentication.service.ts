@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
+import { ApiService } from './api.service';
+import { env } from 'process';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -13,7 +15,7 @@ export class AuthenticationService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private _http: ApiService,
     ) {
         this.userSubject = new BehaviorSubject</* User */any>(null);
         this.user = this.userSubject.asObservable();
@@ -23,21 +25,16 @@ export class AuthenticationService {
         return this.userSubject.value;
     }
 
-    login() {
-        const obj = {
-            grant_type: 'password',
-            username: 'UsuAdmin',
-            password: '123'
-        };
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic ' + btoa('rrhhprospectoapp:rrhhprospectocodex')
-        });
-        return this.http.post<any>(`http://ec2-54-90-30-216.compute-1.amazonaws.com:9090/oauth/token`, { headers });
+    login(username: string, password: string) {
+        const body = new HttpParams()
+            .set('username', username)
+            .set('password', password)
+            .set('grant_type', 'password');
+        return this._http.post<any>(`${environment.api}${environment.apiService.oauth.token}`, body);
     }
 
     logout() {
-        this.http.post<any>(`${environment.api}/users/revoke-token`, {}, { withCredentials: true }).subscribe();
+        this._http.post<any>(`${environment.api}/users/revoke-token`, {}).subscribe();
         this.stopRefreshTokenTimer();
         this.userSubject.next(null);
         this.router.navigate(['/login']);
@@ -50,7 +47,7 @@ export class AuthenticationService {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg='
         });
-        return this.http.post<any>(`${environment.api}${environment.apiService.oauth.token}`, {
+        return this._http.post<any>(`${environment.api}${environment.apiService.oauth.token}`, {
             grant_type: 'password',
             username: 'UsuAdmin',
             password: '123'
