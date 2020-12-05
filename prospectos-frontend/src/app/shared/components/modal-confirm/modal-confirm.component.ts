@@ -28,4 +28,9 @@ export class ModalConfirmComponent {
     return this.formConfirm.controls['confirm'].value && this.formConfirm.controls['authorization'].value;
   }
 
+  closeModal(): any {
+    // localStorage.getItem('confirm_condiciones')
+    this.activeModal.close('Close click');
+  }
+
 }
