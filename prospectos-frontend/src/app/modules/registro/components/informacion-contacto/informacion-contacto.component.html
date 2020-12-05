@@ -4,9 +4,8 @@
             <h2>INFORMACI&Oacute;N DE CONTACTO</h2>
         </div>
         <div class="m-content">
-
             <div class="m-grid--2" [formGroup]="infoContactoForm">
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Tel&eacute;fono</mat-label>
                         <input type="text" matInput placeholder="" formControlName="telefono" required>
@@ -15,8 +14,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Correo electr&oacute;nico</mat-label>
                         <input type="text" matInput placeholder="" formControlName="correo" required />
@@ -25,8 +23,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Pa&iacute;s</mat-label>
                         <mat-select formControlName="pais" required (selectionChange)="selectedPais()">
@@ -38,8 +35,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Departamento</mat-label>
                         <mat-select formControlName="departamento" required (selectionChange)="selectedDepartamento()">
@@ -52,11 +48,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-
-
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Provincia</mat-label>
                         <mat-select formControlName="provincia" required (selectionChange)="selectedProvincia()">
@@ -69,9 +61,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Distrito</mat-label>
                         <mat-select formControlName="distrito" required>
@@ -84,8 +74,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-
-                <div>
+                <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
                         <input type="text" matInput placeholder="" formControlName="direccion" required
