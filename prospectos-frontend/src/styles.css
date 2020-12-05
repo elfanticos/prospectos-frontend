@@ -413,6 +413,11 @@ button.calendar, button.calendar:active {
     max-width: 480px;
     margin: 30px auto;
 }
+.m-dispositivos__image img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
 .m-label{
     display: block;
     margin-bottom: 10px;
