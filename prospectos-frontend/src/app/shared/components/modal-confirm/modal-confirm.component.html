@@ -4,18 +4,13 @@
 <div class="modal-body" [formGroup]="formConfirm">
   <p>Para poder iniciar con el registro de tus datos, es necesario que te encuentres con la PC y el lugar donde vas a
     laborar.</p>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="checkConfirm" formControlName="confirm">
-    <label class="form-check-label" for="checkConfirm">Confirmo que mi PC y el lugar donde me encuentro, es donde
-      desarrollar&eacute; mis labores.</label>
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="checkAutorize" formControlName="authorization">
-    <label class="form-check-label" for="checkAutorize">Autorizo el tratamiento de mi informaci&oacute;n para su uso en
-      el proceso de selecci&oacute;n de RocketHall.</label>
-  </div>
+  <mat-checkbox formControlName="confirm">Confirmo que mi PC y el lugar donde me encuentro, es donde
+    desarrollar&eacute; mis labores.</mat-checkbox>
+  <mat-checkbox formControlName="authorization">Autorizo el tratamiento de mi informaci&oacute;n para su uso en
+  el proceso de selecci&oacute;n de RocketHall.</mat-checkbox>
 </div>
 <div class="modal-footer">
   <button type="button" class="m-button" (click)="!validForm || closeModal()"
-    [disabled]="!validForm"><span>CONTINUAR</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+    [disabled]="!validForm"><span>CONTINUAR</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg"
+      alt="icono-button-prospectos"></button>
 </div>

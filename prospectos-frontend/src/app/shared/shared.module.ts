@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import {MatRadioModule} from '@angular/material/radio';
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatRadioModule
+  MatRadioModule,
+  MatCheckboxModule
   ],
   declarations: [
     MapaUbicacionComponent,
@@ -38,7 +40,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     ModalConfirmComponent
