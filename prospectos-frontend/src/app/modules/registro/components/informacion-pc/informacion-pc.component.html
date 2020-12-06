@@ -5,49 +5,63 @@
         </div>
         <div class="m-content" [formGroup]="infoPcForm">
             <div class="m-grid--2">
-                <div class="m-select m-0">
-                    <select formControlName="procesador">
-                        <option value="">Procesador</option>
-                        <option *ngFor="let procesador of procesadores" [value]="procesador.idProcesador">
-                            {{procesador.tipoProcesador}}</option>
-                    </select>
-                    <span *ngIf="procesador.errors && procesador.dirty">
-                        <control-messages [control]="procesador"></control-messages>
-                    </span>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Procesador</mat-label>
+                        <mat-select formControlName="procesador" required>
+                            <mat-option>Procesador</mat-option>
+                            <mat-option *ngFor="let procesador of procesadores" [value]="procesador.idProcesador">
+                                {{procesador.tipoProcesador}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="procesador.errors && procesador.dirty">
+                            <control-messages [control]="procesador"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="memoriaRam">
-                        <option value="">Memoria RAM</option>
-                        <option *ngFor="let ram of memoriasRam" [value]="ram.idram">{{ram.tamano}}</option>
-                    </select>
-                    <span *ngIf="memoriaRam.errors && memoriaRam.dirty">
-                        <control-messages [control]="memoriaRam"></control-messages>
-                    </span>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Memoria RAM</mat-label>
+                        <mat-select formControlName="memoriaRam" required>
+                            <mat-option>Memoria RAM</mat-option>
+                            <mat-option *ngFor="let ram of memoriasRam" [value]="ram.idram">{{ram.tamano}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="memoriaRam.errors && memoriaRam.dirty">
+                            <control-messages [control]="memoriaRam"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="discoDuro">
-                        <option value="">Disco duro</option>
-                        <option *ngFor="let disco of discos" [value]="disco.idDisco">{{disco.capacidad}}</option>
-                    </select>
-                    <span *ngIf="discoDuro.errors && discoDuro.dirty">
-                        <control-messages [control]="discoDuro"></control-messages>
-                    </span>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Disco duro</mat-label>
+                        <mat-select formControlName="discoDuro" required>
+                            <mat-option>Disco duro</mat-option>
+                            <mat-option *ngFor="let disco of discos" [value]="disco.idDisco">{{disco.capacidad}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="discoDuro.errors && discoDuro.dirty">
+                            <control-messages [control]="discoDuro"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="m-select m-0">
-                    <select formControlName="sistOperativo">
-                        <option value="">Sistema operativo</option>
-                        <option *ngFor="let sistema of sistemas" [value]="sistema.idSistema">{{sistema.ssoo}}</option>
-                    </select>
-                    <span *ngIf="sistOperativo.errors && sistOperativo.dirty">
-                        <control-messages [control]="sistOperativo"></control-messages>
-                    </span>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sistema operativo</mat-label>
+                        <mat-select formControlName="sistOperativo" required>
+                            <mat-option>Sistema operativo</mat-option>
+                            <mat-option *ngFor="let sistema of sistemas" [value]="sistema.idSistema">{{sistema.ssoo}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="sistOperativo.errors && sistOperativo.dirty">
+                            <control-messages [control]="sistOperativo"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
             </div>
             <div class="m-pasos__pc">
-               <div class="m-title__pc">
+                <div class="m-title__pc">
                     <p>Por favor realizar los siguientes pasos</p>
-               </div>
-               <div class="m-datos__pc">
+                </div>
+                <div class="m-datos__pc">
                     <div class="m-pasos__item">
                         <span>01</span>
                         <p>Lorem ipsum</p>
@@ -64,15 +78,18 @@
                         <span>04</span>
                         <p>Lorem ipsum</p>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
         <div>
-            <div class="m-input m-0" (click)="adjuntarImagen()">
-              <input type="input" placeholder="Adjuntar imagen" #inputText disabled/>
+            <div (click)="adjuntarImagen()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Adjuntar imagen</mat-label>
+                    <input matInput type="text" placeholder="" #inputText disabled />
+                </mat-form-field>
             </div>
             <button type="button" (click)="adjuntarImagen()">subir imagen</button>
-          </div>
+        </div>
     </div>
 </section>
 <input type="file" #fileTxt style="display:none" (change)="fileChangeEvent($event)" />

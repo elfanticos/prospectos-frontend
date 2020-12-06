@@ -7,18 +7,30 @@
                     <h2>REGISTRO DE PROSPECTOS</h2>
                 </div>
                 <div class="m-card__content">
-                    <div class="m-input">
-                        <input type="text" formControlName="username" placeholder="Usuario" />
-                        <control-messages [control]="username"></control-messages>
+                    <div class="m-textfield__input">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Usuario</mat-label>
+                            <input type="text" matInput placeholder="" formControlName="username" />
+                            <mat-error *ngIf="username.errors && username.dirty">
+                                <control-messages [control]="username"></control-messages>
+                            </mat-error>
+                        </mat-form-field>
                     </div>
-                    <div class="m-input">
-                        <input type="text" formControlName="password" placeholder="Contraseña"/>
-                        <control-messages [control]="password"></control-messages>
+                    <div class="m-textfield__input">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input type="text" matInput placeholder="" formControlName="password" />
+                            <mat-error *ngIf="password.errors && password.dirty">
+                                <control-messages [control]="password"></control-messages>
+                            </mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="m-card__actions">
                     <button type="button" class="m-button" [disabled]="formLogin.invalid || service"
-                        (click)="formLogin.invalid || service || login()"><span>INGRESAR</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+                        (click)="formLogin.invalid || service || login()"><span>INGRESAR</span><img
+                            src="../../../../../assets/images/iconos/icon-arrow-button.svg"
+                            alt="icono-button-prospectos"></button>
                 </div>
                 <div class="text-error">
                     <p> {{msj}}</p>
