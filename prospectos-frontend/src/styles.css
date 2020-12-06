@@ -294,6 +294,12 @@ img{
 .modal-header{
     border: none;
 }
+.modal-header .modal-title{
+    font-size: 50px;
+    font-family: var(--FUTURA_BOLD) !important;
+    line-height: normal;
+    margin: auto;
+}
 .modal-header .close{
     position: absolute;
     right: 25px;
@@ -448,6 +454,17 @@ button.calendar, button.calendar:active {
 }
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
     border-color: var(--COLOR_PRIMARY);
+}
+.mat-checkbox-layout{
+    text-align: left;
+    white-space: inherit !important;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color: var(--COLOR_PRIMARY);
+}
+.mat-checkbox-layout .mat-checkbox-label{
+    line-height: 20px;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
