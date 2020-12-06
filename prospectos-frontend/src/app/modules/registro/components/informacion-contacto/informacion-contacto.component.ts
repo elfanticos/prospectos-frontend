@@ -68,20 +68,15 @@ export class InformacionContactoComponent implements OnInit {
 
   loadDepartamentos(): void {
     const objPaisSelected = this.paises.find(f => f.nombrePais == this.pais.value);
+    if (!objPaisSelected) {
+      this.setDepartamentos([]);
+      return;
+    }
     this._comboService.comboDepartamento(objPaisSelected.idPais).subscribe(departamentos => {
       localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
       this.setDepartamentos(departamentos);
     });
     this.departamento.enable();
-    // if (this.pais.value === String(this._globals.__ID_PAIS_PERU)) {
-    //   this._comboService.comboDepartamento().subscribe(departamentos => {
-    //     localStorage.setItem('departamentos', JSON.stringify(departamentos || []));
-    //     this.setDepartamentos(departamentos);
-    //   });
-    //   this.departamento.enable();
-    // } else {
-    //   this.setDepartamentos([]);
-    // }
   }
 
   setDepartamentos(departamentos: IDepartamento[]): void {
@@ -96,6 +91,10 @@ export class InformacionContactoComponent implements OnInit {
 
   loadProvincias(): void {
     const objDepartamentoSelected = this.departamentos.find(f => f.nombreDepartamento == this.departamento.value);
+    if (!objDepartamentoSelected) {
+      this.setProvincias([]);
+      return;
+    }
     this._comboService.comboProvincia(objDepartamentoSelected.idDepartamento).subscribe(provincias => {
       localStorage.setItem('provincias', JSON.stringify(provincias || []));
       this.setProvincias(provincias);
@@ -113,10 +112,17 @@ export class InformacionContactoComponent implements OnInit {
 
   loadDistritos(): void {
     const objProvinciaSelected = this.provincias.find(f => f.nombreProvincia == this.provincia.value);
+    if (!objProvinciaSelected) {
+      this.setDistritos([]);
+      return;
+    }
     this._comboService.comboDistrito(objProvinciaSelected.idProvincia).subscribe(distritos => {
       localStorage.setItem('distritos', JSON.stringify(distritos || []));
       this.setDistritos(distritos);
     });
+    if (!objProvinciaSelected) {
+      this.setProvincias([]);
+    }
   }
 
   setDistritos(distritos: IDistrito[]): void {

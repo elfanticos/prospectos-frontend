@@ -29,7 +29,7 @@ export class ModalConfirmComponent {
   }
 
   closeModal(): any {
-    // localStorage.getItem('confirm_condiciones')
+    localStorage.setItem('confirmar_condiciones', '1');
     this.activeModal.close('Close click');
   }
 

@@ -26,11 +26,11 @@ export class InformacionPersonalComponent implements OnInit {
     private _registroFormService: RegistroFormService,
   ) {
     const dateNow = new Date();
-    const day = dateNow.getDay() - 1;
+    const day = dateNow.getDate();
     const month = dateNow.getMonth();
     const year = dateNow.getFullYear();
     this.minDate = {year: (year - 100), month:month, day: day};
-    this.maxDate = {year: (year - 18), month:month, day: day};
+    this.maxDate = {year: 2002, month:month, day: day};
     this.infoPersForm = this._registroFormService.formInfoPersonal;
   }
 

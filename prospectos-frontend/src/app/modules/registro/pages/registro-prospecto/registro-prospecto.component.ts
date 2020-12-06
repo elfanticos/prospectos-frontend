@@ -15,12 +15,15 @@ export class RegistroProspectoComponent implements OnInit {
   constructor(
     private _registroFormService: RegistroFormService,
     private modalService: NgbModal
-  ) { 
+  ) {
     this._registroFormService.initForm();
   }
 
   ngOnInit(): void {
-    this.open();
+    const confirmar_condiciones = localStorage.getItem('confirmar_condiciones');
+    if (!confirmar_condiciones) {
+      this.open();
+    }
   }
 
   get imageForStep(): string {
