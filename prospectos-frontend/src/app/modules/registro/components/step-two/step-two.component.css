@@ -48,7 +48,12 @@
     width: 100%;
     max-width: max-content;
     padding: 3px 10px;
-    color: #868F98;
+    color: #051C2C;
+    font-family: 'Rubik-Light';
+}
+
+.m-home .m-home__content .m-content__text h4 strong {
+    color: #051C2C;
     font-family: 'Rubik-Bold';
 }
 

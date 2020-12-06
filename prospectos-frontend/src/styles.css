@@ -294,6 +294,12 @@ img{
 .modal-header{
     border: none;
 }
+.modal-header .modal-title{
+    font-size: 50px;
+    font-family: var(--FUTURA_BOLD) !important;
+    line-height: normal;
+    margin: auto;
+}
 .modal-header .close{
     position: absolute;
     right: 25px;
@@ -368,6 +374,7 @@ button.calendar, button.calendar:active {
     border-top: 3px dotted #868F98;
     padding: 25px 0;
 }
+.m-title__confirmacion,
 .m-title__pc{
     background-color: #00B5E2;
     color: #FFFFFF;
@@ -376,6 +383,7 @@ button.calendar, button.calendar:active {
     margin: auto;
     padding: 5px 15px;
 }
+.m-title__confirmacion p,
 .m-title__pc p{
     margin: 0;
     font-size: 16px;
@@ -406,6 +414,17 @@ button.calendar, button.calendar:active {
 }
 .m-datos__pc .m-pasos__item p{
     color: #868F98;
+    font-size: 16px;
+}
+.m-confirmacion{
+    padding: 30px;
+}
+.m-content__confirmacion{
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px;
+    color: var(--COLOR_TEXT);
+    font-family: var(--RUBIK_LIGHT);
     font-size: 16px;
 }
 .m-dispositivos{
@@ -448,6 +467,17 @@ button.calendar, button.calendar:active {
 }
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
     border-color: var(--COLOR_PRIMARY);
+}
+.mat-checkbox-layout{
+    text-align: left;
+    white-space: inherit !important;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color: var(--COLOR_PRIMARY);
+}
+.mat-checkbox-layout .mat-checkbox-label{
+    line-height: 20px;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
