@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { CsLetterDirective } from './directives/cs-letter.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,13 +31,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MapaUbicacionComponent,
     ModalConfirmComponent,
     ControlMessagesComponent,
-    CsNumberDirective
+    CsNumberDirective,
+    CsLetterDirective
   ],
   exports: [
     MapaUbicacionComponent,
     ModalConfirmComponent,
     ControlMessagesComponent,
     CsNumberDirective,
+    CsLetterDirective,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

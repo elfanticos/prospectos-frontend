@@ -8,7 +8,7 @@
                 <div class="m-textfield__input">
                     <mat-form-field  appearance="outline">
                         <mat-label>Nombres</mat-label>
-                        <input type="text" matInput placeholder="" formControlName="nombresPostulante"
+                        <input type="text" onLetter matInput placeholder="" formControlName="nombresPostulante"
                             autocomplete="none" required>
                         <mat-error *ngIf="nombresPostulante.errors && nombresPostulante.dirty">
                             <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">El campo no puede
@@ -35,7 +35,7 @@
                 <div class="m-textfield__input">
                     <mat-form-field  appearance="outline">
                         <mat-label>Apellidos</mat-label>
-                        <input type="text" matInput placeholder="" formControlName="apellidosPostulante"
+                        <input type="text" onLetter matInput placeholder="" formControlName="apellidosPostulante"
                             autocomplete="none" required>
                         <mat-error *ngIf="apellidosPostulante.errors && apellidosPostulante.dirty">
                             <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">El campo no puede
@@ -82,7 +82,7 @@
                 <div class="m-textfield__input">
                     <mat-form-field  appearance="outline">
                         <mat-label>N&uacute;mero de documento</mat-label>
-                        <input type="text" matInput placeholder="" formControlName="numeroDocumento" autocomplete="none"
+                        <input type="text" onNumber matInput placeholder="" formControlName="numeroDocumento" autocomplete="none"
                             maxlength="18" required>
                         <mat-error *ngIf="numeroDocumento.errors && numeroDocumento.dirty">
                             <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">El campo no puede estar

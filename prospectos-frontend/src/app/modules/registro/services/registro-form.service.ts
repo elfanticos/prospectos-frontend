@@ -64,7 +64,7 @@ export class RegistroFormService {
   }
 
   private _buildInfoPersonalForm(): FormGroup {
-    let nomPattern = /^[ a-zA-Z0-9_áéíóúàèìòùÀÈÌÒÙñÁÉÍÓÚÑÜü\'.\s]*$/;
+    let nomPattern = /^[ a-zA-Z_áéíóúàèìòùÀÈÌÒÙñÁÉÍÓÚÑÜü\'.\s]*$/;
     return this._fb.group({
       nombresPostulante: [null, [
         Validators.required,
