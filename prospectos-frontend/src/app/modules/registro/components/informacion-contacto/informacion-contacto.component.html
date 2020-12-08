@@ -77,8 +77,10 @@
                 <div class="m-textfield__input">
                     <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
-                        <input type="text" matInput placeholder="" formControlName="direccion" required
-                            (keypress)="onKeypressEvent($event)">
+                        <input type="text" matInput placeholder="" formControlName="direccion" required>
+                        <button mat-raised-button matSuffix aria-label="Change" (click)="pintarMapa()">
+                            Cambiar
+                        </button>
                         <mat-error *ngIf="direccion.errors && direccion.dirty">
                             <control-messages [control]="direccion"></control-messages>
                         </mat-error>

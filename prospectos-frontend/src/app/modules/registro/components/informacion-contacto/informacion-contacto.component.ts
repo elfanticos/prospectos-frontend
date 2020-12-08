@@ -131,9 +131,15 @@ export class InformacionContactoComponent implements OnInit {
     else this.distrito.disable();
   }
 
-  onKeypressEvent(event) {
-    if (event.code == 'Enter') {
-      this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
-    }
+  // onKeypressEvent(event) {
+  //   if (event.code == 'Enter') {
+  //     this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
+  //   }
+  // }
+
+  pintarMapa(): void {
+    console.log('entre');
+    if (this.direccion.invalid) return;
+    this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
   }
 }
