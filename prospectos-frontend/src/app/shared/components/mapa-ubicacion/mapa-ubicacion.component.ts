@@ -1,8 +1,7 @@
-import { Component, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { MouseEvent, MapsAPILoader, StreetViewControlOptions, MapTypeControlOptions, ControlPosition } from '@agm/core';
 import { __getPosition } from './mapa-ubicacion-helper';
 import { IMapCoordinates } from './mapa-ubicacion.model';
-import { SharedConstants } from '@app/shared/shared.constants';
 import { MapaUbicacionService } from './mapa-ubicacion.service';
 import { filter } from 'rxjs/internal/operators/filter';
 
@@ -12,56 +11,57 @@ import { filter } from 'rxjs/internal/operators/filter';
   styleUrls: ['mapa-ubicacion.component.css'],
 })
 
-export class MapaUbicacionComponent {
+export class MapaUbicacionComponent implements OnInit {
   @Output() coordenadas = new EventEmitter;
-    ICON_MAP_INST         : string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
-    ICON_MAP_PEOPLE_RRHH  : string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
-    ICON_MAP_PEOPLE_MATRI : string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
-    // More in http://kml4earth.appspot.com/icons.html#shapes
-        // icon_edificio = 'http://maps.google.com/mapfiles/kml/pal3/icon21.png';
-        // icon_home     = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
-    datos    : any;
-    icon_map : string;
-    coordenates: any = { lat: null, lng: null };
-    show: boolean = false;
-    theme: string = '';
-    showProgress: boolean = false;
-    btnActive: boolean = false;
-    animation: animationMarker = { drop: 'DROP', bounce: 'BOUNCE' };
-    view: boolean = false;
-    // Posicion inicial Perú
-    lat : number = -10.988929555486411;
-    lng : number = -76.73491020145303;
-    // Zoom Google Maps
-    zoom: number = 10;
-    zoomControl: boolean = true;
-    // streetView Google Maps
-    streetViewControl        : boolean = true;
-    // streetViewControlOptions : StreetViewControlOptions = {
-    //     position: ControlPosition.LEFT_TOP
-    // };
-    streetViewControlOptions : StreetViewControlOptions = {
-        position: ControlPosition.LEFT_TOP
-    };
-    //  mapType Google Maps
-    mapTypeControl           : boolean = true;
-    // mapTypeControlOptions    : MapTypeControlOptions = {
-    //     position: ControlPosition.TOP_RIGHT,
-    // };
-    mapTypeControlOptions    : MapTypeControlOptions = {
-        position: ControlPosition.TOP_RIGHT,
-    };
-    // fullscreen Google Maps
-    fullscreenControl        : boolean = true;
+  disabled = false;
+  ICON_MAP_INST: string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
+  ICON_MAP_PEOPLE_RRHH: string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
+  ICON_MAP_PEOPLE_MATRI: string = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
+  // More in http://kml4earth.appspot.com/icons.html#shapes
+  // icon_edificio = 'http://maps.google.com/mapfiles/kml/pal3/icon21.png';
+  // icon_home     = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
+  datos: any;
+  icon_map: string;
+  coordenates: any = { lat: null, lng: null };
+  show: boolean = false;
+  theme: string = '';
+  showProgress: boolean = false;
+  btnActive: boolean = false;
+  animation: animationMarker = { drop: 'DROP', bounce: 'BOUNCE' };
+  view: boolean = false;
+  // Posicion inicial Perú
+  lat: number = -10.988929555486411;
+  lng: number = -76.73491020145303;
+  // Zoom Google Maps
+  zoom: number = 10;
+  zoomControl: boolean = true;
+  // streetView Google Maps
+  streetViewControl: boolean = true;
+  // streetViewControlOptions : StreetViewControlOptions = {
+  //     position: ControlPosition.LEFT_TOP
+  // };
+  streetViewControlOptions: StreetViewControlOptions = {
+    position: ControlPosition.LEFT_TOP
+  };
+  //  mapType Google Maps
+  mapTypeControl: boolean = true;
+  // mapTypeControlOptions    : MapTypeControlOptions = {
+  //     position: ControlPosition.TOP_RIGHT,
+  // };
+  mapTypeControlOptions: MapTypeControlOptions = {
+    position: ControlPosition.TOP_RIGHT,
+  };
+  // fullscreen Google Maps
+  fullscreenControl: boolean = true;
 
-    // More in http://kml4earth.appspot.com/icons.html#shapes
-    // icon_edificio = 'http://maps.google.com/mapfiles/kml/pal3/icon21.png';
-    // icon_home     = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
-    token: any = localStorage.getItem('token');
-    markers: marker[] = [];
+  // More in http://kml4earth.appspot.com/icons.html#shapes
+  // icon_edificio = 'http://maps.google.com/mapfiles/kml/pal3/icon21.png';
+  // icon_home     = 'http://maps.google.com/mapfiles/kml/pal3/icon48.png';
+  token: any = localStorage.getItem('token');
+  markers: marker[] = [];
 
-    // PARA OBTENER POSICION
-    latlngBounds : any     = null;
+  // PARA OBTENER POSICION
+  latlngBounds: any = null;
 
 
   constructor(
@@ -73,6 +73,12 @@ export class MapaUbicacionComponent {
     //     this.view = true
     // }
     this.initMap();
+  }
+
+  ngOnInit(): void {
+    this.mapaUbicacionSrv.disabled$.subscribe(disabled => {
+      this.disabled = disabled;
+    });
   }
 
   async initMap() {
@@ -98,11 +104,11 @@ export class MapaUbicacionComponent {
     //   this.lng = this.datos.sede_info[0].lng ? parseFloat(this.datos.sede_info[0].lng) : -76.73491020145303;;
     // }
 
-    if( (isNaN(this.lat) && isNaN(this.lng))) {
-        let res: IMapCoordinates = await __getPosition();
-        if(res) this.setPosition(res.latitude, res.longitude)
+    if ((isNaN(this.lat) && isNaN(this.lng))) {
+      let res: IMapCoordinates = await __getPosition();
+      if (res) this.setPosition(res.latitude, res.longitude)
     }
-    this.mapaUbicacionSrv.direccionCoordenates.pipe(filter(a => a != null)).subscribe(async(a) => {
+    this.mapaUbicacionSrv.direccionCoordenates.pipe(filter(a => a != null)).subscribe(async (a) => {
       let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeLatLng(a);
       let [data] = GeoCodeDireccion.results;
       let latlng = data.geometry.location;
@@ -170,11 +176,11 @@ export class MapaUbicacionComponent {
 
   mapReading(event) {
     setTimeout(() => {
-      if (!navigator.geolocation){
+      if (!navigator.geolocation) {
         return;
       }
       let success = (position) => {
-        var latitude  = position.coords.latitude;
+        var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         this.setPosition(latitude, longitude, false);
       };
@@ -218,7 +224,7 @@ export class MapaUbicacionComponent {
     // console.log("🚀 ~ file: mapa-ubicacion.component.ts ~ line 198 ~ MapaUbicacionComponent ~ mapClicked ~ $event.coords", $event.coords);
     let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
     let [direccion] = GeoCodeDireccion.results;
-    this.mapaUbicacionSrv.direccionState.next({direccion: direccion.formatted_address, lat: $event.coords.lat, lng: $event.coords.lng});
+    this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: $event.coords.lat, lng: $event.coords.lng });
 
     this.coordenates = {
       lat: $event.coords.lat,

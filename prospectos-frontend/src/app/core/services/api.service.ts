@@ -24,8 +24,8 @@ export class ApiService {
     return _GET$;
   }
 
-  post<T>(path: string, body?: any): Observable<Response> {
-    const _POST$ = this.http.post<Response>(path, body);
+  post<T>(path: string, body?: any, params?: any): Observable<Response> {
+    const _POST$ = this.http.post<Response>(path, body, {params});
     return _POST$;
   }
 

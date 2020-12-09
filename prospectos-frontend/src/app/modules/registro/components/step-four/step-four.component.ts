@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RegistroFormService } from '../../services/registro-form.service';
+import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
 @Component({
   selector: 'app-step-four',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepFourComponent implements OnInit {
   finalizarActivate: boolean = false;
-  constructor() { }
+  constructor(
+    public registroFormService: RegistroFormService,
+    private _registroProspectoService: RegistroProspectoService
+  ) { }
 
   ngOnInit() {
   }
   finalizarRegistro(): void {
-    this.finalizarActivate = true;
+    const values = this.registroFormService.valuesFormStepFour;
+    this._registroProspectoService.registrarEquipo(values).subscribe(data => {
+      console.log(data);
+      this.finalizarActivate = true;
+    })
   }
 }

@@ -78,7 +78,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
                         <input type="text" matInput placeholder="" formControlName="direccion" required>
-                        <button class="m-button m-button--default" (click)="pintarMapa()"><span>cambiar</span></button>
+                        <button class="m-button m-button--default" (click)="activarInputDisabled()"><span>{{descBtnUbicacion}}</span></button>
                         <mat-error *ngIf="direccion.errors && direccion.dirty">
                             <control-messages [control]="direccion"></control-messages>
                         </mat-error>

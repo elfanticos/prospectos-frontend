@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Globals } from '@app/globals';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class MapaUbicacionService {
   direccionState:BehaviorSubject<any> = new BehaviorSubject(null);
   direccionCoordenates:BehaviorSubject<any> = new BehaviorSubject(null);
+  disabled$: Subject<any> = new Subject();
   constructor(
     private _http: ApiService,
     private _globals: Globals

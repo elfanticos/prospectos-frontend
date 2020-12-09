@@ -22,16 +22,22 @@ export class InformacionContactoComponent implements OnInit {
   distritos: IDistrito[] = [];
   // departamentos
   infoContactoForm: FormGroup;
+  descBtnUbicacion: string = 'Cambiar';
   constructor(
     private _registroFormService: RegistroFormService,
     private _comboService: CombosService,
-    private _globals: Globals,
     private mapaUbicacionSrv: MapaUbicacionService
   ) {
     this.infoContactoForm = this._registroFormService.formInfoContacto;
   }
 
   ngOnInit(): void {
+    if (this.direccion.value) {
+      setTimeout(() => {
+        this.pintarMapa();
+        this.mapaUbicacionSrv.disabled$.next(true);
+      }, 200);
+    }
     this._comboService.comboPais().subscribe(paises => this.paises = paises || []);
     this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'));
     this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'));
@@ -79,14 +85,20 @@ export class InformacionContactoComponent implements OnInit {
     this.departamento.enable();
   }
 
-  setDepartamentos(departamentos: IDepartamento[]): void {
+  setDepartamentos(departamentos: IDepartamento[], provincia?: string, distrito?: string): void {
     this.departamentos = departamentos || [];
     if (this.departamentos.length > 0 && this.pais.value) this.departamento.enable();
     else this.departamento.disable();
-    this.provincia.setValue('');
-    this.distrito.setValue('');
-    this.provincia.disable();
-    this.distrito.disable();
+    if (!provincia) {
+      this.provincia.setValue('');
+      this.provincia.disable();
+      
+    }
+
+    if (distrito) {
+      this.distrito.disable();
+      this.distrito.setValue('');
+    }
   }
 
   loadProvincias(): void {
@@ -138,8 +150,21 @@ export class InformacionContactoComponent implements OnInit {
   // }
 
   pintarMapa(): void {
-    console.log('entre');
     if (this.direccion.invalid) return;
     this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
+  }
+
+  activarInputDisabled(): void {
+    if (this.direccion.disabled) {
+      this.descBtnUbicacion = 'Modificar';
+      this.direccion.enable();
+      this.mapaUbicacionSrv.disabled$.next(false);
+    } else {
+      this.descBtnUbicacion = 'Cambiar';
+      this.direccion.disable();
+      this.mapaUbicacionSrv.disabled$.next(true);
+      this.pintarMapa();
+    }
+
   }
 }

@@ -65,75 +65,58 @@ export class RegistroFormService {
 
   private _buildInfoPersonalForm(): FormGroup {
     let nomPattern = /^[ a-zA-Z_áéíóúàèìòùÀÈÌÒÙñÁÉÍÓÚÑÜü\'.\s]*$/;
+    const values = JSON.parse(localStorage.getItem('stepOne') || '{postulante: {}}').postulante;
     return this._fb.group({
-      nombresPostulante: [null, [
+      nombresPostulante: [values.nombresPostulante, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(75),
         Validators.pattern(nomPattern)
       ]],
-      apellidosPostulante: [null, [
+      apellidosPostulante: [values.apellidosPostulante, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(75),
         Validators.pattern(nomPattern)
       ]],
-      fecNacimiento: [null, [Validators.required]],
-      sexo: [null, Validators.required],
-      tipoDocumento: ['', [Validators.required]],
-      numeroDocumento: [null, [
+      fecNacimiento: [values.fecNacimiento, [Validators.required]],
+      sexo: [values.sexo, Validators.required],
+      tipoDocumento: [values.tipoDocumento, [Validators.required]],
+      numeroDocumento: [values.numeroDocumento, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(18),
         Validators.pattern(/^[0-9]{1,18}$/)
       ]],
     });
-    // "nombresPostulante":"Jose Luis",
-    //     "apellidosPostulante":"Minaya Castañeda",
-    //     "fecNacimiento":"2020-09-25",
-    //     "sexo":1,
-    //     "tipoDocumento":1,
-    //     "numeroDocumento":"75698654",
-    //     "fecha_hora_post":"2020-09-25T03:30:00.000Z"
   }
 
   private _buildInfoContactoForm(): FormGroup {
+    const values = JSON.parse(localStorage.getItem('stepOne') || '{datosPersonales: {}}').datosPersonales;
     return this._fb.group({
-      telefono: [null, [
+      telefono: [values.telefono, [
         Validators.required,
         ValidatorsExtend.isNumeric,
         Validators.minLength(7),
         Validators.maxLength(12)
       ]],
-      correo: [null, [
+      correo: [values.correo, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(75),
         ValidatorsExtend.isOptionalEmail
       ]],
-      pais: ['', [Validators.required]],
-      departamento: [{ value: '', disabled: true }, [Validators.required]],
-      provincia: [{ value: '', disabled: true }, [Validators.required]],
-      distrito: [{ value: '', disabled: true }, [Validators.required]],
-      direccion: [null, [
+      pais: [values.pais, [Validators.required]],
+      departamento: [{ value: values.departamento, disabled: !values.departamento }, [Validators.required]],
+      provincia: [{ value: values.provincia, disabled: !values.provincia }, [Validators.required]],
+      distrito: [{ value: values.distrito, disabled: !values.distrito }, [Validators.required]],
+      direccion: [{value: values.direccion, disabled: !values.dirección}, [
         Validators.required,
         Validators.maxLength(75)
       ]],
-      latitud: [null, [Validators.required]],
-      longitud: [null, [Validators.required]]
+      latitud: [values.latitud, [Validators.required]],
+      longitud: [values.longitud, [Validators.required]]
     });
-    // "telefono": "012684759",
-    // "correo": "corre@gmail.com",
-    // "pais": 140,
-    // "departamento": 15,
-    // "provincia": 136,
-    // "distrito": "SJM",
-    // "direccion": "Av. prueba de registro",
-    // "latitud": "145'3215.156 ",
-    // "longitud": "145'3215.158",
-    // "fec_hora_datos": "2020-09-25T03:30",
-    // "postulante": {
-    // }
   }
 
   private _buildInfoConectividad(): FormGroup {
@@ -146,34 +129,10 @@ export class RegistroFormService {
       ip: ['null', [Validators.required]],
       isp: ['null', [Validators.required]]
     });
-    // "operador": "movistar",
-    // "carga": "35 mb",
-    // "descarga": "45 mb",
-    // "ping": "4 perdidos",
-    // "latencia": "latencia",
-    // "ip": "192.192.192.192",
-    // "isp": "isp",
-    // "fecha_hora_conec": "2020-09-25T03:30",
-    // "postulante": {
-    //     "idPostulante": 1
-    // }
   }
 
   private _buildInfoAudio(): FormGroup {
     return this._buildInfoDispositivo();
-    // return this._fb.group({
-    //   dispositivos: this._fb.array([
-    //     this._buildInfoDispositivo(),
-    //     this._buildInfoDispositivo()
-    //   ])
-    // });
-    // "tipoDispositivo": "Microfono",
-    // "marca": "microphone ",
-    // "modelo": "del mercado",
-    // "fec_hora_disp": "2020-09-25T03:30",
-    // "idPostulante": 1,
-    // "urlImagen": "D:/PROYECTOS/PROSPECTOS/Base de datos",
-    // "nombreImagen": "nombre de imagen de prueba"
   }
 
   private _buildInfoDispositivo(): FormGroup {
@@ -181,15 +140,6 @@ export class RegistroFormService {
       tipoDispositivo: ['', [Validators.required]],
       file: [, [Validators.required]]
     });
-    // return this._fb.group({
-    //   tipoDispositivo: ['null', [Validators.required]],
-    //   marca: ['null', [Validators.required]],
-    //   modelo: ['null', [Validators.required]],
-    //   fec_hora_disp: ['null', [Validators.required]],
-    //   idPostulante: ['null', [Validators.required]],
-    //   urlImagen: ['null', [Validators.required]],
-    //   nombreImagen: ['null', [Validators.required]]
-    // });
   }
 
   private _buildInfoPc(): FormGroup {
@@ -240,6 +190,12 @@ export class RegistroFormService {
   get valuesFormStepThree(): any {
     return {
       ...this.formInfoAudio.value
+    }
+  }
+
+  get valuesFormStepFour(): any {
+    return {
+      ...this.formInfoPc.value
     }
   }
 }

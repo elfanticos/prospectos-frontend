@@ -20,11 +20,12 @@ export class StepOneComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
-    this._registroProspectoService.registrarProspecto(this.registroFormService.valuesFormStepOne).subscribe(data => {
+    const values = this.registroFormService.valuesFormStepOne;
+    this._registroProspectoService.registrarProspecto(values).subscribe(data => {
       console.log(data);
-    }, err => {
-      console.log(err);
+      localStorage.setItem('stepOne', JSON.stringify(values));
+      localStorage.setItem('idPostulante', String(data.idPostulante));
+      this._route.navigate([`${stepIndex}`]);
     });
-    this._route.navigate([`${stepIndex}`])
   }
 }

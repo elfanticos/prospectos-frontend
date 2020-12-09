@@ -26,7 +26,6 @@ import { RegistroProspectoService } from './services/registro-prospecto.service'
 import { MenuStepComponent } from './components/menu-step/menu-step.component';
 
 
-
 @NgModule({
   declarations: [
     RegistroProspectoComponent,
