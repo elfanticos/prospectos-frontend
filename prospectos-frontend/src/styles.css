@@ -51,6 +51,9 @@ img{
     grid-column-gap: 30px;
     grid-row-gap: 15px;
 }
+.m-column--2{
+    grid-column: span 2;
+}
 .bg-blue{
     background-color: var(--COLOR_PASTEL);
 }
@@ -106,6 +109,11 @@ img{
     padding: 0 20px;
     cursor: pointer;
 }
+.m-button.m-button--default{
+    height: 40px;
+    font-size: 16px;
+    color: #868F98;
+}
 .m-button--icon{
     background-color: transparent;
     outline: none !important;
@@ -138,6 +146,13 @@ img{
     text-align: left;
     margin-bottom: -8px;
     color: #000000;
+}
+.m-button.m-button--default span{
+    font-family: var(--RUBIK_MEDIUM);
+    border-bottom: 3px solid var(--COLOR_PRIMARY);
+    padding: 0px 5px;
+    margin: 0;
+    text-align: center;
 }
 .m-section{
     padding: 40px 20px;
@@ -446,6 +461,12 @@ button.calendar, button.calendar:active {
     font-size: 16px;
 }
 /*ANGULAR MATERIAL*/
+.m-textfield__input .m-button--default{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
 .mat-form-field.mat-form-field-invalid .mat-form-field-label{
     color: #f44336 !important;
 }
