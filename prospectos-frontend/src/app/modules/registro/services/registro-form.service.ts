@@ -137,8 +137,8 @@ export class RegistroFormService {
 
   private _buildInfoDispositivo(): FormGroup {
     return this._fb.group({
-      tipoDispositivo: ['', [Validators.required]],
-      file: [, [Validators.required]]
+      tipoDispositivo: [null, [Validators.required]],
+      file: [null, [Validators.required]]
     });
   }
 

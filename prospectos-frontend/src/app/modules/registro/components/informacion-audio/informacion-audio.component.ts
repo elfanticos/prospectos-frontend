@@ -78,15 +78,19 @@ export class InformacionAudioComponent implements OnInit {
     /*******************************************************/
 
     this.inputText.nativeElement.value = nameFile;
-    console.log(this.filesToUpload);
     this.file.setValue(this.filesToUpload);
     // Renderizar el archivo subido para obtener el base64
-    let render = new FileReader();
-    render.readAsDataURL(this.filesToUpload[0]);
-    render.onload = (event) => {
-      console.log('onload render');
-      console.log(event);
-    };
+    // let render = new FileReader();
+    // render.readAsDataURL(this.filesToUpload[0]);
+    // render.onload = (event) => {
+    //   console.log('onload render');
+    //   console.log(event);
+    // };
+  }
+
+  get urlImg() {
+    const objAuricular: IAuricular = this.auriculares.find(a => a.idAuricular == this.tipoDispositivo.value) || {};
+    return objAuricular.urlImagen || '../../../../../assets/images/fondo/fondo-auriculares.png';
   }
 
 }

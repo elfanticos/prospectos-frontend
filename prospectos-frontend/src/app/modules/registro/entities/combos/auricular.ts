@@ -1,5 +1,5 @@
 export interface IAuricular {
-    idAuricular: number;
-    tipoAuricular: string;
-    imagen: string;
+    idAuricular ?: number;
+    tipoAuricular ?: string;
+    urlImagen ?: string;
 }
