@@ -461,6 +461,13 @@ button.calendar, button.calendar:active {
     font-size: 16px;
 }
 /*ANGULAR MATERIAL*/
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    background-color: #F6F6F6 !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-end{
+    border-radius: 0 !important;
+}
 .m-textfield__input .m-button--default{
     position: absolute;
     right: 0;
