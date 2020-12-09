@@ -65,6 +65,9 @@ img{
     line-height: 32px;
     font-family: var(--FUTURA_BOLD);
 }
+.m-disabled{
+    pointer-events: none;
+}
 .m-input{
     margin: 10px 0;
 }
