@@ -118,35 +118,36 @@
                         </div>
                     </div>
                     <span *ngIf="fecNacimiento.errors && fecNacimiento.dirty">
-                        <ng-container *ngIf="fecNacimiento.errors.required; else elseif1;">
+                        <div class="m-invalid" *ngIf="fecNacimiento.errors.required; else elseif1;">
                             El campo no puede estar vacio
-                        </ng-container>
+                        </div>
                         <ng-template #elseif1>
-                            <ng-container *ngIf="fecNacimiento.errors.exception; else elseif2;">
-                                {{fecNacimiento.errors.exception.msj}}</ng-container>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.exception; else elseif2;">
+                                {{fecNacimiento.errors.exception.msj}}
+                            </div>
                         </ng-template>
                         <ng-template #elseif2>
-                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif3;">
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif3;">
                                 Fecha máxima hasta
                                 {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
-                            </ng-container>
+                            </div>
                         </ng-template>
                         <ng-template #elseif3>
-                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif4;">
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif4;">
                                 Fecha máxima hasta
                                 {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
-                            </ng-container>
+                            </div>
                         </ng-template>
                         <ng-template #elseif4>
-                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.minDate; else elseif5;">
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.minDate; else elseif5;">
                                 Fecha máxima hasta
                                 {{fecNacimiento.errors.ngbDate.minDate.minDate.day}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.month}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.year}}
-                            </ng-container>
+                            </div>
                         </ng-template>
                         <ng-template #elseif5>
-                            <ng-container *ngIf="fecNacimiento.errors.ngbDate.invalid;">
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.invalid;">
                                 Fecha inválida
-                            </ng-container>
+                            </div>
                         </ng-template>
                     </span>
                 </div>
