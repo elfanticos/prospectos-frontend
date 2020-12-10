@@ -13,11 +13,14 @@ export class JwtInterceptor implements HttpInterceptor {
         const isApiUrl = request.url.startsWith(environment.api);
         const token = localStorage.getItem('token');
         let headers = request.headers;
-        if (!request.headers.has('Content-Type')) {
-            headers = request.headers
-                .set('Content-Type', 'application/json');
+        if (!request.url.includes(environment.apiService.postulante.registrarDispositivos) && !request.url.includes(environment.apiService.postulante.registrarEquipo)) {
+            console.log('no tengo que entrar aqui');
+            if (!request.headers.has('Content-Type')) {
+                headers = request.headers
+                    .set('Content-Type', 'application/json');
+            }
         }
-
+        
         if (token && isApiUrl) {
             headers = request.headers
                 .set('Authorization', `Bearer ${token}`);
@@ -30,8 +33,9 @@ export class JwtInterceptor implements HttpInterceptor {
         }
 
         if (request.url.includes(environment.apiService.postulante.registrarDispositivos) || request.url.includes(environment.apiService.postulante.registrarEquipo)) {
+            console.log(request.body);
             headers = request.headers
-                .set('Content-Type', 'multipart/form-data');
+                .set('Content-Type', 'multipart/form-data;boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW');
         }
         const _PARAMS = { headers };
         const req$ = request.clone(_PARAMS);

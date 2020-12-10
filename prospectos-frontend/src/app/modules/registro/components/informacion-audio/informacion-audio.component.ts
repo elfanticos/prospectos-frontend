@@ -28,6 +28,7 @@ export class InformacionAudioComponent implements OnInit {
 
   get tipoDispositivo() { return this.infoAudioForm.controls['tipoDispositivo']; }
   get file() { return this.infoAudioForm.controls['file']; }
+  get extension() { return this.infoAudioForm.controls['extension']; }
 
   /**
    * @author jmeza
@@ -78,7 +79,8 @@ export class InformacionAudioComponent implements OnInit {
     /*******************************************************/
 
     this.inputText.nativeElement.value = nameFile;
-    this.file.setValue(this.filesToUpload);
+    this.file.setValue(this.filesToUpload[0]);
+    this.extension.setValue(nameFile.split('.')[1]);
     // Renderizar el archivo subido para obtener el base64
     // let render = new FileReader();
     // render.readAsDataURL(this.filesToUpload[0]);
@@ -89,7 +91,7 @@ export class InformacionAudioComponent implements OnInit {
   }
 
   get urlImg() {
-    const objAuricular: IAuricular = this.auriculares.find(a => a.idAuricular == this.tipoDispositivo.value) || {};
+    const objAuricular: IAuricular = this.auriculares.find(a => a.tipoAuricular == this.tipoDispositivo.value) || {};
     return objAuricular.urlImagen || '../../../../../assets/images/fondo/fondo-auriculares.png';
   }
 

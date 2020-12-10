@@ -20,7 +20,15 @@ export class StepFourComponent implements OnInit {
     const values = this.registroFormService.valuesFormStepFour;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);
-      this.finalizarActivate = true;
+      const objParam = {
+        equipo: data.idEquipo,
+        extensionImg: values.extensionFile,
+        file: values.file
+      };
+      this._registroProspectoService.registrarEquipoImg(objParam).subscribe(dataImg => {
+        console.log(dataImg);
+        this.finalizarActivate = true;
+      });
     })
   }
 }
