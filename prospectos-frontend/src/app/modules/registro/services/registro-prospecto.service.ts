@@ -44,7 +44,7 @@ export class RegistroProspectoService {
   registrarEquipoImg(body: any): Observable<any>{
     const params = new HttpParams()
       .set('EQUIPO', body.tipoEquipo)
-      .set('EXTENCION-FILE', 'pmg');
+      .set('EXTENCION-FILE', 'png');
     const formData = new FormData()
       .append('file', body.file);
       return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`, formData, params);
