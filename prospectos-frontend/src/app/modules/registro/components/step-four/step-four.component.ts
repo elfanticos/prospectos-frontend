@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
-import { RegistroLeadService } from '../../services/registrar-lead.service'
+import { RegistroLeadService } from '../../services/registro-lead.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-step-four',
@@ -15,12 +16,17 @@ export class StepFourComponent implements OnInit {
   constructor(
     public registroFormService: RegistroFormService,
     private _registroProspectoService: RegistroProspectoService,
-    private _registroLeadService: RegistroLeadService
+    private _registroLeadService: RegistroLeadService,
+    private deviceService: DeviceDetectorService
   ) { }
 
   ngOnInit() {
+
   }
+
   finalizarRegistro(): void {
+    // this.registrarLead();
+    // return;
     const values = this.registroFormService.valuesFormStepFour;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);
@@ -31,11 +37,11 @@ export class StepFourComponent implements OnInit {
     const obj = {
       "idPostulante": 32,
       "fecHoraLead": "",
-      "dispositivo": "",
-      "navegador": "",
-      "sistOperativo": "",
-      "resolucion": "",
-      "userAgent": "",
+      "dispositivo": this.deviceService.getDeviceInfo().device,
+      "navegador": this.deviceService.getDeviceInfo().browser,
+      "sistOperativo": this.deviceService.getDeviceInfo().os,
+      "resolucion": this.deviceService.getDeviceInfo().orientation,
+      "userAgent": this.deviceService.getDeviceInfo().userAgent,
       "isp": "Perú",
       "utmSource": "url_prueba",
       "utmMedium": "url_prueba",
@@ -45,6 +51,8 @@ export class StepFourComponent implements OnInit {
       "utmOrigin": "url_prueba",
       "gclid": "url_prueba"
     }
+    console.log(obj);
+    // return
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
     })

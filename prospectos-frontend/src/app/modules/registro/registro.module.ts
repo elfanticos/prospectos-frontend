@@ -23,6 +23,7 @@ import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/cus
 import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
 import { CombosService } from './services/combos.service';
 import { RegistroProspectoService } from './services/registro-prospecto.service';
+import { RegistroLeadService } from './services/registro-lead.service';
 import { MenuStepComponent } from './components/menu-step/menu-step.component';
 
 
@@ -55,6 +56,7 @@ import { MenuStepComponent } from './components/menu-step/menu-step.component';
     RegistroFormService,
     CombosService,
     RegistroProspectoService,
+    RegistroLeadService,
     { provide: LOCALE_ID, useValue: 'es-PR' } ,
     [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }], // define custom NgbDatepickerI18n provider
     {provide: NgbDateAdapter, useClass: CustomAdapter},
