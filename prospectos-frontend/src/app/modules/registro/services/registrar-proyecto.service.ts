@@ -11,7 +11,7 @@ export class RegistroProyectoService {
     private _http: ApiService,
   ) { }
 
-  registrarProyecto(body: any): Observable<any> {
+  registrarLead(body: any): Observable<any> {
     return this._http.post<any>(`${environment.api}${environment.apiService.proyecto.registrarLead}`, body);
   }
 
