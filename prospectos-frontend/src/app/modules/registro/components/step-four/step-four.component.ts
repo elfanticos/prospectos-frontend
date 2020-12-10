@@ -31,7 +31,6 @@ export class StepFourComponent implements OnInit {
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);
       this.finalizarActivate = true;
-      this.registrarLead();
     })
   }
   registrarLead(): void{
@@ -53,7 +52,7 @@ export class StepFourComponent implements OnInit {
       "gclid": "url_prueba"
     }
     console.log(obj);
-    // return
+    return
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
     })
