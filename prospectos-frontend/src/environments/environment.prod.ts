@@ -25,8 +25,8 @@ export const environment = {
       registrarEquipo: '/api/postulante/registrar-equipo',
       registrarEquipoImg: '/api/postulante/registrar-equipo-img'
     },
-    proyecto: {
-      registrarLead: '/api/proyecto/registrar'
+    leadpostulante: {
+      registrarLead: '/api/leadpostulante/registrar'
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'

@@ -12,7 +12,7 @@ export class RegistroProyectoService {
   ) { }
 
   registrarLead(body: any): Observable<any> {
-    return this._http.post<any>(`${environment.api}${environment.apiService.proyecto.registrarLead}`, body);
+    return this._http.post<any>(`${environment.api}${environment.apiService.leadpostulante.registrarLead}`, body);
   }
 
 }
