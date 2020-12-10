@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class RegistroProyectoService {
+export class RegistroLeadService {
 
   constructor(
     private _http: ApiService,
