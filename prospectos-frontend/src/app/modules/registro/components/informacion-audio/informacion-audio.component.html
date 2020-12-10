@@ -18,15 +18,15 @@
       <div class="m-dispositivos__image">
         <img [src]="urlImg" />
       </div>
-      <div>
-        <div (click)="adjuntarImagen()">
-          <mat-form-field appearance="outline">
-            <mat-label>Adjuntar imagen</mat-label>
-            <input matInput type="text" placeholder="" #inputText disabled />
-          </mat-form-field>
-        </div>
-        <button type="button" (click)="adjuntarImagen()">subir imagen</button>
+    </div>
+    <div class="m-input--flex">
+      <div class="m-input--adjuntar" (click)="adjuntarImagen()">
+        <mat-form-field appearance="outline">
+          <mat-label>Adjuntar imagen de aud&iacute;fonos</mat-label>
+          <input matInput type="text" placeholder="" #inputText disabled />
+        </mat-form-field>
       </div>
+      <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()"/>
     </div>
   </div>
 </section>
