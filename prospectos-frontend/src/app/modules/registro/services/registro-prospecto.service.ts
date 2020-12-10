@@ -22,7 +22,7 @@ export class RegistroProspectoService {
   registrarDispositivos(body: any): Observable<any> {
     const params = new HttpParams()
       .set('TIPO-DISPOSITIVO', body.tipoDispositivo)
-      .set('ID-POSTULANTE', '1');
+      .set('ID-POSTULANTE', '36');
     const formData = new FormData()
       .append('file', body.file);
     return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarDispositivos}`, formData, params);
@@ -34,7 +34,7 @@ export class RegistroProspectoService {
       .set('memoriaRam', body.memoriaRam)
       .set('discoDuro', body.discoDuro)
       .set('sistOperativo', body.sistOperativo)
-      .set('idPostulante', '1');
+      .set('idPostulante', '36');
     const formData = new FormData()
       .append('file', body.file);
     return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`, formData, params);

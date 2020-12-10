@@ -28,6 +28,11 @@ export class JwtInterceptor implements HttpInterceptor {
                 .set('Authorization', 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg=')
                 .set('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
         }
+
+        if (request.url.includes(environment.apiService.postulante.registrarDispositivos) || request.url.includes(environment.apiService.postulante.registrarEquipo)) {
+            headers = request.headers
+                .set('Content-Type', 'multipart/form-data');
+        }
         const _PARAMS = { headers };
         const req$ = request.clone(_PARAMS);
         return next.handle(req$);
