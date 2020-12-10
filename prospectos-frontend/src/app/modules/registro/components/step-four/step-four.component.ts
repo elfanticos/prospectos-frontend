@@ -60,8 +60,6 @@ export class StepFourComponent implements OnInit {
       "utmOrigin": "url_prueba",
       "gclid": "url_prueba"
     }
-    console.log(obj);
-    return
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
     })
