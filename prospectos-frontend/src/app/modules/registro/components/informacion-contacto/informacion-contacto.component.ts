@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Globals } from '@app/globals';
 import { MapaUbicacionService } from '@app/shared/components/mapa-ubicacion/mapa-ubicacion.service';
 import { filter } from 'rxjs/internal/operators/filter';
 import { IDepartamento } from '../../entities/combos/departamento';
@@ -143,11 +142,11 @@ export class InformacionContactoComponent implements OnInit {
     else this.distrito.disable();
   }
 
-  // onKeypressEvent(event) {
-  //   if (event.code == 'Enter') {
-  //     this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
-  //   }
-  // }
+  onKeypressEvent(event) {
+    if (event.code == 'Enter') {
+      this.mapaUbicacionSrv.direccionCoordenates.next(this.direccion.value);
+    }
+  }
 
   pintarMapa(): void {
     if (this.direccion.invalid) return;
@@ -163,7 +162,7 @@ export class InformacionContactoComponent implements OnInit {
       this.descBtnUbicacion = 'Cambiar';
       this.direccion.disable();
       this.mapaUbicacionSrv.disabled$.next(true);
-      this.pintarMapa();
+      // this.pintarMapa();
     }
 
   }
