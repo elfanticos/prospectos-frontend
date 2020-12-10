@@ -9,7 +9,7 @@
           <mat-label>Tipo de auricular</mat-label>
           <mat-select required formControlName="tipoDispositivo">
             <mat-option>Tipo de auricular</mat-option>
-            <mat-option *ngFor="let auricular of auriculares" [value]="auricular.idAuricular">
+            <mat-option *ngFor="let auricular of auriculares" [value]="auricular.tipoAuricular">
               {{auricular.tipoAuricular}}
             </mat-option>
           </mat-select>

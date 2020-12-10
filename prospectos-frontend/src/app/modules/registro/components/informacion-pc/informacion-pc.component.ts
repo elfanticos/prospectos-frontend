@@ -46,6 +46,7 @@ export class InformacionPcComponent implements OnInit {
   get discoDuro() { return this.infoPcForm.controls['discoDuro']; }
   get sistOperativo() { return this.infoPcForm.controls['sistOperativo']; }
   get file() { return this.infoPcForm.controls['file']; }
+  get extensionFile() { return this.infoPcForm.controls['extensionFile']; }
 
   loadProcesadores(): void {
     this._combosService.comboProcesador().subscribe(procesadores => {
@@ -126,14 +127,15 @@ export class InformacionPcComponent implements OnInit {
 
     this.inputText.nativeElement.value = nameFile;
     console.log(this.filesToUpload);
-    this.file.setValue(this.filesToUpload);
+    this.file.setValue(this.filesToUpload[0]);
+    this.extensionFile.setValue(nameFile.split('.')[1]);
     // Renderizar el archivo subido para obtener el base64
-    let render = new FileReader();
-    render.readAsDataURL(this.filesToUpload[0]);
-    render.onload = (event) => {
-      console.log('onload render');
-      console.log(event);
-    };
+    // let render = new FileReader();
+    // render.readAsDataURL(this.filesToUpload[0]);
+    // render.onload = (event) => {
+    //   console.log('onload render');
+    //   console.log(event);
+    // };
   }
 
 }

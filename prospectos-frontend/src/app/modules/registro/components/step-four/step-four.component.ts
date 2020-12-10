@@ -30,13 +30,22 @@ export class StepFourComponent implements OnInit {
     const values = this.registroFormService.valuesFormStepFour;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);
-      this.finalizarActivate = true;
+      const objParam = {
+        equipo: data.idEquipo,
+        extensionImg: values.extensionFile,
+        file: values.file
+      };
+      this._registroProspectoService.registrarEquipoImg(objParam).subscribe(dataImg => {
+        console.log(dataImg);
+        this.finalizarActivate = true;
+        this.registrarLead();
+      });
     })
   }
-  registrarLead(): void{
+  registrarLead(): void {
     const obj = {
-      "idPostulante": 32,
-      "fecHoraLead": "",
+      "idPostulante": localStorage.getItem('idPostulante'),
+      "fecHoraLead": new Date().toISOString(),
       "dispositivo": this.deviceService.getDeviceInfo().device,
       "navegador": this.deviceService.getDeviceInfo().browser,
       "sistOperativo": this.deviceService.getDeviceInfo().os,
