@@ -64,6 +64,7 @@ export class StepFourComponent implements OnInit {
     // return
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
+      localStorage.clear();
     })
   }
 }
