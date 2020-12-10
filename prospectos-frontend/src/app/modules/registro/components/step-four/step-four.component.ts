@@ -45,7 +45,7 @@ export class StepFourComponent implements OnInit {
   registrarLead(): void {
     const obj = {
       "idPostulante": localStorage.getItem('idPostulante'),
-      "fecHoraLead": "",
+      "fecHoraLead": new Date().toISOString(),
       "dispositivo": this.deviceService.getDeviceInfo().device,
       "navegador": this.deviceService.getDeviceInfo().browser,
       "sistOperativo": this.deviceService.getDeviceInfo().os,
@@ -60,8 +60,6 @@ export class StepFourComponent implements OnInit {
       "utmOrigin": "url_prueba",
       "gclid": "url_prueba"
     }
-    console.log(obj);
-    // return
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
       localStorage.clear();
