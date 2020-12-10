@@ -47,7 +47,7 @@ export class RegistroProspectoService {
       .set('EXTENCION-FILE', 'png');
     const formData = new FormData()
       .append('file', body.file);
-      return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`, formData, params);
+      return this._http.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipoImg}`, formData, params);
   }
 
 }
