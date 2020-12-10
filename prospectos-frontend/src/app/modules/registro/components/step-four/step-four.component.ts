@@ -31,6 +31,7 @@ export class StepFourComponent implements OnInit {
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);
       this.finalizarActivate = true;
+      this.registrarLead();
     })
   }
   registrarLead(): void{
