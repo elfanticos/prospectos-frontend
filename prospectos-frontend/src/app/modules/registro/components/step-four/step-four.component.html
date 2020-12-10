@@ -18,7 +18,10 @@
         <app-informacion-pc></app-informacion-pc>
         <div class="m-container">
             <div class="m-actions text-right m-b-50">
-                <button type="button" class="m-button" (click)="finalizarRegistro()"><span>FINALIZAR</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+                <button type="button" class="m-button" [disabled]="!registroFormService.formValidStepConfirm"
+                    (click)="registroFormService.formValidStepConfirm && finalizarRegistro()"><span>FINALIZAR</span><img
+                        src="../../../../../assets/images/iconos/icon-arrow-button.svg"
+                        alt="icono-button-prospectos"></button>
             </div>
         </div>
     </ng-container>
