@@ -65,7 +65,7 @@ export class RegistroFormService {
 
   private _buildInfoPersonalForm(): FormGroup {
     let nomPattern = /^[ a-zA-Z_áéíóúàèìòùÀÈÌÒÙñÁÉÍÓÚÑÜü\'.\s]*$/;
-    const values = JSON.parse(localStorage.getItem('stepOne') || '{postulante: {}}').postulante;
+    const values = JSON.parse(localStorage.getItem('stepOne') || '{"postulante": {}}').postulante;
     return this._fb.group({
       nombresPostulante: [values.nombresPostulante, [
         Validators.required,
@@ -92,7 +92,7 @@ export class RegistroFormService {
   }
 
   private _buildInfoContactoForm(): FormGroup {
-    const values = JSON.parse(localStorage.getItem('stepOne') || '{datosPersonales: {}}').datosPersonales;
+    const values = JSON.parse(localStorage.getItem('stepOne') || '{"datosPersonales": {}}').datosPersonales;
     return this._fb.group({
       telefono: [values.telefono, [
         Validators.required,
