@@ -23,6 +23,7 @@ export const environment = {
       registrarConectividad: '/api/postulante/registrar-conectividad',
       registrarDispositivos: '/api/postulante/registrar-dispositivos',
       registrarEquipo: '/api/postulante/registrar-equipo',
+      registrarEquipoImg: '/api/postulante/registrar-equipo-img',
       
     }
   },
