@@ -23,7 +23,10 @@ export const environment = {
       registrarConectividad: '/api/postulante/registrar-conectividad',
       registrarDispositivos: '/api/postulante/registrar-dispositivos',
       registrarEquipo: '/api/postulante/registrar-equipo',
-      
+      registrarEquipoImg: '/api/postulante/registrar-equipo-img'
+    },
+    leadpostulante: {
+      registrarLead: '/api/leadpostulante/registrar'
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'
