@@ -93,6 +93,7 @@ export class RegistroFormService {
 
   private _buildInfoContactoForm(): FormGroup {
     const values = JSON.parse(localStorage.getItem('stepOne') || '{"datosPersonales": {}}').datosPersonales;
+    console.log('datosPersonales => ', values);
     return this._fb.group({
       telefono: [values.telefono, [
         Validators.required,

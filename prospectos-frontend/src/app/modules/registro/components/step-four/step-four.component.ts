@@ -62,7 +62,7 @@ export class StepFourComponent implements OnInit {
     }
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
-      localStorage.clear();
+      console.log('USUARIO REGISTRADO');
     })
   }
 }

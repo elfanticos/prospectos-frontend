@@ -23,9 +23,13 @@ export class StepOneComponent implements OnInit {
     const values = this.registroFormService.valuesFormStepOne;
     this._registroProspectoService.registrarProspecto(values).subscribe(data => {
       console.log(data);
-      localStorage.setItem('stepOne', JSON.stringify(values));
-      localStorage.setItem('idPostulante', String(data.idPostulante));
-      this._route.navigate([`${stepIndex}`]);
+      if (data.cod === 0) {
+        localStorage.setItem('stepOne', JSON.stringify(values));
+        localStorage.setItem('idPostulante', String(data.idPostulante));
+        this._route.navigate([`${stepIndex}`]);
+      }
+    }, err => {
+      console.log(err);
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-informacion-envio-correo',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformacionEnvioCorreoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
+  cerrarRegistro(): void {
+    console.log('CERRAR REGISTRO');
+    localStorage.clear();
+    this._router.navigate(['/']);
+  }
 }

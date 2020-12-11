@@ -38,8 +38,8 @@ export class InformacionContactoComponent implements OnInit {
       }, 200);
     }
     this._comboService.comboPais().subscribe(paises => this.paises = paises || []);
-    this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'));
-    this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'));
+    this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'), this.departamento.value, this.provincia.value);
+    this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'), this.distrito.value);
     this.setDistritos(JSON.parse(localStorage.getItem('distritos') || '[]'));
     this.mapaUbicacionSrv.direccionState.pipe(filter(a => a != null)).subscribe(a => {
       this.direccion.setValue(a.direccion);
@@ -89,14 +89,13 @@ export class InformacionContactoComponent implements OnInit {
     if (this.departamentos.length > 0 && this.pais.value) this.departamento.enable();
     else this.departamento.disable();
     if (!provincia) {
-      this.provincia.setValue('');
+      this.provincia.setValue(null);
       this.provincia.disable();
-      
     }
 
-    if (distrito) {
+    if (!distrito) {
       this.distrito.disable();
-      this.distrito.setValue('');
+      this.distrito.setValue(null);
     }
   }
 
@@ -113,12 +112,14 @@ export class InformacionContactoComponent implements OnInit {
   }
 
 
-  setProvincias(provincias: IProvincia[]): void {
+  setProvincias(provincias: IProvincia[], distrito?: string): void {
     this.provincias = provincias || [];
     if (this.provincias.length > 0 && this.departamento.value) this.provincia.enable();
     else this.provincia.disable();
-    this.distrito.setValue('');
-    this.distrito.disable();
+    if (!distrito) {
+      this.distrito.setValue(null);
+      this.distrito.disable();
+    }
   }
 
   loadDistritos(): void {
