@@ -29,5 +29,6 @@ export const environment = {
       registrarLead: '/api/leadpostulante/registrar'
     }
   },
-  geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json'
+  geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json',
+  api_key_map : 'AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
 };
