@@ -156,7 +156,7 @@ export class InformacionContactoComponent implements OnInit {
 
   activarInputDisabled(): void {
     if (this.direccion.disabled) {
-      this.descBtnUbicacion = 'Modificar';
+      this.descBtnUbicacion = 'Buscar';
       this.direccion.enable();
       this.mapaUbicacionSrv.disabled$.next(false);
     } else {
