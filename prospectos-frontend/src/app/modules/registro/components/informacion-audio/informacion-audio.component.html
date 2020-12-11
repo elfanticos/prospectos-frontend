@@ -13,6 +13,9 @@
               {{auricular.tipoAuricular}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="tipoDispositivo.errors && tipoDispositivo.dirty">
+            <control-messages [control]="tipoDispositivo"></control-messages>
+        </mat-error>
         </mat-form-field>
       </div>
       <div class="m-dispositivos__image">

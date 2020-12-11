@@ -20,6 +20,10 @@ export class StepTwoComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
+    if (!this.registroFormService.formValidStep2) {
+      this.registroFormService.touchedInputStepTwo();
+      return;
+    }
     const body = {
       "operador": "movistar",
       "carga": "35 mb",

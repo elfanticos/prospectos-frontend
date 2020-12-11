@@ -133,16 +133,13 @@ export class RegistroFormService {
   }
 
   private _buildInfoAudio(): FormGroup {
-    return this._buildInfoDispositivo();
-  }
-
-  private _buildInfoDispositivo(): FormGroup {
     return this._fb.group({
-      tipoDispositivo: ['JACK', [Validators.required]],
+      tipoDispositivo: [null, [Validators.required]],
       file: [null, [Validators.required]],
       extension: [null, [Validators.required]]
     });
   }
+
 
   private _buildInfoPc(): FormGroup {
     return this._fb.group({
@@ -200,5 +197,48 @@ export class RegistroFormService {
     return {
       ...this.formInfoPc.value
     }
+  }
+
+  touchedInputStepOne(): void {
+    console.log('touchedInputStepOne');
+    this.formInfoPersonal.markAllAsTouched();
+    this.formInfoPersonal.controls['nombresPostulante'].markAsDirty();
+    this.formInfoPersonal.controls['apellidosPostulante'].markAsDirty();
+    this.formInfoPersonal.controls['fecNacimiento'].markAsDirty();
+    this.formInfoPersonal.controls['sexo'].markAsDirty();
+    this.formInfoPersonal.controls['tipoDocumento'].markAsDirty();
+    this.formInfoPersonal.controls['numeroDocumento'].markAsDirty();
+
+    this.formInfoContacto.markAllAsTouched();
+    this.formInfoContacto.controls['telefono'].markAsDirty();
+    this.formInfoContacto.controls['correo'].markAsDirty();
+    this.formInfoContacto.controls['pais'].markAsDirty();
+    this.formInfoContacto.controls['departamento'].markAsDirty();
+    this.formInfoContacto.controls['provincia'].markAsDirty();
+    this.formInfoContacto.controls['distrito'].markAsDirty();
+    this.formInfoContacto.controls['direccion'].markAsDirty();
+  }
+
+  touchedInputStepTwo(): void {
+    console.log('touchedInputStepTwo');
+    // this.formInfoConectividad
+  }
+
+  touchedInputStepThree(): void {
+    console.log('touchedInputStepThree');
+    this.formInfoAudio.markAllAsTouched();
+    this.formInfoAudio.controls['tipoDispositivo'].markAsDirty();
+    this.formInfoAudio.controls['file'].markAsDirty();
+    this.formInfoAudio.controls['extension'].markAsDirty();
+  }
+
+  touchedInputStepFour(): void {
+    this.formInfoPc.markAllAsTouched();
+    this.formInfoPc.controls['procesador'].markAsDirty();
+    this.formInfoPc.controls['memoriaRam'].markAsDirty();
+    this.formInfoPc.controls['discoDuro'].markAsDirty();
+    this.formInfoPc.controls['sistOperativo'].markAsDirty();
+    this.formInfoPc.controls['extensionFile'].markAsDirty();
+    this.formInfoPc.controls['file'].markAsDirty();
   }
 }

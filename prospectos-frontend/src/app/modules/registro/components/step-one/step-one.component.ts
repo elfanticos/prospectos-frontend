@@ -22,6 +22,10 @@ export class StepOneComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
+    if(!this.registroFormService.formValidStep1) {
+      this.registroFormService.touchedInputStepOne();
+      return;
+    }
     const values = this.registroFormService.valuesFormStepOne;
     this._registroProspectoService.registrarProspecto(values).subscribe(data => {
       console.log(data);

@@ -27,6 +27,10 @@ export class StepFourComponent implements OnInit {
   finalizarRegistro(): void {
     // this.registrarLead();
     // return;
+    if (!this.registroFormService.formValidStepConfirm) {
+      this.registroFormService.touchedInputStepFour();
+      return;
+    }
     const values = this.registroFormService.valuesFormStepFour;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       console.log(data);

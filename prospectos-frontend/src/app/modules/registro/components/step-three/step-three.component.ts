@@ -20,6 +20,10 @@ export class StepThreeComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
+    if (!this.registroFormService.formValidStep3) {
+      this.registroFormService.touchedInputStepThree();
+      return;
+    }
     console.log(this.registroFormService.valuesFormStepThree);
     this._registroProspectoService.registrarDispositivos(this.registroFormService.valuesFormStepThree).subscribe(data => {
       console.log(data);
@@ -28,3 +32,4 @@ export class StepThreeComponent implements OnInit {
   }
 
 }
+ 

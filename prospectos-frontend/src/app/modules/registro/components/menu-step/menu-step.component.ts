@@ -28,4 +28,19 @@ export class MenuStepComponent implements OnInit {
     return this._registroFormService.formValidStep3;
   }
 
+  touchedInput(paso: string): void {
+    console.log('activeValidators =>', paso);
+    switch (paso) {
+      case PASOS.PASO_1:
+        this._registroFormService.touchedInputStepOne();
+        break;
+      case PASOS.PASO_2:
+        this._registroFormService.touchedInputStepTwo();
+        break;
+      case PASOS.PASO_3:
+        this._registroFormService.touchedInputStepThree();
+        break;
+    }
+  }
+
 }
