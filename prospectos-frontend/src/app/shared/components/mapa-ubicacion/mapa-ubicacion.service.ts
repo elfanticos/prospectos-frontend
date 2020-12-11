@@ -18,7 +18,7 @@ export class MapaUbicacionService {
   GeoCodeDireccion(lat: number, lng: number): Promise<any> {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
-      let url = `${environment.geolocalization}?latlng=${lat},lng&key=${environment.api_key_map}`;
+      let url = `${environment.geolocalization}?latlng=${lat},${lng}&key=${environment.api_key_map}`;
       xhr.open('GET', url);
       xhr.onreadystatechange = function (aEvt) {
         if (xhr.readyState == 4) {
