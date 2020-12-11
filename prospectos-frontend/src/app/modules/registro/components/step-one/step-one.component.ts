@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SnackBarService } from '@app/core/services/snackbar.service';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -13,7 +14,8 @@ export class StepOneComponent implements OnInit {
   constructor(
     public registroFormService: RegistroFormService,
     private _route: Router,
-    private _registroProspectoService: RegistroProspectoService
+    private _registroProspectoService: RegistroProspectoService,
+    private _snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,8 @@ export class StepOneComponent implements OnInit {
         localStorage.setItem('stepOne', JSON.stringify(values));
         localStorage.setItem('idPostulante', String(data.idPostulante));
         this._route.navigate([`${stepIndex}`]);
+      } else {
+        this._snackBarService.show({message: data.msg});
       }
     }, err => {
       console.log(err);

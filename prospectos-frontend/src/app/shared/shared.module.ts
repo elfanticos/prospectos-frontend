@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CsLetterDirective } from './directives/cs-letter.directive';
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { CsLetterDirective } from './directives/cs-letter.directive';
   MatSelectModule,
   MatRadioModule,
   MatCheckboxModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSnackBarModule
   ],
   declarations: [
     MapaUbicacionComponent,
@@ -47,7 +49,8 @@ import { CsLetterDirective } from './directives/cs-letter.directive';
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     ModalConfirmComponent
