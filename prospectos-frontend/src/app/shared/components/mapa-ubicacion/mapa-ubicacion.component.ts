@@ -142,7 +142,7 @@ export class MapaUbicacionComponent implements OnInit {
         lat,
         lng,
         iconUrl: this.icon_map,
-        label: 'Mi sede',
+        label: 'Mi hogar',
         draggable: true
       })
     }
@@ -152,7 +152,7 @@ export class MapaUbicacionComponent implements OnInit {
         lat,
         lng,
         iconUrl: this.icon_map,
-        label: 'Mi sede',
+        label: 'Mi hogar',
         draggable: true
       }
     }
