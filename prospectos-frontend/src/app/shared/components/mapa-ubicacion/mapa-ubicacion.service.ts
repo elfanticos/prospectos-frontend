@@ -13,14 +13,12 @@ export class MapaUbicacionService {
   direccionCoordenates:BehaviorSubject<any> = new BehaviorSubject(null);
   disabled$: Subject<any> = new Subject();
   constructor(
-    private _http: ApiService,
-    private _globals: Globals
   ) { }
 
   GeoCodeDireccion(lat: number, lng: number): Promise<any> {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
-      let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
+      let url = `${environment.geolocalization}?latlng=${lat},lng&key=${environment.api_key_map}`;
       xhr.open('GET', url);
       xhr.onreadystatechange = function (aEvt) {
         if (xhr.readyState == 4) {
@@ -38,7 +36,7 @@ export class MapaUbicacionService {
   GeoCodeLatLng(direccion:string): Promise<any> {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
-      let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+direccion+'&key=AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
+      let url = `${environment.geolocalization}?address=${direccion}&key=${environment.api_key_map}`
       xhr.open('GET', url);
       xhr.onreadystatechange = function (aEvt) {
         if (xhr.readyState == 4) {

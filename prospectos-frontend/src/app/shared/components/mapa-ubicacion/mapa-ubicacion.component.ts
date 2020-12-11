@@ -179,10 +179,13 @@ export class MapaUbicacionComponent implements OnInit {
       if (!navigator.geolocation) {
         return;
       }
-      let success = (position) => {
+      let success = async (position) => {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         this.setPosition(latitude, longitude, false);
+        let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+latitude, +longitude);
+        let [direccion] = GeoCodeDireccion.results;
+        this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: latitude, lng: longitude });
       };
 
       function error(err) {
@@ -221,7 +224,6 @@ export class MapaUbicacionComponent implements OnInit {
 
   async mapClicked($event: MouseEvent) {
     this.activeButton($event.coords.lat, $event.coords.lng);
-    // console.log("🚀 ~ file: mapa-ubicacion.component.ts ~ line 198 ~ MapaUbicacionComponent ~ mapClicked ~ $event.coords", $event.coords);
     let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
     let [direccion] = GeoCodeDireccion.results;
     this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: $event.coords.lat, lng: $event.coords.lng });
@@ -240,11 +242,22 @@ export class MapaUbicacionComponent implements OnInit {
     };
   }
 
-  markerDragEnd(m: marker, $event: MouseEvent) {
+  async markerDragEnd(m: marker, $event: MouseEvent) {
     this.activeButton($event.coords.lat, $event.coords.lng);
+    let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+$event.coords.lat, +$event.coords.lng);
+    let [direccion] = GeoCodeDireccion.results;
+    this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: $event.coords.lat, lng: $event.coords.lng });
     this.coordenates = {
       lat: $event.coords.lat,
       lng: $event.coords.lng
+    };
+    this.markers[0] = {
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      iconUrl: this.icon_map,
+      draggable: true,
+      label: 'Mi hogar',
+      // animation : this.animation.bounce
     };
   }
 
