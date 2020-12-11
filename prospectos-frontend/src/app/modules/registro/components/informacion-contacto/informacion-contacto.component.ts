@@ -21,7 +21,6 @@ export class InformacionContactoComponent implements OnInit {
   distritos: IDistrito[] = [];
   // departamentos
   infoContactoForm: FormGroup;
-  descBtnUbicacion: string = 'Cambiar';
   constructor(
     private _registroFormService: RegistroFormService,
     private _comboService: CombosService,
@@ -156,11 +155,9 @@ export class InformacionContactoComponent implements OnInit {
 
   activarInputDisabled(): void {
     if (this.direccion.disabled) {
-      this.descBtnUbicacion = 'Buscar';
       this.direccion.enable();
       this.mapaUbicacionSrv.disabled$.next(false);
     } else {
-      this.descBtnUbicacion = 'Cambiar';
       this.direccion.disable();
       this.mapaUbicacionSrv.disabled$.next(true);
       // this.pintarMapa();
