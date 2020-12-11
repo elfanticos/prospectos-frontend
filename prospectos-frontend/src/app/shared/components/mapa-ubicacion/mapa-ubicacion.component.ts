@@ -113,6 +113,7 @@ export class MapaUbicacionComponent implements OnInit {
       let [data] = GeoCodeDireccion.results;
       let latlng = data.geometry.location;
       this.setPosition(latlng.lat, latlng.lng, false);
+      this.mapaUbicacionSrv.direccionState.next({ direccion: a, ...latlng });
       // this.coordenates = {
       //   lat: latlng.lat,
       //   lng: latlng.lng
