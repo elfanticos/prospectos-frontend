@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/core/services';
+import { SharedConstants } from '@app/shared/shared.constants';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   service: boolean = false;
   msj: string = '';
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     private _authenticationService: AuthenticationService,
     private _router: Router,

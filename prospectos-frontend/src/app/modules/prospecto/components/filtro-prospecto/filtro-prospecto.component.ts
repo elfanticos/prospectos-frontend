@@ -22,6 +22,7 @@ export class FiltroProspectoComponent implements OnInit {
   vDescargas: IVelocidadDescarga[] = [];
   auriculares: IAuricular[] = [];
   proyectos: IProyecto[] = [];
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public adminProspectoFormService: AdminProspectoFormService,
     private _comboService: CombosService,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SnackBarService } from '@app/core/services/snackbar.service';
+import { SharedConstants } from '@app/shared/shared.constants';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -10,7 +11,7 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
   styleUrls: ['./step-one.component.css']
 })
 export class StepOneComponent implements OnInit {
-
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public registroFormService: RegistroFormService,
     private _route: Router,

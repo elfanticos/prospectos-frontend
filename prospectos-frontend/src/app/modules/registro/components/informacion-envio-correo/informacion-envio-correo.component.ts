@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedConstants } from '@app/shared/shared.constants';
 
 @Component({
   selector: 'app-informacion-envio-correo',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./informacion-envio-correo.component.css']
 })
 export class InformacionEnvioCorreoComponent implements OnInit {
-
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     private _router: Router
   ) { }

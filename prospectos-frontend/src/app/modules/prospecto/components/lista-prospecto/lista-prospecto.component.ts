@@ -1,4 +1,5 @@
 import { Component, Directive, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { SharedConstants } from '@app/shared/shared.constants';
 interface Country {
   id: number;
   name: string;
@@ -151,6 +152,7 @@ export class NgbdSortableHeader {
 })
 export class ListaProspectoComponent implements OnInit {
   prospectos = PROSPECTOS;
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   constructor() { }
 

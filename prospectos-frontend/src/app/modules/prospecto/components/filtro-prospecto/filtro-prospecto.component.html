@@ -58,8 +58,7 @@
                         <input class="form-control" placeholder="dd/mm/yyyy" name="dateInit" ngbDatepicker
                             formControlName="fecIniRegistro" #dateInit="ngbDatepicker">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary calendar" (click)="dateInit.toggle()"
-                                type="button"></button>
+                            <button class="btn btn-outline-secondary calendar" (click)="dateInit.toggle()" type="button"></button>
                         </div>
                     </div>
                 </div>
@@ -80,6 +79,6 @@
     </div>
     <div class="m-actions text-right">
         <button type="button" class="m-button"><span>BUSCAR</span><img
-                src="assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+                [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
     </div>
 </div>

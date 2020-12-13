@@ -9,9 +9,7 @@ export class SharedConstants {
     }
     static get ICONS() {
         return {
-            ICON_MAP_INST: 'assets/images/icons/icon-map-inst.png',
-            ICON_MAP_PEOPLE_RHHH: 'assets/images/icons/icon-map-people_rrhh.png',
-            ICON_MAP_PEOPLE_MATRI: 'assets/images/icons/icon-map-people_matri.png',
+            ICON_ARROW_BUTTON: 'assets/images/iconos/icon-arrow-button.svg',
         };
     }
 

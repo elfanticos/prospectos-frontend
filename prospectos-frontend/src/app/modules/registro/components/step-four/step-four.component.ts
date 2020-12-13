@@ -3,6 +3,7 @@ import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 import { RegistroLeadService } from '../../services/registro-lead.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { SharedConstants } from '@app/shared/shared.constants';
 
 @Component({
   selector: 'app-step-four',
@@ -12,7 +13,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class StepFourComponent implements OnInit {
 
   finalizarActivate: boolean = false;
-
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public registroFormService: RegistroFormService,
     private _registroProspectoService: RegistroProspectoService,

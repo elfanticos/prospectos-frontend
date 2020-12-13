@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedConstants } from '@app/shared/shared.constants';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,6 +12,7 @@ export class ModalConfirmComponent {
   @Input() name;
   isDisabled = true;
   formConfirm: FormGroup;
+  ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public activeModal: NgbActiveModal,
     public _fb: FormBuilder
