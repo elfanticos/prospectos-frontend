@@ -24,6 +24,7 @@ import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/da
 import { CombosService } from './services/combos.service';
 import { RegistroProspectoService } from './services/registro-prospecto.service';
 import { RegistroLeadService } from './services/registro-lead.service';
+import { AdminProspectoService } from './services/admin-prospecto.service';
 import { MenuStepComponent } from './components/menu-step/menu-step.component';
 
 
@@ -57,6 +58,7 @@ import { MenuStepComponent } from './components/menu-step/menu-step.component';
     CombosService,
     RegistroProspectoService,
     RegistroLeadService,
+    AdminProspectoService,
     { provide: LOCALE_ID, useValue: 'es-PR' } ,
     [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }], // define custom NgbDatepickerI18n provider
     {provide: NgbDateAdapter, useClass: CustomAdapter},
