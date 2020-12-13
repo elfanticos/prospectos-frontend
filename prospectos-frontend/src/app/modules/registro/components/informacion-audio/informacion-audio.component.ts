@@ -30,6 +30,7 @@ export class InformacionAudioComponent implements OnInit {
   get tipoDispositivo() { return this.infoAudioForm.controls['tipoDispositivo']; }
   get file() { return this.infoAudioForm.controls['file']; }
   get extension() { return this.infoAudioForm.controls['extension']; }
+  get nameFile() { return this.infoAudioForm.controls['nameFile']; }
 
   public submitValue(): void {
     this.submittedValue.emit();
@@ -57,7 +58,8 @@ export class InformacionAudioComponent implements OnInit {
 
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Seleccione un PDF');
       return;
     }
@@ -65,24 +67,28 @@ export class InformacionAudioComponent implements OnInit {
     // Obtener el nombre del archivo subido
     let nameFile: string = this.filesToUpload[0].name;
     if (nameFile.split('.')[1] == undefined) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Archivo incorrecto sin extension');
       return;
     }
 
     // if (['pdf'].indexOf(this.filesToUpload[0].type.split('/')[1].toLowerCase()) < 0) {
-    //   this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
     //   console.log('Seleccione un archivo de tipo .PDF');
     //   return;
     // }
 
     if (this.filesToUpload[0].size / 1024 / 1024 >= 2) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Seleccione un archivo menor a 2MB');
     }
     /*******************************************************/
 
-    this.inputText.nativeElement.value = nameFile;
+    // this.inputText.nativeElement.value = nameFile;
+    this.nameFile.setValue(nameFile);
     this.file.setValue(this.filesToUpload[0]);
     this.extension.setValue(nameFile.split('.')[1]);
     // Renderizar el archivo subido para obtener el base64

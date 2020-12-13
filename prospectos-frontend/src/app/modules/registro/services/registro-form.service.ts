@@ -136,7 +136,8 @@ export class RegistroFormService {
     return this._fb.group({
       tipoDispositivo: [null, [Validators.required]],
       file: [null, [Validators.required]],
-      extension: [null, [Validators.required]]
+      extension: [null, [Validators.required]],
+      nameFile: [null, [Validators.required]],
     });
   }
 
@@ -148,7 +149,8 @@ export class RegistroFormService {
       discoDuro: ['', [Validators.required]],
       sistOperativo: ['', [Validators.required]],
       extensionFile: [null, [Validators.required]],
-      file: [null, [Validators.required]]
+      file: [null, [Validators.required]],
+      nameFile: [null, [Validators.required]],
     });
   }
 
@@ -230,6 +232,7 @@ export class RegistroFormService {
     this.formInfoAudio.controls['tipoDispositivo'].markAsDirty();
     this.formInfoAudio.controls['file'].markAsDirty();
     this.formInfoAudio.controls['extension'].markAsDirty();
+    this.formInfoAudio.controls['nameFile'].markAsDirty();
   }
 
   touchedInputStepFour(): void {
@@ -240,5 +243,6 @@ export class RegistroFormService {
     this.formInfoPc.controls['sistOperativo'].markAsDirty();
     this.formInfoPc.controls['extensionFile'].markAsDirty();
     this.formInfoPc.controls['file'].markAsDirty();
+    this.formInfoPc.controls['nameFile'].markAsDirty();
   }
 }

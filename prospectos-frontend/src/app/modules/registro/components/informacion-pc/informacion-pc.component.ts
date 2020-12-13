@@ -47,6 +47,7 @@ export class InformacionPcComponent implements OnInit {
   get sistOperativo() { return this.infoPcForm.controls['sistOperativo']; }
   get file() { return this.infoPcForm.controls['file']; }
   get extensionFile() { return this.infoPcForm.controls['extensionFile']; }
+  get nameFile() { return this.infoPcForm.controls['nameFile']; }
 
   loadProcesadores(): void {
     this._combosService.comboProcesador().subscribe(procesadores => {
@@ -100,7 +101,8 @@ export class InformacionPcComponent implements OnInit {
 
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Seleccione un PDF');
       return;
     }
@@ -108,7 +110,8 @@ export class InformacionPcComponent implements OnInit {
     // Obtener el nombre del archivo subido
     let nameFile: string = this.filesToUpload[0].name;
     if (nameFile.split('.')[1] == undefined) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Archivo incorrecto sin extension');
       return;
     }
@@ -121,11 +124,13 @@ export class InformacionPcComponent implements OnInit {
 
     if (this.filesToUpload[0].size / 1024 / 1024 >= 2) {
       this.fileTxt.nativeElement.value = "";
+      this.nameFile.setValue('');
       console.log('Seleccione un archivo menor a 2MB');
     }
     /*******************************************************/
 
-    this.inputText.nativeElement.value = nameFile;
+    // this.inputText.nativeElement.value = nameFile;
+    this.nameFile.setValue(nameFile);
     console.log(this.filesToUpload);
     this.file.setValue(this.filesToUpload[0]);
     this.extensionFile.setValue(nameFile.split('.')[1]);

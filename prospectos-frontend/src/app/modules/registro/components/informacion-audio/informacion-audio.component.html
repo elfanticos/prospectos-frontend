@@ -25,11 +25,11 @@
         <div class="m-input--adjuntar" (click)="adjuntarImagen()">
           <mat-form-field appearance="outline" class="m-disabled">
             <mat-label>Adjuntar imagen de aud&iacute;fonos</mat-label>
-            <input matInput type="text" placeholder="" #inputText formControlName="file" />
+            <input matInput type="text" placeholder="" #inputText formControlName="nameFile" />
+            <mat-error *ngIf="nameFile.errors && nameFile.dirty">
+              <control-messages [control]="nameFile"></control-messages>
+            </mat-error>
           </mat-form-field>
-          <div *ngIf="file.errors && file.dirty">
-            <control-messages [control]="file"></control-messages>
-          </div>
         </div>
         <img src="assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
       </div>
