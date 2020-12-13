@@ -15,6 +15,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CsLetterDirective } from './directives/cs-letter.directive';
+import { BlurOnDirective } from './directives/cs-blur.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,7 +37,8 @@ import { CsLetterDirective } from './directives/cs-letter.directive';
     ModalConfirmComponent,
     ControlMessagesComponent,
     CsNumberDirective,
-    CsLetterDirective
+    CsLetterDirective,
+    BlurOnDirective,
   ],
   exports: [
     MapaUbicacionComponent,
@@ -44,6 +46,7 @@ import { CsLetterDirective } from './directives/cs-letter.directive';
     ControlMessagesComponent,
     CsNumberDirective,
     CsLetterDirective,
+    BlurOnDirective,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

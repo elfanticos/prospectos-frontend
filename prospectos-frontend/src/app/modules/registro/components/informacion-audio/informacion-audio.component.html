@@ -15,7 +15,7 @@
           </mat-select>
           <mat-error *ngIf="tipoDispositivo.errors && tipoDispositivo.dirty">
             <control-messages [control]="tipoDispositivo"></control-messages>
-        </mat-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="m-dispositivos__image">
@@ -25,10 +25,13 @@
         <div class="m-input--adjuntar" (click)="adjuntarImagen()">
           <mat-form-field appearance="outline">
             <mat-label>Adjuntar imagen de aud&iacute;fonos</mat-label>
-            <input matInput type="text" placeholder="" #inputText disabled />
+            <input matInput type="text" placeholder="" #inputText formControlName="file" />
+            <mat-error *ngIf="file.errors && file.dirty">
+              <control-messages [control]="file"></control-messages>
+            </mat-error>
           </mat-form-field>
         </div>
-        <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()"/>
+        <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
       </div>
     </div>
   </div>

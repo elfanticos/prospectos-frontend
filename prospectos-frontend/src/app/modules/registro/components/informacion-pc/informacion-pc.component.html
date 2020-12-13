@@ -1,9 +1,9 @@
-<section class="m-section p-20">
+<section class="m-section p-20" [formGroup]="infoPcForm">
     <div class="m-container min-width">
         <div class="m-title">
             <h2>INFORMACI&Oacute;N DE EQUIPO</h2>
         </div>
-        <div class="m-content" [formGroup]="infoPcForm">
+        <div class="m-content">
             <div class="m-grid--2">
                 <div>
                     <mat-form-field appearance="outline">
@@ -86,10 +86,13 @@
             <div class="m-input--adjuntar" (click)="adjuntarImagen()">
                 <mat-form-field appearance="outline">
                     <mat-label>Adjuntar imagen</mat-label>
-                    <input matInput type="text" placeholder="" #inputText disabled />
+                    <input matInput type="text" placeholder="" #inputText formControlName="file" />
+                    <mat-error *ngIf="file.errors && file.dirty">
+                        <control-messages [control]="file"></control-messages>
+                    </mat-error>
                 </mat-form-field>
             </div>
-            <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()"/>
+            <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
         </div>
     </div>
 </section>

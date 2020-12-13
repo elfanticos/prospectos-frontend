@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IAuricular } from '../../entities/combos/auricular';
 import { CombosService } from '../../services/combos.service';
@@ -15,6 +15,7 @@ export class InformacionAudioComponent implements OnInit {
   @ViewChild('fileTxt') fileTxt: ElementRef;
   @ViewChild('inputText') inputText: ElementRef;
   filesToUpload: Array<File>;
+  public readonly submittedValue: EventEmitter<void>;
   constructor(
     private _registroFormService: RegistroFormService,
     private _comboService: CombosService
@@ -30,6 +31,10 @@ export class InformacionAudioComponent implements OnInit {
   get file() { return this.infoAudioForm.controls['file']; }
   get extension() { return this.infoAudioForm.controls['extension']; }
 
+  public submitValue(): void {
+    this.submittedValue.emit();
+  }
+
   /**
    * @author jmeza
    */
@@ -44,7 +49,6 @@ export class InformacionAudioComponent implements OnInit {
 
     // Disparar el evento click al input file
     this.fileTxt.nativeElement.dispatchEvent(event);
-
   }
 
   fileChangeEvent(fileInput: any): void {
