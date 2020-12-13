@@ -16,7 +16,10 @@ export class StepTwoComponent implements OnInit {
     private _registroProspectoService: RegistroProspectoService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this._registroProspectoService.dataSpeedTest().subscribe(data => {
+      console.log(data);
+    });
   }
 
   redirectNextStep(stepIndex: number): void {

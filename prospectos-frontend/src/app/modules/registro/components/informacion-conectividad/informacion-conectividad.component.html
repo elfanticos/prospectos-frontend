@@ -3,9 +3,14 @@
         <div class="m-title">
             <h2>PROBAR CONECTIVIDAD</h2>
         </div>
-        <div class="m-actions text-center">
-            <button type="button" class="m-button"><span>REALIZAR TEST</span><img src="../../../../../assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos"></button>
+        <div class="m-actions text-center" *ngIf="!activeTest">
+            <button type="button" class="m-button" (click)="activeTest =! activeTest;">
+                <span>REALIZAR TEST</span>
+                <img [src]="btnImg" alt="icono-button-prospectos">
+            </button>
         </div>
-        <iframe width="100%" height="650px" frameborder="0" src="https://fast.com/"></iframe>
+        <div *ngIf="activeTest">
+            <iframe width="100%" height="650px" frameborder="0" src="https://fast.com/"></iframe>
+        </div>
     </div>
 </section>

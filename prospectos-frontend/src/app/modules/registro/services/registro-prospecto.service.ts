@@ -36,7 +36,7 @@ export class RegistroProspectoService {
     const formData = new FormData();
     formData.append('file', body.file);
     console.log('formData => ', formData);
-    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarDispositivos}`, formData, {params});
+    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarDispositivos}`, formData, { params });
   }
 
   registrarEquipo(body: any): Observable<any> {
@@ -56,7 +56,7 @@ export class RegistroProspectoService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`, updBody, {headers});
+    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipo}`, updBody, { headers });
   }
 
   registrarEquipoImg(body: any): Observable<any> {
@@ -65,7 +65,20 @@ export class RegistroProspectoService {
       .set('EXTENCION-FILE', body.extensionImg);
     const formData = new FormData()
     formData.append('file', body.file);
-    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipoImg}`, formData, {params});
+    return this._httpClient.post<any>(`${environment.api}${environment.apiService.postulante.registrarEquipoImg}`, formData, { params });
   }
+
+  dataSpeedTest(): Observable<any> {
+    const params = new HttpParams()
+      .set('https', 'true')
+      .set('token', 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm')
+      .set('urlCount', '5');
+    let headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+    return this._httpClient.get<any>('http://api.fast.com/netflix/speedtest/v2', { params, headers });
+  }
+
 
 }
