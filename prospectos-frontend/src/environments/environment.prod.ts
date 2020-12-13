@@ -27,6 +27,11 @@ export const environment = {
     },
     leadpostulante: {
       registrarLead: '/api/leadpostulante/registrar'
+    },
+    admin: {
+      buscarProspecto: '/api/admin/buscar-prospectos',
+      detalleProspecto: '/api/admin/detalle-prospecto',
+      listarProyecto: '/api/admin/listar-proyectos'
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json',
