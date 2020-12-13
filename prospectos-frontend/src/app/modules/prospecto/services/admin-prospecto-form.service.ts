@@ -26,6 +26,7 @@ export class AdminProspectoFormService {
             numeroDocumento: null,
             pais: null,
             departamento: null,
+            provincia: null,
             distrito: null,
             descarga: null,
             carga: null,
@@ -33,5 +34,11 @@ export class AdminProspectoFormService {
             fecIniRegistro: null,
             fecFinRegistro: null
         });
+    }
+
+    get valuesFormSearch(): any {
+        return {
+            ...this.formSearch.value
+        }
     }
 }

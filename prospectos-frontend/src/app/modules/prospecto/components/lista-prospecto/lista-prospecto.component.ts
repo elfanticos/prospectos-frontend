@@ -1,121 +1,10 @@
-import { Component, Directive, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { SharedConstants } from '@app/shared/shared.constants';
-interface Country {
-  id: number;
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
+import { Subscription } from 'rxjs';
+import { IProspecto } from '../../models/prospecto';
+import { AdminProspectoService } from '../../services/admin-prospecto.service';
 
-const PROSPECTOS: any [] = [
-  {
-    proyecto: 'Atención al cliente-Campaña Prima',
-    nombre: 'María Jóse',
-    apellido: 'Ramirez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345678',
-    distrito: 'San Isidro',
-    descaga: '33.5 Mb/s',
-    carga: '120 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '2'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Prima',
-    nombre: 'María Jóse',
-    apellido: 'Ramirez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345678',
-    distrito: 'San Isidro',
-    descaga: '33.5 Mb/s',
-    carga: '120 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '2'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Prima',
-    nombre: 'María Jóse',
-    apellido: 'Ramirez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345678',
-    distrito: 'San Isidro',
-    descaga: '33.5 Mb/s',
-    carga: '120 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '2'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Prima',
-    nombre: 'María Jóse',
-    apellido: 'Ramirez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345678',
-    distrito: 'San Isidro',
-    descaga: '33.5 Mb/s',
-    carga: '120 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '2'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Prima',
-    nombre: 'María Jóse',
-    apellido: 'Ramirez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345678',
-    distrito: 'San Isidro',
-    descaga: '33.5 Mb/s',
-    carga: '120 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '2'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Segunda',
-    nombre: 'Jóse María',
-    apellido: 'Perez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345677',
-    distrito: 'San Martin',
-    descaga: '32.5 Mb/s',
-    carga: '140 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '40'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Segunda',
-    nombre: 'Jóse María',
-    apellido: 'Perez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345677',
-    distrito: 'San Martin',
-    descaga: '32.5 Mb/s',
-    carga: '140 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '40'
-  },
-  {
-    proyecto: 'Atención al cliente-Campaña Segunda',
-    nombre: 'Jóse María',
-    apellido: 'Perez',
-    tipo_documento: 'DNI',
-    nro_documento: '12345677',
-    distrito: 'San Martin',
-    descaga: '32.5 Mb/s',
-    carga: '140 Mb/s',
-    auricular: 'USB',
-    fecha_registro: '14/09/2020',
-    cantidad_post: '40'
-  }
-];
-
-export type SortColumn = keyof Country | '';
+export type SortColumn = keyof IProspecto | '';
 export type SortDirection = 'asc' | 'desc' | '';
 const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
 
@@ -150,13 +39,25 @@ export class NgbdSortableHeader {
   templateUrl: './lista-prospecto.component.html',
   styleUrls: ['./lista-prospecto.component.css']
 })
-export class ListaProspectoComponent implements OnInit {
-  prospectos = PROSPECTOS;
+export class ListaProspectoComponent implements OnInit, OnDestroy {
+  prospectos: IProspecto[] = [];
+  prospectosBackup: IProspecto[] = [];
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
-  constructor() { }
+  subListProspectos: Subscription = new Subscription();
+  constructor(
+    private _adminProspectoService: AdminProspectoService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.subListProspectos = this._adminProspectoService.listProspectos$.subscribe(data => {
+      this.prospectosBackup = data || [];
+      this.prospectos = JSON.parse(JSON.stringify(this.prospectosBackup));
+    });
+  }
+  
+  ngOnDestroy(): void {
+    this.subListProspectos.unsubscribe();
   }
 
   onSort({column, direction}: SortEvent) {
@@ -168,11 +69,11 @@ export class ListaProspectoComponent implements OnInit {
       }
     });
 
-    // sorting countries
+    // sorting
     if (direction === '' || column === '') {
-      this.prospectos = PROSPECTOS;
+      this.prospectos = this.prospectosBackup;
     } else {
-      this.prospectos = [...PROSPECTOS].sort((a, b) => {
+      this.prospectos = [...this.prospectosBackup].sort((a, b) => {
         const res = compare(a[column], b[column]);
         return direction === 'asc' ? res : -res;
       });

@@ -22,7 +22,7 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Velocidad de descarga</mat-label>
                     <mat-select formControlName="descarga">
-                        <mat-option *ngFor="let v of vDescargas" [value]="v.id">{{v.descripcion}}</mat-option>
+                        <mat-option *ngFor="let v of vDescargas" [value]="v.descripcion">{{v.descripcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -30,7 +30,7 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Velocidad de carga</mat-label>
                     <mat-select formControlName="carga">
-                        <mat-option *ngFor="let v of vCargas" [value]="v.id">{{v.descripcion}}</mat-option>
+                        <mat-option *ngFor="let v of vCargas" [value]="v.descripcion">{{v.descripcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -53,9 +53,60 @@
                 </mat-form-field>
             </div>
             <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Pa&iacute;s</mat-label>
+                    <mat-select formControlName="pais" required (selectionChange)="selectedPais()">
+                        <mat-option>Pa&iacute;s</mat-option>
+                        <mat-option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="pais.errors && pais.dirty">
+                        <control-messages [control]="pais"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Departamento</mat-label>
+                    <mat-select formControlName="departamento" required (selectionChange)="selectedDepartamento()">
+                        <mat-option>Departamento</mat-option>
+                        <mat-option *ngFor="let d of departamentos;" [value]="d.idDepartamento">
+                            {{d.nombreDepartamento}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="departamento.errors && departamento.dirty">
+                        <control-messages [control]="departamento"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select formControlName="provincia" required (selectionChange)="selectedProvincia()">
+                        <mat-option>Provincia</mat-option>
+                        <mat-option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="provincia.errors && provincia.dirty">
+                        <control-messages [control]="provincia"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Distrito</mat-label>
+                    <mat-select formControlName="distrito" required>
+                        <mat-option>Distrito</mat-option>
+                        <mat-option *ngFor="let d of distritos;" [value]="d.idDistrito">{{d.nombreDistrito}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="distrito.errors && distrito.dirty">
+                        <control-messages [control]="distrito"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
                 <div class="m-input m-0">
                     <div class="input-group">
-                        <input class="form-control" placeholder="dd/mm/yyyy" name="dateInit" ngbDatepicker
+                        <input class="form-control" placeholder="Fecha Inicio" name="dateInit" ngbDatepicker
                             formControlName="fecIniRegistro" #dateInit="ngbDatepicker">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary calendar" (click)="dateInit.toggle()" type="button"></button>
@@ -66,7 +117,7 @@
             <div class="m-textfield__input">
                 <div class="m-input m-0">
                     <div class="input-group">
-                        <input class="form-control" placeholder="dd/mm/yyyy" name="dateEnd" ngbDatepicker
+                        <input class="form-control" placeholder="Fecha Fin" name="dateEnd" ngbDatepicker
                             formControlName="fecFinRegistro" #dateEnd="ngbDatepicker">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary calendar" (click)="dateEnd.toggle()"
@@ -78,7 +129,9 @@
         </div>
     </div>
     <div class="m-actions text-right">
-        <button type="button" class="m-button"><span>BUSCAR</span><img
-                [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
+        <button type="button" class="m-button" (click)="filtrarLista()">
+            <span>BUSCAR</span>
+            <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+        </button>
     </div>
 </div>
