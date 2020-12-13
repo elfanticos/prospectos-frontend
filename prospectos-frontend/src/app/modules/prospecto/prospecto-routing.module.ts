@@ -7,11 +7,12 @@ import { DetalleProspectoComponent } from './pages/detalle-prospecto/detalle-pro
 const routes: Routes = [
   {
     path: 'prospectos',
-    component: FiltroBusquedaComponent
+    component: FiltroBusquedaComponent,
     // canActivate: [AuthGuard]
+  
   },
   {
-    path: 'detalle',
+    path: 'prospectos/:id/detalle',
     component: DetalleProspectoComponent
   }
 ];

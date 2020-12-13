@@ -33,7 +33,9 @@
           <td>{{prospecto.tipoDispositivo}}</td>
           <td>{{prospecto.fecRegistro}}</td>
           <td class="text-center">{{prospecto.numPostulacion}}</td>
-          <td class="text-center"><button type="button" class="m-button--icon"><img src="assets/images/iconos/icon-detalle.svg" /></button></td>
+          <td class="text-center">
+            <button type="button" class="m-button--icon" (click)="loadDetail(prospecto)"><img [src]="ICON_DETALLE" /></button>
+          </td>
         </tr>
       </tbody>
     </table>

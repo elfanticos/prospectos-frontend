@@ -10,6 +10,7 @@ export class SharedConstants {
     static get ICONS() {
         return {
             ICON_ARROW_BUTTON: 'assets/images/iconos/icon-arrow-button.svg',
+            ICON_DETALLE: 'assets/images/iconos/icon-detalle.svg'
         };
     }
 

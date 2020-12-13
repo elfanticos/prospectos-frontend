@@ -1,4 +1,5 @@
 import { Component, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
 import { IProspecto } from '../../models/prospecto';
@@ -45,8 +46,10 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   subListProspectos: Subscription = new Subscription();
+  ICON_DETALLE = SharedConstants.ICONS.ICON_DETALLE;
   constructor(
-    private _adminProspectoService: AdminProspectoService
+    private _adminProspectoService: AdminProspectoService,
+    private _router: Router,
   ) { }
 
   ngOnInit():void {
@@ -80,4 +83,8 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
     }
   }
 
+
+  loadDetail(prospecto: IProspecto) {
+    this._router.navigate([`intranet/prospectos/${prospecto.idPostulante}/detalle`]);
+  }
 }
