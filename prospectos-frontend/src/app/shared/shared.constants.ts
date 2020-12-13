@@ -15,4 +15,18 @@ export class SharedConstants {
         };
     }
 
+    static get COMBOS() {
+        return {
+            SEXO: [
+                { value: 1, desc: 'Masculino' },
+                { value: 2, desc: 'Femenino' },
+                { value: 3, desc: 'Otro' }
+            ],
+            TIPO_DOCUMENTO: [
+                { value: 0, desc: 'DNI' },
+                { value: 1, desc: 'CARNET DE EXTRANJERÍA' },
+            ]
+        }
+    }
+
 }

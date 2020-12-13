@@ -73,10 +73,20 @@ export class RegistroProspectoService {
       .set('https', 'true')
       .set('token', 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm')
       .set('urlCount', '5');
-    let headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
+    let headers = new HttpHeaders()
+      // .set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-Wit')
+      // .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, PUT, OPTIONS')
+      // .set('Access-Control-Allow-Origin', '*')
+      // .set('Access-Control-Allow-Credentials', 'true')
+      // .set('Content-Type', 'application/json')
+      // .set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')
+
+    // headers.append('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-Wit');
+    // headers.append('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, PUT, OPTIONS');
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Credentials', 'true');
+    // headers.append( 'Content-Type', 'application/json');
+
     return this._httpClient.get<any>('https://api.fast.com/netflix/speedtest/v2', { params, headers });
   }
 

@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { ApiService } from './api.service';
-import { env } from 'process';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -16,6 +15,7 @@ export class AuthenticationService {
     constructor(
         private router: Router,
         private _http: ApiService,
+        private _httClient: HttpClient
     ) {
         this.userSubject = new BehaviorSubject</* User */any>(null);
         this.user = this.userSubject.asObservable();
@@ -30,7 +30,11 @@ export class AuthenticationService {
             .set('username', username)
             .set('password', password)
             .set('grant_type', 'password');
-        return this._http.post<any>(`${environment.api}${environment.apiService.oauth.token}`, body);
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'Authorization': 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg='
+        });
+        return this._httClient.post<any>(`${environment.api}${environment.apiService.oauth.token}`, body, {headers});
     }
 
     logout() {

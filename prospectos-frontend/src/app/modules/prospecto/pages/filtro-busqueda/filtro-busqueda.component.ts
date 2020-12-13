@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminProspectoFormService } from '../../services/admin-prospecto-form.service';
 
 @Component({
   selector: 'app-filtro-busqueda',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltroBusquedaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public adminProspectoForm: AdminProspectoFormService
+  ) {
+    this.adminProspectoForm.initForm();
+  }
 
   ngOnInit(): void {
   }

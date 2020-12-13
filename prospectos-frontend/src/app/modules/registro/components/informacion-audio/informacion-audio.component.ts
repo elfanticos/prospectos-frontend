@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IAuricular } from '../../entities/combos/auricular';
-import { CombosService } from '../../services/combos.service';
+import { CombosService } from '../../../../shared/services/combos.service';
 import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({

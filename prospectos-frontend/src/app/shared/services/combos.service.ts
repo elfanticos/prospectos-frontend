@@ -1,24 +1,30 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
+import { IVelocidadCarga } from '@app/modules/registro/entities/combos/velocidad-carga';
+import { IVelocidadDescarga } from '@app/modules/registro/entities/combos/velocidad-descagar';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
-import { IAuricular } from '../entities/combos/auricular';
-import { IDepartamento } from '../entities/combos/departamento';
-import { IDisco } from '../entities/combos/disco';
-import { IDistrito } from '../entities/combos/distrito';
-import { IPais } from '../entities/combos/pais';
-import { IProcesador } from '../entities/combos/procesador';
-import { IProvincia } from '../entities/combos/provincia';
-import { IRam } from '../entities/combos/ram';
-import { ISistema } from '../entities/combos/sistema';
+import { IAuricular } from '../../modules/registro/entities/combos/auricular';
+import { IDepartamento } from '../../modules/registro/entities/combos/departamento';
+import { IDisco } from '../../modules/registro/entities/combos/disco';
+import { IDistrito } from '../../modules/registro/entities/combos/distrito';
+import { IPais } from '../../modules/registro/entities/combos/pais';
+import { IProcesador } from '../../modules/registro/entities/combos/procesador';
+import { IProvincia } from '../../modules/registro/entities/combos/provincia';
+import { IRam } from '../../modules/registro/entities/combos/ram';
+import { ISistema } from '../../modules/registro/entities/combos/sistema';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CombosService {
 
   constructor(
     private _http: ApiService,
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
+    private _localStorageService: LocalStorageService
   ) {
   }
 
@@ -99,6 +105,24 @@ export class CombosService {
       'Content-Type': 'application/json'
     });
     return this._httpClient.get<IAuricular[]>(`${environment.api}${environment.apiService.combos.auricular}`, { headers });
+  }
+
+  comboVelocidadDeCarga(): Observable<IVelocidadCarga[]> {
+    // return this._http.get<IAuricular[]>({path: `${environment.api}${environment.apiService.combos.auricular}`});
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this._localStorageService.get('token')}`
+    });
+    return this._httpClient.get<IVelocidadCarga[]>(`${environment.api}${environment.apiService.combos.carga}`, { headers });
+  }
+
+  comboVelocidadDeDescarga(): Observable<IVelocidadDescarga[]> {
+    // return this._http.get<IAuricular[]>({path: `${environment.api}${environment.apiService.combos.auricular}`});
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this._localStorageService.get('token')}`
+    });
+    return this._httpClient.get<IVelocidadDescarga[]>(`${environment.api}${environment.apiService.combos.descarga}`, { headers });
   }
 }
 

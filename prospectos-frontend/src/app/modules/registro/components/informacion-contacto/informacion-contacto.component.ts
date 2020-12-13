@@ -6,7 +6,7 @@ import { IDepartamento } from '../../entities/combos/departamento';
 import { IDistrito } from '../../entities/combos/distrito';
 import { IPais } from '../../entities/combos/pais';
 import { IProvincia } from '../../entities/combos/provincia';
-import { CombosService } from '../../services/combos.service';
+import { CombosService } from '../../../../shared/services/combos.service';
 import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({

@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '@app/core/services/api.service';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 export class AdminProspectoService {
 
   constructor(
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
+    private _localStorageService: LocalStorageService
   ) { }
 
   buscarProspecto(): Observable<any> {
@@ -41,7 +43,8 @@ export class AdminProspectoService {
 
   listarProyecto(): Observable<any> {
     let headers = new HttpHeaders({
-        'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this._localStorageService.get('token')}`
     });
     return this._httpClient.get<any>(`${environment.api}${environment.apiService.admin.listarProyecto}`, { headers });
   }

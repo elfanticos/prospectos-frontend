@@ -10,13 +10,18 @@ import { CustomAdapter } from 'src/app/core/providers/datepicker/custom-adapter'
 import { CustomDateParserFormatter } from 'src/app/core/providers/datepicker/custom-date-parser-formatter';
 import { CustomDatepickerI18n, I18n } from 'src/app/core/providers/datepicker/datepicker-spanish';
 import { SharedModule } from '@app/shared/shared.module';
+import { AdminProspectoService } from './services/admin-prospecto.service';
+import { AdminProspectoFormService } from './services/admin-prospecto-form.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
     ProspectoRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FiltroBusquedaComponent,
@@ -26,6 +31,8 @@ import { SharedModule } from '@app/shared/shared.module';
     ListaProspectoComponent
   ],
   providers: [
+    AdminProspectoFormService,
+    AdminProspectoService,
     { provide: LOCALE_ID, useValue: 'es-PR' } ,
     [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }], // define custom NgbDatepickerI18n provider
     {provide: NgbDateAdapter, useClass: CustomAdapter},

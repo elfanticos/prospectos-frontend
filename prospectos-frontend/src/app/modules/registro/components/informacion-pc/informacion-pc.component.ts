@@ -4,7 +4,7 @@ import { IDisco } from '../../entities/combos/disco';
 import { IProcesador } from '../../entities/combos/procesador';
 import { IRam } from '../../entities/combos/ram';
 import { ISistema } from '../../entities/combos/sistema';
-import { CombosService } from '../../services/combos.service';
+import { CombosService } from '../../../../shared/services/combos.service';
 import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({

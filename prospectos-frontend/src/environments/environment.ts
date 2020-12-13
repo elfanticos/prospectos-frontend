@@ -13,7 +13,9 @@ export const environment = {
       ram: '/api/combo/ram',
       disco: '/api/combo/disco',
       sistema: '/api/combo/sistema',
-      auricular: '/api/combo/auricular'
+      auricular: '/api/combo/auricular',
+      carga: '/api/combo/velocidad-carga',
+      descarga: '/api/combo/velocidad-descarga'
     },
     oauth: {
       token: '/oauth/token'

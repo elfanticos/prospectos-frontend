@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RegistroFormService } from '../../services/registro-form.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { SharedConstants } from '@app/shared/shared.constants';
 
 @Component({
   selector: 'app-informacion-personal',
@@ -13,15 +14,8 @@ export class InformacionPersonalComponent implements OnInit {
   model: NgbDateStruct;
   minDate: NgbDateStruct;
   maxDate: NgbDateStruct;
-  tiposDocumentos:any[] = [
-    {value: 0, desc: 'DNI'},
-    {value: 1, desc: 'CARNET DE EXTRANJERÍA'},
-  ];
-  sexos: any[] = [
-    {value: 1, desc: 'Masculino'},
-    {value: 2, desc: 'Femenino'},
-    {value: 3, desc: 'Otro'}
-  ];
+  tiposDocumentos:any[] =SharedConstants.COMBOS.TIPO_DOCUMENTO;
+  sexos: any[] = SharedConstants.COMBOS.SEXO;
   constructor(
     private _registroFormService: RegistroFormService,
   ) {
