@@ -27,7 +27,7 @@ export class RegistroProspectoComponent implements OnInit {
   }
 
   get imageForStep(): string {
-    return `../../../../../assets/images/fondo/fondo-home${this.pasoSeleccionado}.png`;
+    return `assets/images/fondo/fondo-home${this.pasoSeleccionado}.png`;
   }
 
 

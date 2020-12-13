@@ -10,7 +10,7 @@ import { RegistroFormService } from '../../services/registro-form.service';
 export class InformacionConectividadComponent implements OnInit {
 
   infoConectividadForm: FormGroup;
-  btnImg = '../../../../../assets/images/iconos/icon-arrow-button.svg';
+  btnImg = 'assets/images/iconos/icon-arrow-button.svg';
   activeTest: boolean = false;
   constructor(
     private _registroFormService: RegistroFormService
