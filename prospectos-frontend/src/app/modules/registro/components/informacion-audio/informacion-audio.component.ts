@@ -96,7 +96,7 @@ export class InformacionAudioComponent implements OnInit {
 
   get urlImg() {
     const objAuricular: IAuricular = this.auriculares.find(a => a.tipoAuricular == this.tipoDispositivo.value) || {};
-    return objAuricular.urlImagen || '../../../../../assets/images/fondo/fondo-auriculares.png';
+    return objAuricular.urlImagen || 'assets/images/fondo/fondo-auriculares.png';
   }
 
 }
