@@ -77,7 +77,7 @@ export class RegistroProspectoService {
     headers.append('Access-Control-Allow-Headers', 'Content-Type');
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
-    return this._httpClient.get<any>('http://api.fast.com/netflix/speedtest/v2', { params, headers });
+    return this._httpClient.get<any>('https://api.fast.com/netflix/speedtest/v2', { params, headers });
   }
 
 
