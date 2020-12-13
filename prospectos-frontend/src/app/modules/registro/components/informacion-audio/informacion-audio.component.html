@@ -26,9 +26,9 @@
           <mat-form-field appearance="outline">
             <mat-label>Adjuntar imagen de aud&iacute;fonos</mat-label>
             <input matInput type="text" placeholder="" #inputText formControlName="file" />
-            <mat-error *ngIf="file.errors && file.dirty">
+            <div *ngIf="file.errors && file.dirty">
               <control-messages [control]="file"></control-messages>
-            </mat-error>
+            </div>
           </mat-form-field>
         </div>
         <img src="../../../../../assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
