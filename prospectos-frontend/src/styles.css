@@ -141,6 +141,15 @@ img{
     font-size: 16px;
     color: #868F98;
 }
+.m-button.m-button--transparent{
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    font-size: 20px;
+    color: #051C2C;
+    background-color: transparent;
+}
 .m-button--icon{
     background-color: transparent;
     outline: none !important;
@@ -182,6 +191,15 @@ img{
     margin: 0;
     text-align: center;
 }
+.m-button.m-button--transparent span{
+    padding: 0px 5px;
+    margin: 0;
+    text-align: center;
+    margin-right: 3px;
+}
+.m-button.m-button--transparent img{
+    max-width: 30px;
+}
 .m-section{
     padding: 40px 20px;
     position: relative;
@@ -212,6 +230,19 @@ img{
     width: 100%;
     max-width: 500px;
     margin: auto;
+    text-align: center;
+}
+.m-card__login.detalle{
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+    text-align: left;
+}
+.m-card__login.detalle .m-card__title span{
+    margin: 20px 0;
     text-align: center;
 }
 .m-card__login .m-card__title span{
@@ -487,6 +518,52 @@ button.calendar, button.calendar:active {
     color: #868F98;
     font-family: var(--RUBIK_MEDIUM);
     font-size: 16px;
+}
+.m-detalle{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+.m-detalle__title{
+    width: 100%;
+    max-width: 400px;
+}
+.m-detalle__title .m-text__title{
+    border-bottom: 2px dashed #051C2C;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 70px;
+    justify-content: center;
+}
+.m-detalle__title .m-text__title h2{
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 3px;
+    font-family: var(--RUBIK_BOLD);
+    line-height: normal;
+}
+.m-detalle__title .m-text__title p{
+    font-size: 16px;
+    font-family: var(--RUBIK_LIGHT);
+}
+.m-detalle__title .m-text__title:last-child{
+    border: none;
+}
+.m-detalle__logout{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    border-bottom: 2px dashed #051C2C;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
 }
 /*ANGULAR MATERIAL*/
 .mat-form-field-appearance-outline .mat-form-field-outline{
