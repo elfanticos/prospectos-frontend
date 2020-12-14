@@ -10,16 +10,17 @@ export class SharedConstants {
     static get ICONS() {
         return {
             ICON_ARROW_BUTTON: 'assets/images/iconos/icon-arrow-button.svg',
-            ICON_DETALLE: 'assets/images/iconos/icon-detalle.svg'
+            ICON_DETALLE: 'assets/images/iconos/icon-detalle.svg',
+            ICON_CLOSE: 'assets/images/iconos/icon-close.svg'
         };
     }
 
     static get COMBOS() {
         return {
             SEXO: [
-                { value: 1, desc: 'Masculino' },
-                { value: 2, desc: 'Femenino' },
-                { value: 3, desc: 'Otro' }
+                { value: '1', desc: 'Masculino' },
+                { value: '2', desc: 'Femenino' },
+                { value: '3', desc: 'Otro' }
             ],
             TIPO_DOCUMENTO: [
                 { value: 0, desc: 'DNI' },

@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CsLetterDirective } from './directives/cs-letter.directive';
 import { BlurOnDirective } from './directives/cs-blur.directive';
+import { ModalViewImgComponent } from './components/modal-view-img/modal-view-img.component.';
 @NgModule({
   imports: [
     CommonModule,
@@ -35,6 +36,7 @@ import { BlurOnDirective } from './directives/cs-blur.directive';
   declarations: [
     MapaUbicacionComponent,
     ModalConfirmComponent,
+    ModalViewImgComponent,
     ControlMessagesComponent,
     CsNumberDirective,
     CsLetterDirective,
@@ -42,6 +44,7 @@ import { BlurOnDirective } from './directives/cs-blur.directive';
   ],
   exports: [
     MapaUbicacionComponent,
+    ModalViewImgComponent,
     ModalConfirmComponent,
     ControlMessagesComponent,
     CsNumberDirective,

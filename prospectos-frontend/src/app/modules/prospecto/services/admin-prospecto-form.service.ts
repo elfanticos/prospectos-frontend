@@ -24,7 +24,7 @@ export class AdminProspectoFormService {
             idProyecto: null,
             tipoDocumento: null,
             numeroDocumento: null,
-            pais: null,
+            pais: 139,
             departamento: null,
             provincia: null,
             distrito: null,

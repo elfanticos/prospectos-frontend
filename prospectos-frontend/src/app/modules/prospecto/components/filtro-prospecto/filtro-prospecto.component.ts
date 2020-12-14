@@ -45,6 +45,7 @@ export class FiltroProspectoComponent implements OnInit {
     this._comboService.comboAuricular().subscribe(auriculares => this.auriculares = auriculares);
     this._adminProspectoService.listarProyecto().subscribe(proyectos => this.proyectos = proyectos);
     this._comboService.comboPais().subscribe(paises => this.paises = paises || []);
+    this.filtrarLista();
   }
 
   get idProyecto() { return this.formSearch.controls['idProyecto']; }
