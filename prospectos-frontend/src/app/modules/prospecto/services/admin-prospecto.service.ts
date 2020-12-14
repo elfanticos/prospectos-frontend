@@ -28,8 +28,8 @@ export class AdminProspectoService {
       .set('descarga', values.descarga || null)
       .set('carga', values.carga || null)
       .set('auricular', values.auricular || '0')
-      .set('fecIniRegistro', values.fechaIniRegistro || '')
-      .set('fecFinRegistro', values.fecFinRegsitro || '');
+      .set('fecIniRegistro', values.fecIniRegistro || '')
+      .set('fecFinRegistro', values.fecFinRegistro || '');
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
