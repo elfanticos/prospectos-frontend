@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsExtend } from '@app/shared/validators/validators-extend';
+import { Subject, Subscriber } from 'rxjs';
 
 @Injectable()
 export class RegistroFormService {
@@ -10,6 +11,7 @@ export class RegistroFormService {
   private _formInfoAudio: FormGroup;
   private _formInfoPc: FormGroup;
   private _proyecto: string = 'prospectos - b12';
+  public serviceActive$: Subject<any> = new Subject();
   constructor(
     private _fb: FormBuilder
   ) { }
@@ -111,7 +113,7 @@ export class RegistroFormService {
       departamento: [{ value: values.departamento, disabled: !values.departamento }, [Validators.required]],
       provincia: [{ value: values.provincia, disabled: !values.provincia }, [Validators.required]],
       distrito: [{ value: values.distrito, disabled: !values.distrito }, [Validators.required]],
-      direccion: [{value: values.direccion, disabled: !values.dirección}, [
+      direccion: [{ value: values.direccion, disabled: !values.dirección }, [
         Validators.required,
         Validators.maxLength(75)
       ]],
@@ -122,13 +124,13 @@ export class RegistroFormService {
 
   private _buildInfoConectividad(): FormGroup {
     return this._fb.group({
-      operador: ['null', [Validators.required]],
-      carga: ['null', [Validators.required]],
-      descarga: ['null', [Validators.required]],
-      ping: ['null', [Validators.required]],
-      latencia: ['null', [Validators.required]],
-      ip: ['null', [Validators.required]],
-      isp: ['null', [Validators.required]]
+      operador: [null, [Validators.required]],
+      carga: [null, [Validators.required]],
+      descarga: [null, [Validators.required]],
+      ping: [null, [Validators.required]],
+      latencia: [null, [Validators.required]],
+      ip: [null, [Validators.required]],
+      isp: [null, [Validators.required]]
     });
   }
 
@@ -186,6 +188,12 @@ export class RegistroFormService {
         postulante: {}
       },
       proyecto: this._proyecto
+    }
+  }
+
+  get valuesFormStepTwo(): any {
+    return {
+      ...this.formInfoConectividad.value
     }
   }
 

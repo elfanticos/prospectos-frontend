@@ -4,7 +4,7 @@
             <h2>PROBAR CONECTIVIDAD</h2>
         </div>
         <div class="m-actions text-center" *ngIf="!activeTest">
-            <button type="button" class="m-button" (click)="activeTest =! activeTest;">
+            <button type="button" class="m-button" (click)="initTest()">
                 <span>REALIZAR TEST</span>
                 <img [src]="btnImg" alt="icono-button-prospectos">
             </button>

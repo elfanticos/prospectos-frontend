@@ -17,6 +17,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CsLetterDirective } from './directives/cs-letter.directive';
 import { BlurOnDirective } from './directives/cs-blur.directive';
 import { ModalViewImgComponent } from './components/modal-view-img/modal-view-img.component.';
+import { SpeedTestModule } from 'ng-speed-test';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +32,8 @@ import { ModalViewImgComponent } from './components/modal-view-img/modal-view-im
   MatRadioModule,
   MatCheckboxModule,
   MatButtonModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  SpeedTestModule
   ],
   declarations: [
     MapaUbicacionComponent,
@@ -56,7 +58,8 @@ import { ModalViewImgComponent } from './components/modal-view-img/modal-view-im
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SpeedTestModule
   ],
   entryComponents: [
     ModalConfirmComponent

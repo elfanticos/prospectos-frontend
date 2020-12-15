@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SnackBarService } from '@app/core/services/snackbar.service';
 import { SharedConstants } from '@app/shared/shared.constants';
+import { Subscription } from 'rxjs';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -9,42 +11,43 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
   templateUrl: './step-two.component.html',
   styleUrls: ['./step-two.component.css']
 })
-export class StepTwoComponent implements OnInit {
+export class StepTwoComponent implements OnInit, OnDestroy {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  subServiceActive: Subscription = new Subscription();
+  service: boolean = false;
   constructor(
     public registroFormService: RegistroFormService,
     private _route: Router,
-    private _registroProspectoService: RegistroProspectoService
+    private _registroProspectoService: RegistroProspectoService,
+    private _snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
-    this._registroProspectoService.dataSpeedTest().subscribe(data => {
-      console.log(data);
+    // this._registroProspectoService.dataSpeedTest().subscribe(data => {
+    //   console.log(data);
+    // });
+    this.subServiceActive = this.registroFormService.serviceActive$.subscribe(() => {
+      this.service = true;
+      setTimeout(() => {
+        this.service = false;
+      }, 10000);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subServiceActive.unsubscribe();
   }
 
   redirectNextStep(stepIndex: number): void {
     if (!this.registroFormService.formValidStep2) {
       this.registroFormService.touchedInputStepTwo();
+      this._snackBarService.show({message: 'Realiza el test'});
       return;
     }
-    const body = {
-      "operador": "movistar",
-      "carga": "35 mb",
-      "descarga": "45 mb",
-      "ping": "4 enviados, 4 recibidos, 0 perdidos",
-      "latencia": "latencia",
-      "ip": "192.192.192.192",
-      "isp": "isp",
-      "fecha_hora_conec": "2020-11-29T01:46",
-      "postulante": {
-        "idPostulante": 4
-      }
-    };
-    this._registroProspectoService.registrarConectividad(body).subscribe(data => {
+    this._registroProspectoService.registrarConectividad(this.registroFormService.valuesFormStepTwo).subscribe(data => {
       console.log(data);
+      this._route.navigate([`${stepIndex}`]);
     });
-    this._route.navigate([`${stepIndex}`]);
   }
 
 }
