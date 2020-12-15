@@ -34,6 +34,9 @@ export const environment = {
       buscarProspecto: '/api/admin/buscar-prospectos',
       detalleProspecto: '/api/admin/detalle-prospecto',
       listarProyecto: '/api/admin/listar-proyectos'
+    },
+    usuarios: {
+      anularToken: '/api/usuarios/anular'
     }
   },
   geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json',
