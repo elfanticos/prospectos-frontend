@@ -11,8 +11,7 @@
                         <input type="text" onLetter matInput placeholder="" formControlName="nombresPostulante"
                             autocomplete="none" required>
                         <mat-error *ngIf="nombresPostulante.errors && nombresPostulante.dirty">
-                            <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">El campo no puede
-                                estar vacio</ng-container>
+                            <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">Campo obligatorio.</ng-container>
                             <ng-template #elseif1>
                                 <ng-container *ngIf="nombresPostulante.errors.minlength; else elseif2">M&iacute;nimo
                                     {{nombresPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
@@ -38,9 +37,7 @@
                         <input type="text" onLetter matInput placeholder="" formControlName="apellidosPostulante"
                             autocomplete="none" required>
                         <mat-error *ngIf="apellidosPostulante.errors && apellidosPostulante.dirty">
-                            <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">El campo no puede
-                                estar
-                                vacio</ng-container>
+                            <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">Campo obligatorio.</ng-container>
                             <ng-template #elseif1>
                                 <ng-container *ngIf="apellidosPostulante.errors.minlength; else elseif2">M&iacute;nimo
                                     {{apellidosPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
@@ -85,8 +82,7 @@
                         <input type="text" onNumber matInput placeholder="" formControlName="numeroDocumento" autocomplete="none"
                             maxlength="18" required>
                         <mat-error *ngIf="numeroDocumento.errors && numeroDocumento.dirty">
-                            <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">El campo no puede estar
-                                vacio</ng-container>
+                            <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">Campo obligatorio.</ng-container>
                             <ng-template #elseif1>
                                 <ng-container *ngIf="numeroDocumento.errors.minlength; else elseif2">M&iacute;nimo
                                     {{numeroDocumento.errors.minlength.requiredLength}} dígitos</ng-container>
@@ -119,7 +115,7 @@
                     </div>
                     <span *ngIf="fecNacimiento.errors && fecNacimiento.dirty">
                         <div class="m-invalid" *ngIf="fecNacimiento.errors.required; else elseif1;">
-                            El campo no puede estar vacio
+                            Campo obligatorio.
                         </div>
                         <ng-template #elseif1>
                             <div class="m-invalid" *ngIf="fecNacimiento.errors.exception; else elseif2;">
