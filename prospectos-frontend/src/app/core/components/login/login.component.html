@@ -19,7 +19,12 @@
                     <div class="m-textfield__input">
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
-                            <input type="text" matInput placeholder="" formControlName="password" />
+                            <input autocomplete="off" [type]="hide ? 'password' : 'text'" matInput placeholder=""
+                                formControlName="password" />
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                             <mat-error *ngIf="password.errors && password.dirty">
                                 <control-messages [control]="password"></control-messages>
                             </mat-error>
@@ -29,8 +34,7 @@
                 <div class="m-card__actions">
                     <button type="button" class="m-button" [disabled]="formLogin.invalid || service"
                         (click)="formLogin.invalid || service || login()"><span>INGRESAR</span><img
-                            [src]="ICON_ARROW_BUTTON"
-                            alt="icono-button-prospectos"></button>
+                            [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
                 </div>
                 <div class="text-error">
                     <p> {{msj}}</p>

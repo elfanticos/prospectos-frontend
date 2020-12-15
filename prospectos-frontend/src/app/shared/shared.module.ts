@@ -14,6 +14,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+
 import { CsLetterDirective } from './directives/cs-letter.directive';
 import { BlurOnDirective } from './directives/cs-blur.directive';
 import { ModalViewImgComponent } from './components/modal-view-img/modal-view-img.component.';
@@ -33,6 +35,7 @@ import { SpeedTestModule } from 'ng-speed-test';
   MatCheckboxModule,
   MatButtonModule,
   MatSnackBarModule,
+  MatIconModule,
   SpeedTestModule
   ],
   declarations: [
@@ -59,6 +62,7 @@ import { SpeedTestModule } from 'ng-speed-test';
     MatCheckboxModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatIconModule,
     SpeedTestModule
   ],
   entryComponents: [

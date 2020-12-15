@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   service: boolean = false;
   msj: string = '';
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  hide: boolean = true;
   constructor(
     private _authenticationService: AuthenticationService,
     private _router: Router,
