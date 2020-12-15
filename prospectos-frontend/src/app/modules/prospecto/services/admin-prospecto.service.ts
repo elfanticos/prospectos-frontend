@@ -25,8 +25,8 @@ export class AdminProspectoService {
       .set('departamento', values.departamento || '0')
       .set('provincia', values.provincia || '0')
       .set('distrito', values.distrito || '0')
-      .set('descarga', values.descarga || null)
-      .set('carga', values.carga || null)
+      .set('descarga', values.descarga || '0')
+      .set('carga', values.carga || '0')
       .set('auricular', values.auricular || '0')
       .set('fecIniRegistro', values.fecIniRegistro || '')
       .set('fecFinRegistro', values.fecFinRegistro || '');

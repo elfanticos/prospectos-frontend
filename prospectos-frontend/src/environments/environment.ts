@@ -2,7 +2,7 @@ const IP_SERVER = 'ec2-54-90-30-216.compute-1.amazonaws.com';
 
 export const environment = {
   production: false,
-  api: `http://${IP_SERVER}:9090`,
+  api: `https://${IP_SERVER}`,
   apiService: {
     combos: {
       pais: '/api/combo/pais',
