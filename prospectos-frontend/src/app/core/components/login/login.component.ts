@@ -1,3 +1,4 @@
+import { SnackBarService } from '@app/core/services/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _authenticationService: AuthenticationService,
     private _router: Router,
+    private _snackBarService: SnackBarService,
     private _fb: FormBuilder
   ) {
     this.formLogin = this._buildForm();
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', data.access_token);
       this._router.navigate(['intranet/prospectos']);
     }, err => {
-      this.msj = 'No existe el usuario';
+      this._snackBarService.show({message: 'Usuario y/o Contrase\u00F1a incorrecta'});
       console.log(err);
     });
   }
