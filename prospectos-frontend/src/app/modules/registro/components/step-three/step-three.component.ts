@@ -25,8 +25,10 @@ export class StepThreeComponent implements OnInit {
       this.registroFormService.touchedInputStepThree();
       return;
     }
-    console.log(this.registroFormService.valuesFormStepThree);
-    this._registroProspectoService.registrarDispositivos(this.registroFormService.valuesFormStepThree).subscribe(data => {
+    const values = this.registroFormService.valuesFormStepThree;
+    console.log(values);
+    this._registroProspectoService.registrarDispositivos(values).subscribe(data => {
+      // localStorage.setItem('stepThree', JSON.stringify(values));
       console.log(data);
       this._route.navigate([`${stepIndex}`]);
     });

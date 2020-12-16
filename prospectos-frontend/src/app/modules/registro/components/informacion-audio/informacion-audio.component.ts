@@ -47,6 +47,7 @@ export class InformacionAudioComponent implements OnInit {
 
     // Setear el input file
     this.fileTxt.nativeElement.value = null;
+    this.file.setValue(null);
 
     // Disparar el evento click al input file
     this.fileTxt.nativeElement.dispatchEvent(event);
@@ -56,6 +57,7 @@ export class InformacionAudioComponent implements OnInit {
     //Obtener el objeto del input file
     this.filesToUpload = <Array<File>>fileInput.target.files;
 
+    console.log('filesToUpload => ',this.filesToUpload);
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
       // this.fileTxt.nativeElement.value = "";
@@ -75,7 +77,7 @@ export class InformacionAudioComponent implements OnInit {
 
     // if (['pdf'].indexOf(this.filesToUpload[0].type.split('/')[1].toLowerCase()) < 0) {
       // this.fileTxt.nativeElement.value = "";
-      this.nameFile.setValue('');
+      // this.nameFile.setValue('');
     //   console.log('Seleccione un archivo de tipo .PDF');
     //   return;
     // }

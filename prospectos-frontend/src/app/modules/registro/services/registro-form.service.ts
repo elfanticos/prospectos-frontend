@@ -95,7 +95,6 @@ export class RegistroFormService {
 
   private _buildInfoContactoForm(): FormGroup {
     const values = JSON.parse(localStorage.getItem('stepOne') || '{"datosPersonales": {}}').datosPersonales;
-    console.log('datosPersonales => ', values);
     return this._fb.group({
       telefono: [values.telefono, [
         Validators.required,
@@ -123,23 +122,26 @@ export class RegistroFormService {
   }
 
   private _buildInfoConectividad(): FormGroup {
+    const values = JSON.parse(localStorage.getItem('stepTwo') || '{}');
     return this._fb.group({
-      operador: [null, [Validators.required]],
-      carga: [null, [Validators.required]],
-      descarga: [null, [Validators.required]],
-      ping: [null, [Validators.required]],
-      latencia: [null, [Validators.required]],
-      ip: [null, [Validators.required]],
-      isp: [null, [Validators.required]]
+      operador: [values.operador, [Validators.required]],
+      carga: [values.carga, [Validators.required]],
+      descarga: [values.descarga, [Validators.required]],
+      ping: [values.ping, [Validators.required]],
+      latencia: [values.latencia, [Validators.required]],
+      ip: [values.ip, [Validators.required]],
+      isp: [values.isp, [Validators.required]]
     });
   }
 
   private _buildInfoAudio(): FormGroup {
+    // const values = JSON.parse(localStorage.getItem('stepThree') || '{}');
+    const values: any = {};
     return this._fb.group({
-      tipoDispositivo: [null, [Validators.required]],
-      file: [null, [Validators.required]],
-      extension: [null, [Validators.required]],
-      nameFile: [null, [Validators.required]],
+      tipoDispositivo: [values.tipoDispositivo, [Validators.required]],
+      file: [values.file, [Validators.required]],
+      extension: [values.extension, [Validators.required]],
+      nameFile: [values.nameFile, [Validators.required]],
     });
   }
 
@@ -178,12 +180,12 @@ export class RegistroFormService {
     const fecha_hora_post = new Date().toISOString();
     return {
       postulante: {
-        ...this._formInfoPersonal.value,
+        ...this._formInfoPersonal.getRawValue(),
         tipoDocumento: parseInt(this._formInfoPersonal.controls['tipoDocumento'].value, 10),
         fecha_hora_post
       },
       datosPersonales: {
-        ...this.formInfoContacto.value,
+        ...this.formInfoContacto.getRawValue(),
         fec_hora_datos: fecha_hora_post,
         postulante: {}
       },
@@ -210,7 +212,6 @@ export class RegistroFormService {
   }
 
   touchedInputStepOne(): void {
-    console.log('touchedInputStepOne');
     this.formInfoPersonal.markAllAsTouched();
     this.formInfoPersonal.controls['nombresPostulante'].markAsDirty();
     this.formInfoPersonal.controls['apellidosPostulante'].markAsDirty();
@@ -230,12 +231,10 @@ export class RegistroFormService {
   }
 
   touchedInputStepTwo(): void {
-    console.log('touchedInputStepTwo');
     // this.formInfoConectividad
   }
 
   touchedInputStepThree(): void {
-    console.log('touchedInputStepThree');
     this.formInfoAudio.markAllAsTouched();
     this.formInfoAudio.controls['tipoDispositivo'].markAsDirty();
     this.formInfoAudio.controls['file'].markAsDirty();
@@ -252,5 +251,15 @@ export class RegistroFormService {
     this.formInfoPc.controls['extensionFile'].markAsDirty();
     this.formInfoPc.controls['file'].markAsDirty();
     this.formInfoPc.controls['nameFile'].markAsDirty();
+  }
+
+  resetForms(): void {
+    this.formInfoPersonal.reset();
+    this.formInfoContacto.reset();
+    this._formInfoConectividad.reset();
+    this._formInfoAudio.reset();
+    this._formInfoPc.reset();
+    this.formInfoPc.reset();
+
   }
 }

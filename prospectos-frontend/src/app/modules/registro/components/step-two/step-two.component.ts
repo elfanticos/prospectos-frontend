@@ -23,9 +23,6 @@ export class StepTwoComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // this._registroProspectoService.dataSpeedTest().subscribe(data => {
-    //   console.log(data);
-    // });
     this.subServiceActive = this.registroFormService.serviceActive$.subscribe(() => {
       this.service = true;
       setTimeout(() => {
@@ -44,8 +41,10 @@ export class StepTwoComponent implements OnInit, OnDestroy {
       this._snackBarService.show({message: 'Realiza el test'});
       return;
     }
-    this._registroProspectoService.registrarConectividad(this.registroFormService.valuesFormStepTwo).subscribe(data => {
+    const values = this.registroFormService.valuesFormStepTwo;
+    this._registroProspectoService.registrarConectividad(values).subscribe(data => {
       console.log(data);
+      localStorage.setItem('stepTwo', JSON.stringify(values));
       this._route.navigate([`${stepIndex}`]);
     });
   }
