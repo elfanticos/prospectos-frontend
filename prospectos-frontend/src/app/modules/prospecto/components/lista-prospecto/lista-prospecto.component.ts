@@ -1,5 +1,6 @@
 import { Component, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ExcelHelper } from '@app/core/services/excel.helper';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
 import { IProspecto } from '../../models/prospecto';
@@ -7,7 +8,7 @@ import { AdminProspectoService } from '../../services/admin-prospecto.service';
 
 export type SortColumn = keyof IProspecto | '';
 export type SortDirection = 'asc' | 'desc' | '';
-const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
+const rotate: { [key: string]: SortDirection } = { 'asc': 'desc', 'desc': '', '': 'asc' };
 
 const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
@@ -32,7 +33,7 @@ export class NgbdSortableHeader {
 
   rotate() {
     this.direction = rotate[this.direction];
-    this.sort.emit({column: this.sortable, direction: this.direction});
+    this.sort.emit({ column: this.sortable, direction: this.direction });
   }
 }
 @Component({
@@ -50,20 +51,21 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
   constructor(
     private _adminProspectoService: AdminProspectoService,
     private _router: Router,
+    private _excelHelper: ExcelHelper
   ) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.subListProspectos = this._adminProspectoService.listProspectos$.subscribe(data => {
       this.prospectosBackup = data || [];
       this.prospectos = JSON.parse(JSON.stringify(this.prospectosBackup));
     });
   }
-  
+
   ngOnDestroy(): void {
     this.subListProspectos.unsubscribe();
   }
 
-  onSort({column, direction}: SortEvent) {
+  onSort({ column, direction }: SortEvent) {
 
     // resetting other headers
     this.headers.forEach(header => {
@@ -86,5 +88,39 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
 
   loadDetail(prospecto: IProspecto) {
     this._router.navigate([`intranet/prospectos/${prospecto.idPostulante}/detalle`]);
+  }
+
+  donwloadExcel(): void {
+    console.log('donwloadExcel');
+    const title = { name: 'Lista de prospectos', down: 'Lista_prospectos' };
+    const body = this.prospectos || [];
+    const headers = {
+      data: [
+        'Proyecto',
+        'Nombre',
+        'Apellido',
+        'Tipo Doc.',
+        'Distrito',
+        'Descarga',
+        'Carga',
+        'Auricular',
+        'F. registro',
+        'Cant. Post'
+      ]
+    };
+
+    const keys = [
+      { key: 'proyecto', width: '32' },
+      { key: 'nombreProspecto', width: '32' },
+      { key: 'apellidoProspecto', width: '32' },
+      { key: 'tipoDocumento', width: '32' },
+      { key: 'distrito', width: '32' },
+      { key: 'descarga', width: '18', alignment: { horizontal: 'right', vertical: 'top' } },
+      { key: 'carga',  width: '18', alignment: { horizontal: 'right', vertical: 'top' } },
+      { key: 'tipoDispositivo', width: '18', alignment: { horizontal: 'center', vertical: 'top' } },
+      { key: 'fecRegistro', width: '30', alignment: { horizontal: 'center', vertical: 'top' } },
+      { key: 'numPostulacion', width: '18', alignment: { horizontal: 'center', vertical: 'top' } },
+    ];
+    this._excelHelper.downloadExcel(title, headers, keys, body);
   }
 }

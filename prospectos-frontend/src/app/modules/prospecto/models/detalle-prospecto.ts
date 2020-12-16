@@ -9,6 +9,7 @@ export interface IDetalleProspecto {
     dispositivo?: string;
     distrito?: string;
     equipo?: string;
+    imgEquipo?: string;
     fecNacimiento?: string;
     memoriaRam?: string;
     nombrePostulante?: string;
