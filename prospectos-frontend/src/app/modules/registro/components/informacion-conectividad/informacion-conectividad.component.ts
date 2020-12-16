@@ -14,6 +14,7 @@ export class InformacionConectividadComponent implements OnInit {
   infoConectividadForm: FormGroup;
   btnImg = 'assets/images/iconos/icon-arrow-button.svg';
   activeTest: boolean = false;
+  loading: boolean = false;
   constructor(
     private _registroFormService: RegistroFormService,
     private _techCheckService: TechCheckService
@@ -31,8 +32,10 @@ export class InformacionConectividadComponent implements OnInit {
   get latencia() { return this.infoConectividadForm.controls['latencia']; }
   get ip() { return this.infoConectividadForm.controls['ip']; }
   get isp() { return this.infoConectividadForm.controls['isp']; }
+  
 
   initTest(): void {
+    this.loading = true;
     this.activeTest = !this.activeTest;
     zip(this._techCheckService.getMbps(), this._techCheckService.getDataIP()).subscribe(data => {
       const [speed, dataIP] = data;
@@ -45,6 +48,7 @@ export class InformacionConectividadComponent implements OnInit {
       this.ip.setValue(dataIP.query);
       this.isp.setValue(dataIP.isp);
       this.operador.setValue(dataIP.as);
+      this.loading = false;
     });
   }
 

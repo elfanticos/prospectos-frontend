@@ -10,7 +10,10 @@
             </button>
         </div>
         <div *ngIf="activeTest">
-            <div class="m-test__container">
+            <div *ngIf="loading">
+                <img src="assets/images/iconos/test.gif" />
+            </div>
+            <div *ngIf="!loading" class="m-test__container">
                 <div class="m-test__title">
                     <h2>Datos del test de velocidad</h2>
                 </div>
@@ -18,23 +21,23 @@
                     <div class="m-grid--2">
                         <div class="m-test__item">
                             <h2>Velocidad de descarga</h2>
-                            <h3> Mbps</h3>
+                            <h3>{{ descarga.value }} Mbps</h3>
                         </div>
                         <div class="m-test__item">
                             <h2>Velocidad de carga</h2>
-                            <h3> Mbps</h3>
+                            <h3>{{ carga.value }} Mbps</h3>
                         </div>
                         <div class="m-test__item">
                             <h2>IP</h2>
-                            <h3></h3>
+                            <h3>{{ ip.value }}</h3>
+                        </div>
+                        <div class="m-test__item">
+                            <h2>ISP</h2>
+                            <h3>{{ isp.value }}</h3>
                         </div>
                         <div class="m-test__item">
                             <h2>Operador</h2>
-                            <h3></h3>
-                        </div>
-                        <div class="m-test__item">
-                            <h2>Operador</h2>
-                            <h3></h3>
+                            <h3>{{ operador.value }}</h3>
                         </div>
                     </div>
                 </div>
