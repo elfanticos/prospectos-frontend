@@ -40,7 +40,12 @@ export class AuthenticationService {
     }
 
     logout(): void {
-        this._http.post<any>(`${environment.api}/users/revoke-token`, {}).subscribe();
+        let token = this._localStorageService.get('token');
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          });
+        this._httClient.get<any>(`${environment.api}${environment.apiService.usuarios.anularToken}/${token}`, {headers}).subscribe();
         this._localStorageService.clear();
         this.router.navigate(['/login']);
         // this.stopRefreshTokenTimer();
