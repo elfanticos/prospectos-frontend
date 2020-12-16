@@ -24,12 +24,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.formLogin = this._buildForm();
   }
-  _buildForm(): FormGroup {
-    return this._fb.group({
-      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._@\-]*$'), Validators.minLength(4), Validators.maxLength(50)]],
-      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
-    })
-  }
+  
 
   ngOnInit(): void {
     this.formLogin.valueChanges.subscribe(() => { this.service = false; this.msj = ''; });
@@ -38,9 +33,26 @@ export class LoginComponent implements OnInit {
   get username() { return this.formLogin.controls['username']; }
   get password() { return this.formLogin.controls['password']; }
 
+  _buildForm(): FormGroup {
+    return this._fb.group({
+      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._@\-]*$'), Validators.minLength(4), Validators.maxLength(50)]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+    })
+  }
+
+  touchedInputs(): void {
+    this.formLogin.markAllAsTouched();
+    this.username.markAsDirty();
+    this.password.markAsDirty();
+  }
+
+
   login(): void {
 
-    if (this.formLogin.invalid) return;
+    if (this.formLogin.invalid) {
+      this.touchedInputs();
+      return;
+    }
 
     this.service = true;
     

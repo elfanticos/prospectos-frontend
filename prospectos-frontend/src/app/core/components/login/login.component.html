@@ -10,10 +10,8 @@
                     <div class="m-textfield__input">
                         <mat-form-field appearance="outline">
                             <mat-label>Usuario</mat-label>
-                            <input type="text" matInput placeholder="" formControlName="username" />
-                            <button mat-icon-button matSuffix>
-                                <mat-icon>person</mat-icon>
-                            </button>
+                            <input type="text" matInput placeholder="" formControlName="username"  (keyup.enter)="service || login()" />
+                            <mat-icon matSuffix>person</mat-icon>
                             <mat-error *ngIf="username.errors && username.dirty">
                                 <control-messages [control]="username"></control-messages>
                             </mat-error>
@@ -23,7 +21,7 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
                             <input autocomplete="off" [type]="hide ? 'password' : 'text'" matInput placeholder=""
-                                formControlName="password" />
+                                formControlName="password" (keyup.enter)="service || login()" />
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -35,8 +33,8 @@
                     </div>
                 </div>
                 <div class="m-card__actions">
-                    <button type="button" class="m-button" [disabled]="formLogin.invalid || service"
-                        (click)="formLogin.invalid || service || login()"><span>INGRESAR</span><img
+                    <button type="button" class="m-button" [disabled]="service"
+                        (click)="service || login()"><span>INGRESAR</span><img
                             [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
                 </div>
                 <div class="text-error">
