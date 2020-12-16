@@ -19,6 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { CsLetterDirective } from './directives/cs-letter.directive';
 import { BlurOnDirective } from './directives/cs-blur.directive';
 import { ModalViewImgComponent } from './components/modal-view-img/modal-view-img.component.';
+import { LogoutComponent } from './components/logout/logout.component';
+
 import { SpeedTestModule } from 'ng-speed-test';
 @NgModule({
   imports: [
@@ -46,6 +48,7 @@ import { SpeedTestModule } from 'ng-speed-test';
     CsNumberDirective,
     CsLetterDirective,
     BlurOnDirective,
+    LogoutComponent,
   ],
   exports: [
     MapaUbicacionComponent,
@@ -63,7 +66,8 @@ import { SpeedTestModule } from 'ng-speed-test';
     MatButtonModule,
     MatSnackBarModule,
     MatIconModule,
-    SpeedTestModule
+    SpeedTestModule,
+    LogoutComponent
   ],
   entryComponents: [
     ModalConfirmComponent

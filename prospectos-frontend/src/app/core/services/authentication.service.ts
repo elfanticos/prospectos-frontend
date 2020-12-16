@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { ApiService } from './api.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -15,7 +16,8 @@ export class AuthenticationService {
     constructor(
         private router: Router,
         private _http: ApiService,
-        private _httClient: HttpClient
+        private _httClient: HttpClient,
+        private _localStorageService: LocalStorageService
     ) {
         this.userSubject = new BehaviorSubject</* User */any>(null);
         this.user = this.userSubject.asObservable();
@@ -34,14 +36,15 @@ export class AuthenticationService {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Authorization': 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg='
         });
-        return this._httClient.post<any>(`${environment.api}${environment.apiService.oauth.token}`, body, {headers});
+        return this._httClient.post<any>(`${environment.api}${environment.apiService.oauth.token}`, body, { headers });
     }
 
-    logout() {
+    logout(): void {
         this._http.post<any>(`${environment.api}/users/revoke-token`, {}).subscribe();
-        this.stopRefreshTokenTimer();
-        this.userSubject.next(null);
+        this._localStorageService.clear();
         this.router.navigate(['/login']);
+        // this.stopRefreshTokenTimer();
+        // this.userSubject.next(null);
     }
 
     refreshToken() {
