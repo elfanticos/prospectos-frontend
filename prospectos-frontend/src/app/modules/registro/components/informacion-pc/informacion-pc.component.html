@@ -10,7 +10,7 @@
                         <mat-label>Procesador</mat-label>
                         <mat-select formControlName="procesador" required>
                             <mat-option>Procesador</mat-option>
-                            <mat-option *ngFor="let procesador of procesadores" [value]="procesador.idProcesador">
+                            <mat-option *ngFor="let procesador of procesadores" [value]="procesador.tipoProcesador">
                                 {{procesador.tipoProcesador}}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="procesador.errors && procesador.dirty">
@@ -23,7 +23,7 @@
                         <mat-label>Memoria RAM</mat-label>
                         <mat-select formControlName="memoriaRam" required>
                             <mat-option>Memoria RAM</mat-option>
-                            <mat-option *ngFor="let ram of memoriasRam" [value]="ram.idram">{{ram.tamano}}</mat-option>
+                            <mat-option *ngFor="let ram of memoriasRam" [value]="ram.tamano">{{ram.tamano}}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="memoriaRam.errors && memoriaRam.dirty">
                             <control-messages [control]="memoriaRam"></control-messages>
@@ -35,7 +35,7 @@
                         <mat-label>Disco duro</mat-label>
                         <mat-select formControlName="discoDuro" required>
                             <mat-option>Disco duro</mat-option>
-                            <mat-option *ngFor="let disco of discos" [value]="disco.idDisco">{{disco.capacidad}}
+                            <mat-option *ngFor="let disco of discos" [value]="disco.capacidad">{{disco.capacidad}}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="discoDuro.errors && discoDuro.dirty">
@@ -48,7 +48,7 @@
                         <mat-label>Sistema operativo</mat-label>
                         <mat-select formControlName="sistOperativo" required>
                             <mat-option>Sistema operativo</mat-option>
-                            <mat-option *ngFor="let sistema of sistemas" [value]="sistema.idSistema">{{sistema.ssoo}}
+                            <mat-option *ngFor="let sistema of sistemas" [value]="sistema.ssoo">{{sistema.ssoo}}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="sistOperativo.errors && sistOperativo.dirty">
