@@ -23,8 +23,9 @@
       </div>
   </div>
   <div class="m-container min-width p-20">
-    <div class="m-title">
+    <div class="m-title m-title--flex">
       <h2>INFORMACI&Oacute;N PERSONAL</h2>
+      <h3>CANT. DE POSTULACIONES: 2</h3>
     </div>
     <div class="m-content">
         <div class="m-grid--2">
@@ -154,11 +155,24 @@
     <div class="m-content">
       <div class="m-grid--2">
         <div class="m-textfield__input m-disabled">
-            <mat-form-field appearance="outline">
-                <mat-label>Tipo de auricular</mat-label>
-                <input type="text" matInput [value]="prospecto.tipoDispositivo" disabled>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Tipo de auricular</mat-label>
+              <input type="text" matInput [value]="prospecto.tipoDispositivo" disabled>
+          </mat-form-field>
         </div>
+        <div class="m-button--image">
+          <button type="button" class="m-button m-button--transparent" (click)="openModal(prospecto.dispositivo)">Ver foto</button>
+          <img src="assets/images/iconos/icon-image.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title">
+      <h2>EQUIPOS</h2>
+    </div>
+    <div class="m-content">
+      <div class="m-grid--2">
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Procesador</mat-label>
@@ -183,13 +197,13 @@
               <input type="text" matInput [value]="prospecto.sistOperativo" disabled>
           </mat-form-field>
         </div>
+        <div class="m-button--image">
+          <button type="button" class="m-button m-button--transparent" (click)="openModal(prospecto.imgEquipo)">Ver foto</button>
+          <img src="assets/images/iconos/icon-image.svg" />
+        </div>
       </div>
     </div>
     <div class="m-actions text-right">
-      <button type="button" class="m-button" (click)="openModal(prospecto.dispositivo)">
-        <span>REGRESAR</span>
-        <img src="assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos">
-      </button>
       <button type="button" class="m-button" (click)="regresarListaProspectos()">
         <span>REGRESAR</span>
         <img src="assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos">
