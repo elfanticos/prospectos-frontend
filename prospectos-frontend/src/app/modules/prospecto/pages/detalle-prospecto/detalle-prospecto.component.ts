@@ -16,6 +16,7 @@ export class DetalleProspectoComponent implements OnInit {
   idProspecto: any;
   prospecto: IDetalleProspecto = {};
   sexos: any[] = SharedConstants.COMBOS.SEXO;
+  loadSpinner = true;
   constructor(
     private _activedRoute: ActivatedRoute,
     private _adminProspectoService: AdminProspectoService,
@@ -29,6 +30,7 @@ export class DetalleProspectoComponent implements OnInit {
     this._adminProspectoService.detalleProspecto(this.idProspecto).subscribe(data => {
       console.log(data);
       this.prospecto = data[0] || {};
+      this.loadSpinner = false;
     });
 
   }

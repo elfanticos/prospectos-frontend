@@ -1,5 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { FiltroBusquedaComponent } from './pages/filtro-busqueda/filtro-busqueda.component';
 import { ProspectoRoutingModule } from './prospecto-routing.module';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,8 @@ import { SharedModule } from '@app/shared/shared.module';
 import { AdminProspectoService } from './services/admin-prospecto.service';
 import { AdminProspectoFormService } from './services/admin-prospecto-form.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import localePR from '@angular/common/locales/es-PR';
+registerLocaleData(localePR);
 
 @NgModule({
   imports: [

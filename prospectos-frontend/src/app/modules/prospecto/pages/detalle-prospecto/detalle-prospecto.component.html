@@ -1,4 +1,5 @@
 <section class="m-section">
+  <mat-spinner *ngIf="loadSpinner"></mat-spinner>
   <div class="m-container max-width bg-blue">
       <app-logout></app-logout>
       <div class="m-detalle">
@@ -15,7 +16,7 @@
           </div>
           <div class="m-text__title">
             <h2>Fecha de registro:</h2>
-            <p>14-09-2020</p>
+            <p>{{'2020-06-12' | date: 'dd/MM/yyyy'}}</p>
           </div>
         </div>
       </div>
@@ -30,33 +31,33 @@
             <div class="m-textfield__input m-disabled">
                 <mat-form-field  appearance="outline">
                     <mat-label>Nombres</mat-label>
-                    <input type="text" matInput autocomplete="none" [value]="prospecto.nombrePostulante" disabled />
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.nombrePostulante || ''" disabled />
                 </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
                 <mat-form-field  appearance="outline">
                     <mat-label>Apellidos</mat-label>
-                    <input type="text" matInput autocomplete="none" [value]="prospecto.apellidoPostulante" disabled />
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.apellidoPostulante || ''" disabled />
                 </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
               <div class="m-textfield__input">
                 <mat-form-field appearance="outline">
                     <mat-label>Tipo de documento</mat-label>
-                    <input type="text" matInput [value]="prospecto.tipoDocumento" disabled>
+                    <input type="text" matInput [value]="prospecto.tipoDocumento || ''" disabled>
                 </mat-form-field>
               </div>
             </div>
             <div class="m-textfield__input m-disabled">
                 <mat-form-field  appearance="outline">
                     <mat-label>N&uacute;mero de documento</mat-label>
-                    <input type="text" matInput autocomplete="none" [value]="prospecto.numeroDocumento" disabled />
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.numeroDocumento || ''" disabled />
                 </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
               <mat-form-field appearance="outline">
                   <mat-label>Fecha de nacimiento</mat-label>
-                  <input type="text" matInput [value]="prospecto.fecNacimiento" disabled>
+                  <input type="text" matInput [value]="(prospecto.fecNacimiento || '') | date: 'dd/MM/yyyy'" disabled>
               </mat-form-field>
             </div>
             <div class="m-input m-0">
@@ -77,25 +78,25 @@
             <div class="m-textfield__input m-disabled">
                 <mat-form-field appearance="outline">
                     <mat-label>Tel&eacute;fono</mat-label>
-                    <input onNumber type="text" matInput maxlength="12" [value]="prospecto.telefono" disabled/>
+                    <input onNumber type="text" matInput maxlength="12" [value]="prospecto.telefono || ''" disabled/>
                 </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
                 <mat-form-field appearance="outline">
                     <mat-label>Correo electr&oacute;nico</mat-label>
-                    <input type="text" matInput maxlength="75" [value]="prospecto.correo" disabled/>
+                    <input type="text" matInput maxlength="75" [value]="prospecto.correo || ''" disabled/>
                 </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
               <mat-form-field appearance="outline">
                   <mat-label>Pa&iacute;s</mat-label>
-                  <input type="text" matInput [value]="prospecto.pais" disabled/>
+                  <input type="text" matInput [value]="prospecto.pais || ''" disabled/>
               </mat-form-field>
             </div>
             <div class="m-textfield__input m-disabled">
               <mat-form-field appearance="outline">
                   <mat-label>Departamento</mat-label>
-                  <input type="text" matInput [value]="prospecto.departamento" disabled/>
+                  <input type="text" matInput [value]="prospecto.departamento || ''" disabled/>
               </mat-form-field>
             </div>
             <div class="m-textfield__input">
@@ -113,7 +114,7 @@
             <div class="m-textfield__input m-disabled m-column--2">
                 <mat-form-field appearance="outline">
                     <mat-label>Dirección</mat-label>
-                    <input type="text" matInput [value]="prospecto.direccion" disabled />
+                    <input type="text" matInput [value]="prospecto.direccion || ''" disabled />
                 </mat-form-field>
             </div>
         </div>
@@ -128,19 +129,19 @@
         <div class="m-textfield__input m-disabled">
             <mat-form-field appearance="outline">
                 <mat-label>Operador</mat-label>
-                <input type="text" matInput [value]="prospecto.operador" disabled>
+                <input type="text" matInput [value]="prospecto.operador || ''" disabled>
             </mat-form-field>
         </div>
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Velocidad de descarga</mat-label>
-              <input type="text" matInput [value]="prospecto.descarga" disabled>
+              <input type="text" matInput [value]="prospecto.descarga || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Velocidad de carga</mat-label>
-              <input type="text" matInput [value]="prospecto.carga" disabled>
+              <input type="text" matInput [value]="prospecto.carga || ''" disabled>
           </mat-form-field>
         </div>
       </div>
@@ -155,7 +156,7 @@
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Tipo de auricular</mat-label>
-              <input type="text" matInput [value]="prospecto.tipoDispositivo" disabled>
+              <input type="text" matInput [value]="prospecto.tipoDispositivo || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-button--image">
@@ -174,25 +175,25 @@
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Procesador</mat-label>
-              <input type="text" matInput [value]="prospecto.procesador" disabled>
+              <input type="text" matInput [value]="prospecto.procesador || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Memoria RAM</mat-label>
-              <input type="text" matInput [value]="prospecto.memoriaRam" disabled>
+              <input type="text" matInput [value]="prospecto.memoriaRam || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Disco duro</mat-label>
-              <input type="text" matInput [value]="prospecto.discoDuro" disabled>
+              <input type="text" matInput [value]="prospecto.discoDuro || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-textfield__input m-disabled">
           <mat-form-field appearance="outline">
               <mat-label>Sistema Operativo</mat-label>
-              <input type="text" matInput [value]="prospecto.sistOperativo" disabled>
+              <input type="text" matInput [value]="prospecto.sistOperativo || ''" disabled>
           </mat-form-field>
         </div>
         <div class="m-button--image">
