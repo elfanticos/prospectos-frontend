@@ -44,7 +44,10 @@ export class InformacionContactoComponent implements OnInit {
       this.direccion.setValue(a.direccion);
       this.latitud.setValue(a.lat);
       this.longitud.setValue(a.lng);
-    })
+      if (a.disabledInput) {
+        this.direccion.disable();
+      }
+    });
   }
 
   get telefono() { return this.infoContactoForm.controls['telefono']; }
