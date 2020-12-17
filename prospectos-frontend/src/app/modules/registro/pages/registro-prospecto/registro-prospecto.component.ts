@@ -46,6 +46,8 @@ export class RegistroProspectoComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(ModalConfirmComponent, {
       centered: true,
+      keyboard: false,
+      backdrop: 'static'
       // windowClass: 'class-custom' - Clase personalizada
     });
     modalRef.componentInstance.name = 'World';
