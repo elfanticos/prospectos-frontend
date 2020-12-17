@@ -77,7 +77,6 @@
                 <div class="m-textfield__input m-column--2">
                     <mat-form-field appearance="outline">
                         <mat-label>Dirección</mat-label>
-                        <!-- <input type="text" matInput placeholder="" formControlName="direccion" (keypress)="onKeypressEvent($event)" required> -->
                         <input type="text" matInput placeholder="" formControlName="direccion" autocomplete="off" required>
                         <button class="m-button m-button--default" (click)="direccion.enabled ? pintarMapa() : activarInputDisabled()"><span>{{direccion.enabled ? 'Buscar' : 'Cambiar'}}</span></button>
                         <mat-error *ngIf="direccion.errors && direccion.dirty">

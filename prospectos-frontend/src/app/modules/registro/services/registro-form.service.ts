@@ -112,7 +112,7 @@ export class RegistroFormService {
       departamento: [{ value: values.departamento, disabled: !values.departamento }, [Validators.required]],
       provincia: [{ value: values.provincia, disabled: !values.provincia }, [Validators.required]],
       distrito: [{ value: values.distrito, disabled: !values.distrito }, [Validators.required]],
-      direccion: [{ value: values.direccion, disabled: !values.dirección }, [
+      direccion: [{ value: values.direccion, disabled: values.dirección ? true : false }, [
         Validators.required,
         Validators.maxLength(75)
       ]],
