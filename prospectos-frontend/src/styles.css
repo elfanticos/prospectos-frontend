@@ -593,6 +593,14 @@ button.calendar, button.calendar:active {
     max-width: 1100px;
     margin: 20px auto;
 }
+.m-test__container{
+    text-align: center;
+    margin: 30px auto;
+}
+.m-test__container .m-test__title h2{
+    font-size: 24px;
+    font-family: var(--RUBIK_BOLD);
+}
 /*ANGULAR MATERIAL*/
 .mat-form-field-appearance-outline .mat-form-field-outline{
     background-color: #F6F6F6 !important;
