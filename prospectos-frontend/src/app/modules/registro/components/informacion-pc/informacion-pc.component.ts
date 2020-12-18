@@ -6,6 +6,7 @@ import { IRam } from '../../entities/combos/ram';
 import { ISistema } from '../../entities/combos/sistema';
 import { CombosService } from '../../../../shared/services/combos.service';
 import { RegistroFormService } from '../../services/registro-form.service';
+import { SnackBarService } from '@app/core/services/snackbar.service';
 
 @Component({
   selector: 'app-informacion-pc',
@@ -23,7 +24,8 @@ export class InformacionPcComponent implements OnInit {
   filesToUpload: Array<File>;
   constructor(
     private _registroFormService: RegistroFormService,
-    private _combosService: CombosService
+    private _combosService: CombosService,
+    private _snackBarService: SnackBarService
   ) {
     this.infoPcForm = this._registroFormService.formInfoPc;
   }
@@ -103,7 +105,7 @@ export class InformacionPcComponent implements OnInit {
     if (this.filesToUpload.length == 0) {
       // this.fileTxt.nativeElement.value = "";
       this.imagen.setValue('');
-      console.log('Seleccione un PDF');
+      this._snackBarService.show({message: 'Seleccione una imagen'});
       return;
     }
 
@@ -112,7 +114,7 @@ export class InformacionPcComponent implements OnInit {
     if (imagen.split('.')[1] == undefined) {
       // this.fileTxt.nativeElement.value = "";
       this.imagen.setValue('');
-      console.log('Archivo incorrecto sin extension');
+      this._snackBarService.show({message: 'Archivo incorrecto sin extensión'});
       return;
     }
 
@@ -123,9 +125,10 @@ export class InformacionPcComponent implements OnInit {
     // }
 
     if (this.filesToUpload[0].size / 1024 / 1024 >= 2) {
-      this.fileTxt.nativeElement.value = "";
+      // this.fileTxt.nativeElement.value = "";
       this.imagen.setValue('');
-      console.log('Seleccione un archivo menor a 2MB');
+      this._snackBarService.show({message: 'Seleccione un archivo menor a 2MB'});
+      return;
     }
     /*******************************************************/
 

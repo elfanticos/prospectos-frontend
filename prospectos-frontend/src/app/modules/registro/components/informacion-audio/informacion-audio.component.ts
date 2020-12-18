@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { IAuricular } from '../../entities/combos/auricular';
 import { CombosService } from '../../../../shared/services/combos.service';
 import { RegistroFormService } from '../../services/registro-form.service';
+import { SnackBarService } from '@app/core/services/snackbar.service';
 
 @Component({
   selector: 'app-informacion-audio',
@@ -18,7 +19,8 @@ export class InformacionAudioComponent implements OnInit {
   public readonly submittedValue: EventEmitter<void>;
   constructor(
     private _registroFormService: RegistroFormService,
-    private _comboService: CombosService
+    private _comboService: CombosService,
+    private _snackBarService: SnackBarService
   ) {
     this.infoAudioForm = this._registroFormService.formInfoAudio;
   }
@@ -57,12 +59,12 @@ export class InformacionAudioComponent implements OnInit {
     //Obtener el objeto del input file
     this.filesToUpload = <Array<File>>fileInput.target.files;
 
-    console.log('filesToUpload => ',this.filesToUpload);
+    console.log('filesToUpload => ', this.filesToUpload);
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
       // this.fileTxt.nativeElement.value = "";
       this.nameFile.setValue('');
-      console.log('Seleccione un PDF');
+      this._snackBarService.show({ message: 'Seleccione una imagen' });
       return;
     }
 
@@ -71,13 +73,13 @@ export class InformacionAudioComponent implements OnInit {
     if (nameFile.split('.')[1] == undefined) {
       // this.fileTxt.nativeElement.value = "";
       this.nameFile.setValue('');
-      console.log('Archivo incorrecto sin extension');
+      this._snackBarService.show({ message: 'Archivo incorrecto sin extensión' });
       return;
     }
 
     // if (['pdf'].indexOf(this.filesToUpload[0].type.split('/')[1].toLowerCase()) < 0) {
-      // this.fileTxt.nativeElement.value = "";
-      // this.nameFile.setValue('');
+    // this.fileTxt.nativeElement.value = "";
+    // this.nameFile.setValue('');
     //   console.log('Seleccione un archivo de tipo .PDF');
     //   return;
     // }
@@ -85,7 +87,8 @@ export class InformacionAudioComponent implements OnInit {
     if (this.filesToUpload[0].size / 1024 / 1024 >= 2) {
       // this.fileTxt.nativeElement.value = "";
       this.nameFile.setValue('');
-      console.log('Seleccione un archivo menor a 2MB');
+      this._snackBarService.show({message: 'Seleccione un archivo menor a 2MB'});
+      return;
     }
     /*******************************************************/
 
