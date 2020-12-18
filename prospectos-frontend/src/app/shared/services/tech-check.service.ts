@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '@environments/environment';
 import { SpeedTestService, SpeedTestSettingsModel } from 'ng-speed-test';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -31,7 +32,14 @@ export class TechCheckService {
     }
 
     getDataIP(): Observable<IDataIP> {
-        return this._httpClient.get('http://ip-api.com/json');
+        console.log(this.ip);
+        let params = new HttpParams()
+            .set('ip', this.ip);
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+        return this._httpClient.get(`${environment.api}${environment.apiService.postulante.testIP}`, { headers, params });
     }
 
     getIp(): Observable<any> {

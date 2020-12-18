@@ -26,7 +26,8 @@ export const environment = {
       registrarDispositivos: '/api/postulante/registrar-dispositivos',
       registrarEquipo: '/api/postulante/registrar-equipo',
       registrarEquipoImg: '/api/postulante/registrar-equipo-img',
-      detalleProyecto: '/api/postulante/detalle-proyecto'
+      detalleProyecto: '/api/postulante/detalle-proyecto',
+      testIP: '/api/postulante/test-ip'
     },
     leadpostulante: {
       registrarLead: '/api/leadpostulante/registrar'
@@ -40,6 +41,6 @@ export const environment = {
       anularToken: '/api/usuarios/anular'
     }
   },
-  geolocalization : 'https://maps.googleapis.com/maps/api/geocode/json',
-  api_key_map : 'AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
+  geolocalization: 'https://maps.googleapis.com/maps/api/geocode/json',
+  api_key_map: 'AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
 };
