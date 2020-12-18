@@ -4,6 +4,7 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
 import { RegistroLeadService } from '../../services/registro-lead.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { SharedConstants } from '@app/shared/shared.constants';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-step-four',
@@ -12,17 +13,34 @@ import { SharedConstants } from '@app/shared/shared.constants';
 })
 export class StepFourComponent implements OnInit {
 
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmTerm: string;
+  utmContent: string;
+  utmOrigin: string;
+  gclid: string;
+  
   finalizarActivate: boolean = false;
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public registroFormService: RegistroFormService,
     private _registroProspectoService: RegistroProspectoService,
     private _registroLeadService: RegistroLeadService,
-    private deviceService: DeviceDetectorService
-  ) { }
+    private deviceService: DeviceDetectorService,
+    private route: ActivatedRoute
+  ) { 
+
+  }
 
   ngOnInit() {
-
+    this.utmSource = this.route.snapshot.queryParamMap.get('utmSource') ? this.route.snapshot.queryParamMap.get('utmSource') : "";
+    this.utmMedium = this.route.snapshot.queryParamMap.get('utmMedium') ? this.route.snapshot.queryParamMap.get('utmMedium') : "";
+    this.utmCampaign = this.route.snapshot.queryParamMap.get('utmCampaign') ? this.route.snapshot.queryParamMap.get('utmCampaign') : "";
+    this.utmTerm = this.route.snapshot.queryParamMap.get('utmTerm') ? this.route.snapshot.queryParamMap.get('utmTerm') : "";
+    this.utmContent = this.route.snapshot.queryParamMap.get('utmContent') ? this.route.snapshot.queryParamMap.get('utmContent') : "";
+    this.utmOrigin = this.route.snapshot.queryParamMap.get('utmOrigin') ? this.route.snapshot.queryParamMap.get('utmOrigin') : "";
+    this.gclid = this.route.snapshot.queryParamMap.get('gclid') ? this.route.snapshot.queryParamMap.get('gclid') : "";
   }
 
   finalizarRegistro(): void {
@@ -57,13 +75,13 @@ export class StepFourComponent implements OnInit {
       "resolucion": this.deviceService.getDeviceInfo().orientation,
       "userAgent": this.deviceService.getDeviceInfo().userAgent,
       "isp": "Perú",
-      "utmSource": "url_prueba",
-      "utmMedium": "url_prueba",
-      "utmCampaign": "url_prueba",
-      "utmTerm": "url_prueba",
-      "utmContent": "url_prueba",
-      "utmOrigin": "url_prueba",
-      "gclid": "url_prueba"
+      "utmSource": this.utmSource,
+      "utmMedium": this.utmMedium,
+      "utmCampaign": this.utmCampaign,
+      "utmTerm": this.utmTerm,
+      "utmContent": this.utmContent,
+      "utmOrigin": this.utmOrigin,
+      "gclid": this.gclid
     }
     this._registroLeadService.registrarLead(obj).subscribe(data => {
       console.log(data);
