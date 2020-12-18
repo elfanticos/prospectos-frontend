@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalConfirmComponent } from '@app/shared/components/modal-confirm/modal-confirm.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PASOS } from '../../constants/step';
@@ -14,7 +15,8 @@ export class RegistroProspectoComponent implements OnInit {
   pasoSeleccionado = PASOS.PASO_1;
   constructor(
     private _registroFormService: RegistroFormService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private route: ActivatedRoute
   ) {
     this._registroFormService.initForm();
   }
@@ -24,6 +26,7 @@ export class RegistroProspectoComponent implements OnInit {
     if (!confirmar_condiciones) {
       this.open();
     }
+    this._registroFormService.project = this.route.snapshot.data.proyecto || {};
   }
 
   get imageForStep(): string {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsExtend } from '@app/shared/validators/validators-extend';
 import { Subject, Subscriber } from 'rxjs';
+import { IProyect } from '../entities/project/project';
 
 @Injectable()
 export class RegistroFormService {
@@ -10,7 +11,7 @@ export class RegistroFormService {
   private _formInfoConectividad: FormGroup;
   private _formInfoAudio: FormGroup;
   private _formInfoPc: FormGroup;
-  private _proyecto: string = 'prospectos - b12';
+  private _proyecto: IProyect = {};
   public serviceActive$: Subject<any> = new Subject();
   constructor(
     private _fb: FormBuilder
@@ -22,6 +23,14 @@ export class RegistroFormService {
     this._formInfoConectividad = this._buildInfoConectividad();
     this._formInfoAudio = this._buildInfoAudio();
     this._formInfoPc = this._buildInfoPc();
+  }
+
+  get project (): IProyect {
+    return this._proyecto;
+  }
+
+  set project(values: IProyect) {
+    this._proyecto = values;
   }
 
 
@@ -189,7 +198,7 @@ export class RegistroFormService {
         fec_hora_datos: fecha_hora_post,
         postulante: {}
       },
-      proyecto: this._proyecto
+      proyecto: this._proyecto.nombreProyecto
     }
   }
 

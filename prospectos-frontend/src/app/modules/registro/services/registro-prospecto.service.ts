@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '@app/core/services/api.service';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class RegistroProspectoService {
@@ -80,5 +81,17 @@ export class RegistroProspectoService {
   //   return this._httpClient.get<any>('https://api.fast.com/netflix/speedtest/v2', { params, headers });
   // }
 
+  detalleProyecto(proyecto: string): Observable<any> {
+    const params = new HttpParams()
+      .set('codigoProyecto', proyecto);
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this._httpClient.get<any>(`${environment.api}${environment.apiService.postulante.detalleProyecto}`, { params, headers })
+      .pipe(map(data => {
+        return data[0]
+      }));
+  }
 
 }

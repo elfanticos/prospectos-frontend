@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SnackBarService } from '@app/core/services/snackbar.service';
 import { SharedConstants } from '@app/shared/shared.constants';
+import { IProyect } from '../../entities/project/project';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -12,6 +13,7 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
 })
 export class StepOneComponent implements OnInit {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  project: IProyect = {};
   constructor(
     public registroFormService: RegistroFormService,
     private _route: Router,
@@ -20,6 +22,7 @@ export class StepOneComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.project = this.registroFormService.project;
   }
 
   redirectNextStep(stepIndex: number): void {

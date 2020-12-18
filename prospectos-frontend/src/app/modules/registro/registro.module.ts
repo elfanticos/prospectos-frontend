@@ -25,6 +25,7 @@ import { CombosService } from '../../shared/services/combos.service';
 import { RegistroProspectoService } from './services/registro-prospecto.service';
 import { RegistroLeadService } from './services/registro-lead.service';
 import { MenuStepComponent } from './components/menu-step/menu-step.component';
+import { ProyectoResolver } from './helpers/proyecto.resolver';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { MenuStepComponent } from './components/menu-step/menu-step.component';
     SharedModule
   ],
   providers: [
+    ProyectoResolver,
     RegistroFormService,
     RegistroProspectoService,
     RegistroLeadService,
