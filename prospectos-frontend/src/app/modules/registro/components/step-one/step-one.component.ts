@@ -18,7 +18,7 @@ export class StepOneComponent implements OnInit {
     public registroFormService: RegistroFormService,
     private _route: Router,
     private _registroProspectoService: RegistroProspectoService,
-    private _snackBarService: SnackBarService
+    private _snackBarService: SnackBarService,
   ) { }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalConfirmComponent } from '@app/shared/components/modal-confirm/modal-confirm.component';
+import { TechCheckService } from '@app/shared/services/tech-check.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PASOS } from '../../constants/step';
 import { RegistroFormService } from '../../services/registro-form.service';
@@ -16,7 +17,8 @@ export class RegistroProspectoComponent implements OnInit {
   constructor(
     private _registroFormService: RegistroFormService,
     private modalService: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _techCheckService: TechCheckService
   ) {
     this._registroFormService.initForm();
   }
@@ -27,6 +29,7 @@ export class RegistroProspectoComponent implements OnInit {
       this.open();
     }
     this._registroFormService.project = this.route.snapshot.data.proyecto || {};
+    this._techCheckService.getIp().subscribe(() => {});
   }
 
   get imageForStep(): string {
