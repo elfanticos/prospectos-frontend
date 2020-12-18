@@ -52,8 +52,8 @@ export class RegistroProspectoService {
       discoDuro: body.discoDuro,
       sistOperativo: body.sistOperativo,
       extensionFile: body.extensionFile,
-      imagen: '',
-      idPostulante: localStorage.getItem('idPostulante')
+      // imagen: '',
+      idPostulante: parseInt(localStorage.getItem('idPostulante'),10)
     };
     // delete updBody.file;
     let headers = new HttpHeaders({
