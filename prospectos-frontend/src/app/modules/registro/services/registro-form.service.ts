@@ -25,7 +25,7 @@ export class RegistroFormService {
     this._formInfoPc = this._buildInfoPc();
   }
 
-  get project (): IProyect {
+  get project(): IProyect {
     return this._proyecto;
   }
 
@@ -131,7 +131,16 @@ export class RegistroFormService {
   }
 
   private _buildInfoConectividad(): FormGroup {
-    const values = JSON.parse(localStorage.getItem('stepTwo') || '{}');
+    let values = JSON.parse(localStorage.getItem('stepTwo') || '{}');
+    values = {
+      "operador": "movistar",
+      "carga": "35 mb",
+      "descarga": "45 mb",
+      "ping": "4 perdidos",
+      "latencia": "latencia",
+      "ip": "192.192.192.192",
+      "isp": "isp"
+    };
     return this._fb.group({
       operador: [values.operador, [Validators.required]],
       carga: [values.carga, [Validators.required]],
