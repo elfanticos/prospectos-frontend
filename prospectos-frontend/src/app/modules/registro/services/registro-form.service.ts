@@ -134,8 +134,8 @@ export class RegistroFormService {
     let values = JSON.parse(localStorage.getItem('stepTwo') || '{}');
     values = {
       "operador": "movistar",
-      "carga": "35 mb",
-      "descarga": "45 mb",
+      "carga": 35,
+      "descarga": 45,
       "ping": "4 perdidos",
       "latencia": "latencia",
       "ip": "192.192.192.192",
