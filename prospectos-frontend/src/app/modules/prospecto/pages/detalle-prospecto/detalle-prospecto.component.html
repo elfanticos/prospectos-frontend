@@ -12,11 +12,11 @@
         <div class="m-detalle__title">
           <div class="m-text__title">
             <h2>Proyecto:</h2>
-            <h2>Prospectos B12</h2>
+            <h2>{{ prospecto.proyecto }}</h2>
           </div>
           <div class="m-text__title">
             <h2>Fecha de registro:</h2>
-            <p>{{'2020-06-12' | date: 'dd/MM/yyyy'}}</p>
+            <p>{{ prospecto.fechaRegistro | date: 'dd/MM/yyyy'}}</p>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
   <div class="m-container min-width p-20">
     <div class="m-title m-title--flex">
       <h2>INFORMACI&Oacute;N PERSONAL</h2>
-      <h3>CANT. DE POSTULACIONES: 2</h3>
+      <h3>CANT. DE POSTULACIONES: {{ prospecto.cantPostulaciones }}</h3>
     </div>
     <div class="m-content">
         <div class="m-grid--2">

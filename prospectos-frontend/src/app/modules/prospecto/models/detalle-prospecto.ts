@@ -1,5 +1,6 @@
 export interface IDetalleProspecto {
     apellidoPostulante?: string;
+    cantPostulaciones?: string;
     carga?: string;
     correo?: string;
     departamento?: string;
@@ -11,6 +12,7 @@ export interface IDetalleProspecto {
     equipo?: string;
     imgEquipo?: string;
     fecNacimiento?: string;
+    fechaRegistro?: string;
     memoriaRam?: string;
     nombrePostulante?: string;
     numeroDocumento?: string;
@@ -18,6 +20,7 @@ export interface IDetalleProspecto {
     pais?: string;
     procesador?: string;
     provincia?: string;
+    proyecto?: string;
     sexo?: string;
     sistOperativo?: string;
     telefono?: string;
