@@ -47,7 +47,7 @@ export class InformacionPcComponent implements OnInit {
   get sistOperativo() { return this.infoPcForm.controls['sistOperativo']; }
   get file() { return this.infoPcForm.controls['file']; }
   get extensionFile() { return this.infoPcForm.controls['extensionFile']; }
-  get nameFile() { return this.infoPcForm.controls['nameFile']; }
+  get imagen() { return this.infoPcForm.controls['imagen']; }
 
   loadProcesadores(): void {
     this._combosService.comboProcesador().subscribe(procesadores => {
@@ -102,16 +102,16 @@ export class InformacionPcComponent implements OnInit {
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
       // this.fileTxt.nativeElement.value = "";
-      this.nameFile.setValue('');
+      this.imagen.setValue('');
       console.log('Seleccione un PDF');
       return;
     }
 
     // Obtener el nombre del archivo subido
-    let nameFile: string = this.filesToUpload[0].name;
-    if (nameFile.split('.')[1] == undefined) {
+    let imagen: string = this.filesToUpload[0].name;
+    if (imagen.split('.')[1] == undefined) {
       // this.fileTxt.nativeElement.value = "";
-      this.nameFile.setValue('');
+      this.imagen.setValue('');
       console.log('Archivo incorrecto sin extension');
       return;
     }
@@ -124,16 +124,16 @@ export class InformacionPcComponent implements OnInit {
 
     if (this.filesToUpload[0].size / 1024 / 1024 >= 2) {
       this.fileTxt.nativeElement.value = "";
-      this.nameFile.setValue('');
+      this.imagen.setValue('');
       console.log('Seleccione un archivo menor a 2MB');
     }
     /*******************************************************/
 
-    // this.inputText.nativeElement.value = nameFile;
-    this.nameFile.setValue(nameFile);
+    // this.inputText.nativeElement.value = imagen;
+    this.imagen.setValue(imagen);
     console.log(this.filesToUpload);
     this.file.setValue(this.filesToUpload[0]);
-    this.extensionFile.setValue(nameFile.split('.')[1]);
+    this.extensionFile.setValue(imagen.split('.')[1]);
     // Renderizar el archivo subido para obtener el base64
     // let render = new FileReader();
     // render.readAsDataURL(this.filesToUpload[0]);

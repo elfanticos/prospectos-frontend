@@ -154,7 +154,7 @@ export class RegistroFormService {
       sistOperativo: ['', [Validators.required]],
       extensionFile: [null, [Validators.required]],
       file: [null, [Validators.required]],
-      nameFile: [null, [Validators.required]],
+      imagen: [null, [Validators.required]],
     });
   }
 
@@ -250,7 +250,7 @@ export class RegistroFormService {
     this.formInfoPc.controls['sistOperativo'].markAsDirty();
     this.formInfoPc.controls['extensionFile'].markAsDirty();
     this.formInfoPc.controls['file'].markAsDirty();
-    this.formInfoPc.controls['nameFile'].markAsDirty();
+    this.formInfoPc.controls['imagen'].markAsDirty();
   }
 
   resetForms(): void {

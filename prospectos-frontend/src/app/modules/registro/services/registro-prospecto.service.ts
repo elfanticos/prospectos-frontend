@@ -45,10 +45,16 @@ export class RegistroProspectoService {
 
   registrarEquipo(body: any): Observable<any> {
     const updBody = {
-      ...body,
-      file: null,
+      // ...body,
+      procesador: body.procesador,
+      memoriaRam: body.memoriaRam,
+      discoDuro: body.discoDuro,
+      sistOperativo: body.sistOperativo,
+      extensionFile: body.extensionFile,
+      imagen: '',
       idPostulante: localStorage.getItem('idPostulante')
     };
+    // delete updBody.file;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
