@@ -36,12 +36,21 @@ export class StepTwoComponent implements OnInit, OnDestroy {
   }
 
   redirectNextStep(stepIndex: number): void {
-    if (!this.registroFormService.formValidStep2) {
-      this.registroFormService.touchedInputStepTwo();
-      this._snackBarService.show({message: 'Realiza el test'});
-      return;
-    }
-    const values = this.registroFormService.valuesFormStepTwo;
+    // if (!this.registroFormService.formValidStep2) {
+    //   this.registroFormService.touchedInputStepTwo();
+    //   this._snackBarService.show({message: 'Realiza el test'});
+    //   return;
+    // }
+    // const values = this.registroFormService.valuesFormStepTwo;
+    const values = {
+      "operador": "movistar",
+      "carga": 35,
+      "descarga": 45,
+      "ping": "4 perdidos",
+      "latencia": "latencia",
+      "ip": "192.192.192.192",
+      "isp": "isp"
+    };
     this._registroProspectoService.registrarConectividad(values).subscribe(data => {
       console.log(data);
       localStorage.setItem('stepTwo', JSON.stringify(values));

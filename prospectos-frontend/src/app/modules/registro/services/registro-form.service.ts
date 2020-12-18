@@ -132,15 +132,6 @@ export class RegistroFormService {
 
   private _buildInfoConectividad(): FormGroup {
     let values = JSON.parse(localStorage.getItem('stepTwo') || '{}');
-    values = {
-      "operador": "movistar",
-      "carga": 35,
-      "descarga": 45,
-      "ping": "4 perdidos",
-      "latencia": "latencia",
-      "ip": "192.192.192.192",
-      "isp": "isp"
-    };
     return this._fb.group({
       operador: [values.operador, [Validators.required]],
       carga: [values.carga, [Validators.required]],
