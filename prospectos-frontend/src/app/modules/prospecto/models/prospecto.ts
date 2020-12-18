@@ -1,7 +1,7 @@
 export interface IProspecto {
     apellidoProspecto?: string;
-    carga?: string;
-    descarga?: string;
+    carga?: number;
+    descarga?: number;
     distrito?: string;
     fecRegistro?: string;
     idPostulante?: number;

@@ -41,6 +41,13 @@ export class StepFourComponent implements OnInit {
     this.utmContent = this.route.snapshot.queryParamMap.get('utmContent') ? this.route.snapshot.queryParamMap.get('utmContent') : "";
     this.utmOrigin = this.route.snapshot.queryParamMap.get('utmOrigin') ? this.route.snapshot.queryParamMap.get('utmOrigin') : "";
     this.gclid = this.route.snapshot.queryParamMap.get('gclid') ? this.route.snapshot.queryParamMap.get('gclid') : "";
+    console.log(this.utmSource);
+    console.log(this.utmMedium);
+    console.log(this.utmCampaign);
+    console.log(this.utmTerm);
+    console.log(this.utmContent);
+    console.log(this.utmOrigin);
+    console.log(this.gclid);
   }
 
   finalizarRegistro(): void {
