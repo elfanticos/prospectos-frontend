@@ -4,6 +4,7 @@ import { SnackBarService } from '@app/core/services/snackbar.service';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IProject } from '../../entities/project/project';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -14,6 +15,7 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
 })
 export class StepTwoComponent implements OnInit, OnDestroy {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  project: IProject = {};
   subServiceActive: Subscription = new Subscription();
   service: boolean = false;
   subActiRoute: Subscription = new Subscription();
@@ -37,7 +39,13 @@ export class StepTwoComponent implements OnInit, OnDestroy {
     this.subActiRoute = this._activedRoute.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
+        console.log(params);
         this.params = params;
+        this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
+          .subscribe(detalle => {
+            this.project = detalle || {};
+            this.registroFormService.project = this.project;
+          });
       });
   }
 

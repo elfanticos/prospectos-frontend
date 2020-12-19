@@ -32,7 +32,7 @@ export class StepOneComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         console.log(params);
         this.params = params;
-        this._registroProspectoService.detalleProyecto(params.codigoProyecto)
+        this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
           .subscribe(detalle => {
             this.project = detalle || {};
             this.registroFormService.project = this.project;

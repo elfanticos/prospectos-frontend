@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { map } from 'rxjs/operators';
+import { IProject } from '../../entities/project/project';
 import { RegistroFormService } from '../../services/registro-form.service';
 import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
@@ -13,6 +14,7 @@ import { RegistroProspectoService } from '../../services/registro-prospecto.serv
 })
 export class StepThreeComponent implements OnInit {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  project: IProject = {};
   subActiRoute: Subscription = new Subscription();
   params: any = {};
   constructor(
@@ -24,10 +26,16 @@ export class StepThreeComponent implements OnInit {
 
   ngOnInit(): void {
     this.subActiRoute = this._activedRoute.queryParamMap
-    .pipe(map((data: any) => ({ ...data.params })))
-    .subscribe(params => {
-      this.params = params;
-    });
+      .pipe(map((data: any) => ({ ...data.params })))
+      .subscribe(params => {
+        console.log(params);
+        this.params = params;
+        this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
+          .subscribe(detalle => {
+            this.project = detalle || {};
+            this.registroFormService.project = this.project;
+          });
+      });
   }
 
   redirectNextStep(stepIndex: number): void {

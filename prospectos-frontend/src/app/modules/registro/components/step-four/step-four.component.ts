@@ -5,6 +5,9 @@ import { RegistroLeadService } from '../../services/registro-lead.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { ActivatedRoute } from '@angular/router';
+import { IProject } from '../../entities/project/project';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step-four',
@@ -23,6 +26,10 @@ export class StepFourComponent implements OnInit {
   
   finalizarActivate: boolean = false;
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
+  project: IProject = {};
+  subServiceActive: Subscription = new Subscription();
+  subActiRoute: Subscription = new Subscription();
+  params: any = {};
   constructor(
     public registroFormService: RegistroFormService,
     private _registroProspectoService: RegistroProspectoService,
@@ -34,6 +41,17 @@ export class StepFourComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.subActiRoute = this.route.queryParamMap
+      .pipe(map((data: any) => ({ ...data.params })))
+      .subscribe(params => {
+        console.log(params);
+        this.params = params;
+        this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
+          .subscribe(detalle => {
+            this.project = detalle || {};
+            this.registroFormService.project = this.project;
+          });
+      });
     this.utmSource = this.route.snapshot.queryParamMap.get('utmSource') ? this.route.snapshot.queryParamMap.get('utmSource') : "";
     this.utmMedium = this.route.snapshot.queryParamMap.get('utmMedium') ? this.route.snapshot.queryParamMap.get('utmMedium') : "";
     this.utmCampaign = this.route.snapshot.queryParamMap.get('utmCampaign') ? this.route.snapshot.queryParamMap.get('utmCampaign') : "";
@@ -41,13 +59,6 @@ export class StepFourComponent implements OnInit {
     this.utmContent = this.route.snapshot.queryParamMap.get('utmContent') ? this.route.snapshot.queryParamMap.get('utmContent') : "";
     this.utmOrigin = this.route.snapshot.queryParamMap.get('utmOrigin') ? this.route.snapshot.queryParamMap.get('utmOrigin') : "";
     this.gclid = this.route.snapshot.queryParamMap.get('gclid') ? this.route.snapshot.queryParamMap.get('gclid') : "";
-    console.log(this.utmSource);
-    console.log(this.utmMedium);
-    console.log(this.utmCampaign);
-    console.log(this.utmTerm);
-    console.log(this.utmContent);
-    console.log(this.utmOrigin);
-    console.log(this.gclid);
   }
 
   finalizarRegistro(): void {
