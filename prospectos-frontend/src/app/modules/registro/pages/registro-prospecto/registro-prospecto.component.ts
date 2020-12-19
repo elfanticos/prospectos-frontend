@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalConfirmComponent } from '@app/shared/components/modal-confirm/modal-confirm.component';
 import { TechCheckService } from '@app/shared/services/tech-check.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { map } from 'rxjs/operators';
 import { PASOS } from '../../constants/step';
 import { RegistroFormService } from '../../services/registro-form.service';
+import { RegistroProspectoService } from '../../services/registro-prospecto.service';
 
 @Component({
   selector: 'app-registro-prospecto',
@@ -17,8 +19,7 @@ export class RegistroProspectoComponent implements OnInit {
   constructor(
     private _registroFormService: RegistroFormService,
     private modalService: NgbModal,
-    private route: ActivatedRoute,
-    private _techCheckService: TechCheckService
+    private _techCheckService: TechCheckService,
   ) {
     this._registroFormService.initForm();
   }
@@ -28,8 +29,7 @@ export class RegistroProspectoComponent implements OnInit {
     if (!confirmar_condiciones) {
       this.open();
     }
-    this._registroFormService.project = this.route.snapshot.data.proyecto || {};
-    this._techCheckService.getIp().subscribe(() => {});
+    this._techCheckService.getIp().subscribe(() => { });
   }
 
   get imageForStep(): string {

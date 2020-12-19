@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { PASOS } from '../../constants/step';
 import { RegistroFormService } from '../../services/registro-form.service';
 
@@ -7,13 +10,25 @@ import { RegistroFormService } from '../../services/registro-form.service';
   templateUrl: './menu-step.component.html',
   styleUrls: ['./menu-step.component.css']
 })
-export class MenuStepComponent implements OnInit {
+export class MenuStepComponent implements OnInit, OnDestroy {
   PASOS = PASOS;
+  params: any = {};
+  subActiRoute: Subscription = new Subscription();
   constructor(
     private _registroFormService: RegistroFormService,
+    private _activedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void  {
+    this.subActiRoute = this._activedRoute.queryParamMap
+    .pipe(map((data: any) => ({ ...data.params })))
+    .subscribe(params => {
+      this.params = params;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subActiRoute.unsubscribe();
   }
 
   get validStep1(): boolean {

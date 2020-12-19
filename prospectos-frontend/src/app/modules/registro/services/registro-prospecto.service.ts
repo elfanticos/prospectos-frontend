@@ -90,7 +90,7 @@ export class RegistroProspectoService {
     });
     return this._httpClient.get<any>(`${environment.api}${environment.apiService.postulante.detalleProyecto}`, { params, headers })
       .pipe(map(data => {
-        return data[0]
+        return data[0];
       }));
   }
 

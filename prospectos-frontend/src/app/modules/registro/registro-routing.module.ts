@@ -4,14 +4,12 @@ import { StepFourComponent } from './components/step-four/step-four.component';
 import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';
-import { ProyectoResolver } from './helpers/proyecto.resolver';
 import { RegistroProspectoComponent } from './pages/registro-prospecto/registro-prospecto.component';
 
 const routes: Routes = [
   {
     path: '',
     component: RegistroProspectoComponent,
-    resolve: {proyecto : ProyectoResolver},
     children: [
       {
         path:'',
