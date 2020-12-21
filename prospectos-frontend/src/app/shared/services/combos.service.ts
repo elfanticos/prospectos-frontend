@@ -32,7 +32,10 @@ export class CombosService {
     // return this._httpClient.get<IPais[]>({path: `${environment.api}${environment.apiService.combos.pais}`});
 
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
     });
     return this._httpClient.get<IPais[]>(`${environment.api}${environment.apiService.combos.pais}`, { headers });
   }
