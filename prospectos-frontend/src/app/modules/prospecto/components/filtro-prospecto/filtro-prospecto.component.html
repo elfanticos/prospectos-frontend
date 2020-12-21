@@ -60,7 +60,7 @@
             <div class="m-textfield__input">
                 <mat-form-field appearance="outline">
                     <mat-label>Pa&iacute;s</mat-label>
-                    <mat-select formControlName="pais" required (selectionChange)="selectedPais()">
+                    <mat-select formControlName="pais" (selectionChange)="selectedPais()">
                         <mat-option>Pa&iacute;s</mat-option>
                         <mat-option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</mat-option>
                     </mat-select>
@@ -72,7 +72,7 @@
             <div class="m-textfield__input">
                 <mat-form-field appearance="outline">
                     <mat-label>Departamento</mat-label>
-                    <mat-select formControlName="departamento" required (selectionChange)="selectedDepartamento()">
+                    <mat-select formControlName="departamento" (selectionChange)="selectedDepartamento()">
                         <mat-option>Departamento</mat-option>
                         <mat-option *ngFor="let d of departamentos;" [value]="d.idDepartamento">
                             {{d.nombreDepartamento}}</mat-option>
@@ -85,7 +85,7 @@
             <div class="m-textfield__input">
                 <mat-form-field appearance="outline">
                     <mat-label>Provincia</mat-label>
-                    <mat-select formControlName="provincia" required (selectionChange)="selectedProvincia()">
+                    <mat-select formControlName="provincia" (selectionChange)="selectedProvincia()">
                         <mat-option>Provincia</mat-option>
                         <mat-option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}
                         </mat-option>
@@ -98,7 +98,7 @@
             <div class="m-textfield__input">
                 <mat-form-field appearance="outline">
                     <mat-label>Distrito</mat-label>
-                    <mat-select formControlName="distrito" required>
+                    <mat-select formControlName="distrito">
                         <mat-option>Distrito</mat-option>
                         <mat-option *ngFor="let d of distritos;" [value]="d.idDistrito">{{d.nombreDistrito}}
                         </mat-option>
