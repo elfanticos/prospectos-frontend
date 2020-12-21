@@ -158,9 +158,11 @@ img{
 .m-button:HOVER{
     background-color: #C2F7ED;
 }
-.m-button.m-button--default:HOVER,
-.m-button.m-button--transparent:HOVER{
+.m-button.m-button--default:HOVER{
     background-color: transparent;
+}
+.m-button.m-button--transparent:HOVER{
+    background-color: #00B5E2;
 }
 .m-button.m-button--transparent{
     display: -webkit-flex;

@@ -53,7 +53,7 @@
                     <mat-label>Proyecto</mat-label>
                     <mat-select formControlName="idProyecto">
                         <mat-option>Proyecto</mat-option>
-                        <mat-option *ngFor="let proyecto of proyectos" [value]="proyecto.idProyecto">{{proyecto.descProyecto}}</mat-option>
+                        <mat-option *ngFor="let proyecto of proyectos" [value]="proyecto.idProyecto">{{proyecto.nombreProyecto}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
