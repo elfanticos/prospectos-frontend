@@ -46,6 +46,9 @@ export class FiltroProspectoComponent implements OnInit {
     this._adminProspectoService.listarProyecto().subscribe(proyectos => this.proyectos = proyectos);
     this._comboService.comboPais().subscribe(paises => this.paises = paises || []);
     this.filtrarLista();
+    if (this.pais.value) {
+      this.selectedPais();
+    }
   }
 
   get idProyecto() { return this.formSearch.controls['idProyecto']; }
