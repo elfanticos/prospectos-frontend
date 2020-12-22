@@ -30,9 +30,6 @@ export class InformacionContactoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.pais.value) {
-      this.selectedPais();
-    }
     if (this.direccion.value) {
       setTimeout(() => {
         this.pintarMapa();
@@ -43,6 +40,9 @@ export class InformacionContactoComponent implements OnInit {
     this.setDepartamentos(JSON.parse(localStorage.getItem('departamentos') || '[]'), this.departamento.value, this.provincia.value);
     this.setProvincias(JSON.parse(localStorage.getItem('provincias') || '[]'), this.distrito.value);
     this.setDistritos(JSON.parse(localStorage.getItem('distritos') || '[]'));
+    if (this.pais.value) {
+      this.selectedPais();
+    }
     this.mapaUbicacionSrv.direccionState.pipe(filter(a => a != null)).subscribe(a => {
       this.direccion.setValue(a.direccion);
       this.latitud.setValue(a.lat);
