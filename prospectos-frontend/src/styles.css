@@ -665,5 +665,27 @@ button.calendar, button.calendar:active {
 .mat-checkbox-layout .mat-checkbox-label{
     line-height: 20px;
 }
+.m-spinner{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.8);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mat-progress-spinner,
+.mat-progress-spinner svg{
+    width: 50px !important;
+    height: 50px !important;
+}
+.mat-progress-spinner circle, .mat-spinner circle{
+    stroke: var(--COLOR_PRIMARY)
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
