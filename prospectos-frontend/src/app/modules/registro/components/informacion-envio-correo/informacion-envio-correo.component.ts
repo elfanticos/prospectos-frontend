@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegistroFormService } from '../../services/registro-form.service';
 
 @Component({
   selector: 'app-informacion-envio-correo',
@@ -16,7 +15,6 @@ export class InformacionEnvioCorreoComponent implements OnInit, OnDestroy {
   params: any = {};
   constructor(
     private _router: Router,
-    private _prospectoFormService: RegistroFormService,
     private _activedRoute: ActivatedRoute,
   ) { }
 
@@ -34,8 +32,6 @@ export class InformacionEnvioCorreoComponent implements OnInit, OnDestroy {
 
   cerrarRegistro(): void {
     console.log('CERRAR REGISTRO');
-    localStorage.clear();
-    this._prospectoFormService.resetForms();
     this._router.navigate([`/1`], {queryParams: this.params});
   }
 }
