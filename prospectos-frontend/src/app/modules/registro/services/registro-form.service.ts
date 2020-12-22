@@ -117,7 +117,7 @@ export class RegistroFormService {
         Validators.maxLength(75),
         ValidatorsExtend.isOptionalEmail
       ]],
-      pais: [values.pais, [Validators.required]],
+      pais: [values.pais || 139, [Validators.required]],
       departamento: [{ value: values.departamento, disabled: !values.departamento }, [Validators.required]],
       provincia: [{ value: values.provincia, disabled: !values.provincia }, [Validators.required]],
       distrito: [{ value: values.distrito, disabled: !values.distrito }, [Validators.required]],

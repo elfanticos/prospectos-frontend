@@ -30,6 +30,9 @@ export class InformacionContactoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.pais.value) {
+      this.selectedPais();
+    }
     if (this.direccion.value) {
       setTimeout(() => {
         this.pintarMapa();
