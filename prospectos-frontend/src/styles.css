@@ -606,6 +606,9 @@ button.calendar, button.calendar:active {
     max-width: 1100px;
     margin: 20px auto;
 }
+.m-detalle__logout .m-button{
+    background-color: transparent !important;
+}
 .m-test__container{
     text-align: center;
     margin: 30px auto;
