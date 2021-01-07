@@ -42,5 +42,5 @@ export const environment = {
     }
   },
   geolocalization: 'https://maps.googleapis.com/maps/api/geocode/json',
-  api_key_map: 'AIzaSyCDnvOcC5ttpOTxfy2W92EFXUat4acftaM'
+  api_key_map: 'AIzaSyBOhg8YYoI8oFGAGTrP1O_4r9b4i_KUNH0'
 };
