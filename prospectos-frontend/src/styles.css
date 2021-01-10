@@ -507,7 +507,7 @@ button.calendar, button.calendar:active {
 }
 .m-datos__pc{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px,190px));
+    grid-template-columns: repeat(auto-fit,minmax(100px,150px));
     grid-gap: 10px;
     justify-content: center;
     text-align: center;

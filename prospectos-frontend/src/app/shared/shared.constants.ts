@@ -20,7 +20,7 @@ export class SharedConstants {
             SEXO: [
                 { value: '1', desc: 'Masculino' },
                 { value: '2', desc: 'Femenino' },
-                { value: '3', desc: 'Otro' }
+                { value: '3', desc: 'Personalizado' }
             ],
             TIPO_DOCUMENTO: [
                 { value: 0, desc: 'DNI' },
