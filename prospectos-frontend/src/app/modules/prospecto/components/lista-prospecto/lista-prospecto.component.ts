@@ -1,5 +1,6 @@
 import { Component, Directive, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { formatDate } from '@app/core/helpers/helper';
 import { ExcelHelper } from '@app/core/services/excel.helper';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
@@ -96,6 +97,9 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
     const sexoType: any[] = SharedConstants.COMBOS.SEXO;
     body.map(row => {
       row.sexo = ((sexoType.filter(f => f.value == row.sexo))[0] || {}).desc;
+      row.fecRegistro = formatDate(row.fecRegistro, 'DD/MM/YYYY HH:mm:ss');
+      row.fecNacimiento = row.fecNacimiento ? formatDate(new Date(row.fecNacimiento), 'DD/MM/YYYY') : null;
+
     });
     const headers = {
       data: [
