@@ -32,7 +32,6 @@ export class TechCheckService {
     }
 
     getDataIP(): Observable<IDataIP> {
-        console.log(this.ip);
         let params = new HttpParams()
             .set('ip', this.ip);
 

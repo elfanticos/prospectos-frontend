@@ -91,9 +91,12 @@ export class ListaProspectoComponent implements OnInit, OnDestroy {
   }
 
   donwloadExcel(): void {
-    console.log('donwloadExcel');
     const title = { name: 'Lista de prospectos', down: 'Lista_prospectos' };
-    const body = this.prospectos || [];
+    const body: any[] = JSON.parse(JSON.stringify(this.prospectos || []));
+    const sexoType: any[] = SharedConstants.COMBOS.SEXO;
+    body.map(row => {
+      row.sexo = ((sexoType.filter(f => f.value == row.sexo))[0] || {}).desc;
+    });
     const headers = {
       data: [
         'Proyecto',

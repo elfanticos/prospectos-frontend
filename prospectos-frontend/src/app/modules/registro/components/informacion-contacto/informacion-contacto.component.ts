@@ -81,7 +81,6 @@ export class InformacionContactoComponent implements OnInit {
 
   loadDepartamentos(): void {
     const objPaisSelected = this.paises.find(f => f.nombrePais == this.pais.value);
-    console.log(objPaisSelected);
     if (!objPaisSelected) {
       this.setDepartamentos([]);
       return;

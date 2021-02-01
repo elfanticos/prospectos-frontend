@@ -130,7 +130,6 @@ export class FiltroProspectoComponent implements OnInit {
 
   filtrarLista(): void {
     this._adminProspectoService.buscarProspecto(this.adminProspectoFormService.valuesFormSearch).subscribe(data => {
-      console.log(data);
       this._adminProspectoService.listProspectos$.next((data || {}).listaProspectos);
     });
   }

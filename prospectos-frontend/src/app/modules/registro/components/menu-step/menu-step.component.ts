@@ -44,7 +44,6 @@ export class MenuStepComponent implements OnInit, OnDestroy {
   }
 
   touchedInput(paso: string): void {
-    console.log('activeValidators =>', paso);
     switch (paso) {
       case PASOS.PASO_1:
         this._registroFormService.touchedInputStepOne();

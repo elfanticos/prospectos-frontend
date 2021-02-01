@@ -44,7 +44,6 @@ export class StepFourComponent implements OnInit {
     this.subActiRoute = this.route.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
-        console.log(params);
         this.params = params;
         this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
           .subscribe(detalle => {
@@ -70,14 +69,12 @@ export class StepFourComponent implements OnInit {
     }
     const values = this.registroFormService.valuesFormStepFour;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
-      console.log(data);
       const objParam = {
         equipo: data.idEquipo,
         extensionImg: values.extensionFile,
         file: values.file
       };
       this._registroProspectoService.registrarEquipoImg(objParam).subscribe(dataImg => {
-        console.log(dataImg);
         this.finalizarActivate = true;
         this.registrarLead();
       });

@@ -28,7 +28,6 @@ export class DetalleProspectoComponent implements OnInit {
 
   ngOnInit(): void {
     this._adminProspectoService.detalleProspecto(this.idProspecto).subscribe(data => {
-      console.log(data);
       this.prospecto = data[0] || {};
       this.loadSpinner = false;
     });

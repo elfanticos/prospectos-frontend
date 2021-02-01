@@ -28,7 +28,6 @@ export class StepThreeComponent implements OnInit {
     this.subActiRoute = this._activedRoute.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
-        console.log(params);
         this.params = params;
         this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
           .subscribe(detalle => {
@@ -44,10 +43,8 @@ export class StepThreeComponent implements OnInit {
       return;
     }
     const values = this.registroFormService.valuesFormStepThree;
-    console.log(values);
     this._registroProspectoService.registrarDispositivos(values).subscribe(data => {
       // localStorage.setItem('stepThree', JSON.stringify(values));
-      console.log(data);
       this._route.navigate([`${stepIndex}`], {queryParams: this.params});
     });
   }

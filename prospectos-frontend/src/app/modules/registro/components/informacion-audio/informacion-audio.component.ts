@@ -59,7 +59,6 @@ export class InformacionAudioComponent implements OnInit {
     //Obtener el objeto del input file
     this.filesToUpload = <Array<File>>fileInput.target.files;
 
-    console.log('filesToUpload => ', this.filesToUpload);
     /*************** VALIDACIONES ***************/
     if (this.filesToUpload.length == 0) {
       // this.fileTxt.nativeElement.value = "";
@@ -80,7 +79,6 @@ export class InformacionAudioComponent implements OnInit {
     // if (['pdf'].indexOf(this.filesToUpload[0].type.split('/')[1].toLowerCase()) < 0) {
     // this.fileTxt.nativeElement.value = "";
     // this.nameFile.setValue('');
-    //   console.log('Seleccione un archivo de tipo .PDF');
     //   return;
     // }
 
@@ -100,8 +98,6 @@ export class InformacionAudioComponent implements OnInit {
     // let render = new FileReader();
     // render.readAsDataURL(this.filesToUpload[0]);
     // render.onload = (event) => {
-    //   console.log('onload render');
-    //   console.log(event);
     // };
   }
 

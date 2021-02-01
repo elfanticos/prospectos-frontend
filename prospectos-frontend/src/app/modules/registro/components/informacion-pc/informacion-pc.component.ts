@@ -120,7 +120,6 @@ export class InformacionPcComponent implements OnInit {
 
     // if (['pdf'].indexOf(this.filesToUpload[0].type.split('/')[1].toLowerCase()) < 0) {
     //   this.fileTxt.nativeElement.value = "";
-    //   console.log('Seleccione un archivo de tipo .PDF');
     //   return;
     // }
 
@@ -134,15 +133,12 @@ export class InformacionPcComponent implements OnInit {
 
     // this.inputText.nativeElement.value = imagen;
     this.imagen.setValue(imagen);
-    console.log(this.filesToUpload);
     this.file.setValue(this.filesToUpload[0]);
     this.extensionFile.setValue(imagen.split('.')[1]);
     // Renderizar el archivo subido para obtener el base64
     // let render = new FileReader();
     // render.readAsDataURL(this.filesToUpload[0]);
     // render.onload = (event) => {
-    //   console.log('onload render');
-    //   console.log(event);
     // };
   }
 

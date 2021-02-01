@@ -30,7 +30,6 @@ export class StepOneComponent implements OnInit, OnDestroy {
     this.subActiRoute = this._activedRoute.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
-        console.log(params);
         this.params = params;
         this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
           .subscribe(detalle => {
@@ -50,7 +49,6 @@ export class StepOneComponent implements OnInit, OnDestroy {
       return;
     }
     const values = this.registroFormService.valuesFormStepOne;
-    console.log('registrarProspecto => ', values);
     this._registroProspectoService.registrarProspecto(values).subscribe(data => {
       if (data.cod === 0) {
         localStorage.setItem('stepOne', JSON.stringify(values));

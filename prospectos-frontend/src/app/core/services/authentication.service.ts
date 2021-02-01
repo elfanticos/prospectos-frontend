@@ -54,7 +54,6 @@ export class AuthenticationService {
 
     refreshToken() {
         const uri = `${environment.api}${environment.apiService.oauth.token}`;
-        console.log(uri);
         let headers = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Basic cnJoaHByb3NwZWN0b2FwcDpycmhocHJvc3BlY3RvY29kZXg='
@@ -65,7 +64,6 @@ export class AuthenticationService {
             password: '123'
         })
             .pipe(map((user) => {
-                console.log(user);
                 this.userSubject.next(user);
                 this.startRefreshTokenTimer();
                 return user;

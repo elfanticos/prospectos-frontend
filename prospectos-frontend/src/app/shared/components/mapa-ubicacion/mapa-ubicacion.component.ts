@@ -186,7 +186,6 @@ export class MapaUbicacionComponent implements OnInit {
           var longitude = position.coords.longitude;
           this.setPosition(latitude, longitude, false);
           let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+latitude, +longitude);
-          console.log(GeoCodeDireccion);
           let [direccion] = GeoCodeDireccion.results;
           this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: latitude, lng: longitude, disabledInput: true });
         } catch (error) {

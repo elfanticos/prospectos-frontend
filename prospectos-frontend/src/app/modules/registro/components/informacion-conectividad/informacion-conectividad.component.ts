@@ -35,7 +35,6 @@ export class InformacionConectividadComponent implements OnInit {
   
 
   initTest(): void {
-    console.log(this._techCheckService.ip);
     this.loading = true;
     this.activeTest = !this.activeTest;
     zip(this._techCheckService.getMbps(), this._techCheckService.getDataIP()).subscribe(data => {

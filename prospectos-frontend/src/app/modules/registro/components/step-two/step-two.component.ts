@@ -39,7 +39,6 @@ export class StepTwoComponent implements OnInit, OnDestroy {
     this.subActiRoute = this._activedRoute.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
-        console.log(params);
         this.params = params;
         this._registroProspectoService.detalleProyecto(params.codigoProyecto || 'proy00001')
           .subscribe(detalle => {
@@ -71,7 +70,6 @@ export class StepTwoComponent implements OnInit, OnDestroy {
     //   "isp": "isp"
     // };
     this._registroProspectoService.registrarConectividad(values).subscribe(data => {
-      console.log(data);
       localStorage.setItem('stepTwo', JSON.stringify(values));
       this._route.navigate([`${stepIndex}`], {queryParams: this.params});
     });

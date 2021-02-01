@@ -14,7 +14,6 @@ export class JwtInterceptor implements HttpInterceptor {
         const token = localStorage.getItem('token');
         let headers = request.headers;
         if (!request.url.includes(environment.apiService.postulante.registrarDispositivos) && !request.url.includes(environment.apiService.postulante.registrarEquipo)) {
-            console.log('no tengo que entrar aqui');
             if (!request.headers.has('Content-Type')) {
                 headers = request.headers
                     .set('Content-Type', 'application/json');
