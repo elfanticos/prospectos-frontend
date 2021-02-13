@@ -22,7 +22,9 @@ export class MapaUbicacionService {
       xhr.open('GET', url);
       xhr.onreadystatechange = function (aEvt) {
         if (xhr.readyState == 4) {
-           if(xhr.status == 200) {
+          if(xhr.status == 200) {
+            //  console.log(JSON.parse(xhr.responseText));
+            //  console.log(aEvt);
             resolve(JSON.parse(xhr.responseText));
            } else {
             reject('Error loading page');

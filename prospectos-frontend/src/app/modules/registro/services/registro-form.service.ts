@@ -121,12 +121,19 @@ export class RegistroFormService {
       departamento: [{ value: values.departamento, disabled: !values.departamento }, [Validators.required]],
       provincia: [{ value: values.provincia, disabled: !values.provincia }, [Validators.required]],
       distrito: [{ value: values.distrito, disabled: !values.distrito }, [Validators.required]],
-      direccion: [{ value: values.direccion, disabled: values.dirección ? true : false }, [
+      // direccion: [{ value: values.direccion, disabled: values.dirección ? true : false }, [
+      //   Validators.required,
+      //   Validators.maxLength(75)
+      // ]],
+      direccion: [values.direccion, [
         Validators.required,
         Validators.maxLength(75)
       ]],
-      latitud: [values.latitud, [Validators.required]],
-      longitud: [values.longitud, [Validators.required]]
+      distritoDetectado: [values.distritoDetectado],
+      latitud: [values.latitud],
+      longitud: [values.longitud]
+      // latitud: [values.latitud, [Validators.required]],
+      // longitud: [values.longitud, [Validators.required]]
     });
   }
 

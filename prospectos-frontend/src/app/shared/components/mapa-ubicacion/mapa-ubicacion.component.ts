@@ -182,12 +182,20 @@ export class MapaUbicacionComponent implements OnInit {
       }
       let success = async (position) => {
         try {
+          console.log('entre getCurrentPosition success');
           var latitude = position.coords.latitude;
           var longitude = position.coords.longitude;
           this.setPosition(latitude, longitude, false);
           let GeoCodeDireccion = await this.mapaUbicacionSrv.GeoCodeDireccion(+latitude, +longitude);
           let [direccion] = GeoCodeDireccion.results;
-          this.mapaUbicacionSrv.direccionState.next({ direccion: direccion.formatted_address, lat: latitude, lng: longitude, disabledInput: true });
+          let locality = this.getLocality(direccion);
+          this.mapaUbicacionSrv.direccionState.next({
+            direccion: direccion.formatted_address,
+            lat: latitude,
+            lng: longitude,
+            disabledInput: true,
+            locality
+          });
         } catch (error) {
           console.log(error);
         }
@@ -283,6 +291,10 @@ export class MapaUbicacionComponent implements OnInit {
     } else {
       this.btnActive = false;
     }
+  }
+
+  getLocality(direccion): string {
+    return ((direccion.address_components || []).filter(fil => (fil.types || [])[0] == 'locality')[0] || {}).long_name;
   }
 }
 

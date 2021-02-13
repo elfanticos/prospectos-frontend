@@ -49,6 +49,7 @@ export class StepOneComponent implements OnInit, OnDestroy {
       return;
     }
     const values = this.registroFormService.valuesFormStepOne;
+
     this._registroProspectoService.registrarProspecto(values).subscribe(data => {
       if (data.cod === 0) {
         localStorage.setItem('stepOne', JSON.stringify(values));
