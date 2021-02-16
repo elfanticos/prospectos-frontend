@@ -10,14 +10,14 @@
           <th scope="col" sortable="nombreProspecto" (sort)="onSort($event)">NOMBRE</th>
           <th scope="col" sortable="apellidoProspecto" (sort)="onSort($event)">APELLIDO</th>
           <th scope="col" sortable="tipoDocumento" (sort)="onSort($event)">TIP.DOC.</th>
-          <th scope="col" sortable="numeroDocumento" (sort)="onSort($event)">NUM.DOC.</th>
-          <th scope="col" sortable="distrito" (sort)="onSort($event)">DISTRITO</th>
-          <th scope="col" sortable="descaga" (sort)="onSort($event)">DESCARGA</th>
-          <th scope="col" sortable="carga" (sort)="onSort($event)">CARGA</th>
+          <th scope="col" sortable="numeroDocumento" (sort)="onSort($event)" class="text-center">NUM.DOC.</th>
+          <th scope="col" sortable="distritoDetectado" (sort)="onSort($event)">DISTRITO DETECTADO</th>
+          <th scope="col" sortable="descaga" (sort)="onSort($event)" class="text-center">DESCARGA</th>
+          <th scope="col" sortable="carga" (sort)="onSort($event)" class="text-center">CARGA</th>
           <th scope="col" sortable="tipoDispositivo" (sort)="onSort($event)">AURICULAR</th>
           <th scope="col" sortable="fecRegistro" (sort)="onSort($event)">F.REGISTRO</th>
           <th scope="col" sortable="numPostulacion" (sort)="onSort($event)">CANT. POST</th>
-          <th scope="col">VER DETALLE</th>
+          <th scope="col" class="text-center">VER DETALLE</th>
         </tr>
       </thead>
       <tbody>
@@ -26,10 +26,10 @@
           <td>{{prospecto.nombreProspecto}}</td>
           <td>{{prospecto.apellidoProspecto}}</td>
           <td>{{prospecto.tipoDocumento}}</td>
-          <td>{{prospecto.numeroDocumento}}</td>
-          <td>{{prospecto.distrito}}</td>
-          <td>{{prospecto.descarga}}</td>
-          <td>{{prospecto.carga}}</td>
+          <td class="text-center">{{prospecto.numeroDocumento}}</td>
+          <td>{{prospecto.distritoDetectado}}</td>
+          <td class="text-center">{{prospecto.descarga}}</td>
+          <td class="text-center">{{prospecto.carga}}</td>
           <td>{{prospecto.tipoDispositivo}}</td>
           <td>{{prospecto.fecRegistro | date: 'dd/MM/yyyy h:mm:ss a' }}</td>
           <td class="text-center">{{prospecto.numPostulacion}}</td>
