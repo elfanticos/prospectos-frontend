@@ -9,6 +9,7 @@ export interface IDetalleProspecto {
     discoDuro?: string;
     dispositivo?: string;
     distrito?: string;
+    distritoDetectado?: string;
     equipo?: string;
     imgEquipo?: string;
     fecNacimiento?: string;
