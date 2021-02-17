@@ -30,6 +30,7 @@ export class StepFourComponent implements OnInit {
   subServiceActive: Subscription = new Subscription();
   subActiRoute: Subscription = new Subscription();
   params: any = {};
+  serviceRegLead: boolean = false;
   constructor(
     public registroFormService: RegistroFormService,
     private _registroProspectoService: RegistroProspectoService,
@@ -61,13 +62,13 @@ export class StepFourComponent implements OnInit {
   }
 
   finalizarRegistro(): void {
-    // this.registrarLead();
-    // return;
-    if (!this.registroFormService.formValidStepConfirm) {
+  
+    if (!this.registroFormService.formValidStepConfirm || this.serviceRegLead) {
       this.registroFormService.touchedInputStepFour();
       return;
     }
     const values = this.registroFormService.valuesFormStepFour;
+    this.serviceRegLead = true;
     this._registroProspectoService.registrarEquipo(values).subscribe(data => {
       const objParam = {
         equipo: data.idEquipo,
@@ -75,9 +76,10 @@ export class StepFourComponent implements OnInit {
         file: values.file
       };
       this._registroProspectoService.registrarEquipoImg(objParam).subscribe(dataImg => {
+        this.serviceRegLead = false;
         this.finalizarActivate = true;
         this.registrarLead();
-      });
+      }, () => this.serviceRegLead = false);
     })
   }
   registrarLead(): void {

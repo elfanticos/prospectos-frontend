@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '@app/core/services/api.service';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
@@ -10,7 +11,8 @@ export class RegistroProspectoService {
 
   constructor(
     private _http: ApiService,
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
+    private _router: Router
   ) { }
 
   registrarProspecto(body: any): Observable<any> {
@@ -92,6 +94,10 @@ export class RegistroProspectoService {
       .pipe(map(data => {
         return data[0];
       }));
+  }
+
+  redirectStep(textStep: number, params?: any): void {
+    this._router.navigate([`${textStep}`], {queryParams: params});
   }
 
 }

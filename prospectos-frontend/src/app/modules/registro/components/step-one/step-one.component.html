@@ -9,8 +9,7 @@
             <h4><strong>{{project.nombreProyecto}}</strong></h4>
             <p>{{project.descProyecto}}</p>
             <app-menu-step></app-menu-step>
-            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img
-                    [src]="ICON_ARROW_BUTTON"
+            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img [src]="ICON_ARROW_BUTTON"
                     alt="icono-button-prospectos"></button>
         </div>
     </div>
@@ -20,8 +19,11 @@
 <!-- <app-informacion-mapa></app-informacion-mapa> -->
 <div class="m-container m-t-16">
     <div class="m-actions text-right m-b-50">
-        <button type="button" class="m-button" (click)="redirectNextStep(2)"><span>PASO 2</span><img
-                [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
+        <button *ngIf="!serviceRegister" type="button" class="m-button" (click)="redirectNextStep(2)">
+            <span>PASO 2</span>
+            <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+        </button>
+        <mat-spinner *ngIf="serviceRegister"></mat-spinner>
     </div>
 </div>
 <div class="m-footer__login">

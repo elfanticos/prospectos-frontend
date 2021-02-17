@@ -16,8 +16,11 @@
 <app-informacion-conectividad></app-informacion-conectividad>
 <div class="m-container">
     <div class="m-actions text-right m-b-50">
-        <button type="button" class="m-button" [disabled]="service"
-            (click)="!service && redirectNextStep(3)"><span>PASO 3</span><img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
+        <button *ngIf="!serviceRegConectividad" type="button" class="m-button" (click)="redirectNextStep(3)">
+            <span>PASO 3</span>
+            <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+        </button>
+        <mat-spinner *ngIf="serviceRegConectividad"></mat-spinner>
     </div>
 </div>
 <div class="m-footer__login">

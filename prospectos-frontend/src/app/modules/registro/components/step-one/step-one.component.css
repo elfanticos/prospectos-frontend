@@ -65,3 +65,8 @@
 .m-t-16 {
     margin-top: 16px;
 }
+
+.m-actions {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -61,3 +61,8 @@
     font-family: 'Rubik-Regular';
     color: #868F98;
 }
+
+.m-actions {
+    display: flex;
+    justify-content: flex-end;
+}

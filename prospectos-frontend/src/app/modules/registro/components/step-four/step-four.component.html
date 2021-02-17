@@ -7,8 +7,7 @@
             <h3>EST&Aacute;S POSTULANDO AL PROYECTO:</h3>
             <h4><strong>{{project.nombreProyecto}}</strong></h4>
             <app-menu-step></app-menu-step>
-            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img
-                    [src]="ICON_ARROW_BUTTON"
+            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img [src]="ICON_ARROW_BUTTON"
                     alt="icono-button-prospectos"></button>
         </div>
     </div>
@@ -18,10 +17,11 @@
         <app-informacion-pc></app-informacion-pc>
         <div class="m-container">
             <div class="m-actions text-right m-b-50">
-                <button type="button" class="m-button" (click)="finalizarRegistro()">
+                <button *ngIf="!serviceRegLead" type="button" class="m-button" (click)="finalizarRegistro()">
                     <span>FINALIZAR</span>
-                    <img [src]="ICON_ARROW_BUTTON"
-                        alt="icono-button-prospectos"></button>
+                    <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+                </button>
+                <mat-spinner *ngIf="serviceRegLead"></mat-spinner>
             </div>
         </div>
     </ng-container>

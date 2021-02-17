@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { SnackBarService } from '@app/core/services/snackbar.service';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
@@ -18,12 +19,13 @@ export class StepOneComponent implements OnInit, OnDestroy {
   project: IProject = {};
   subActiRoute: Subscription = new Subscription();
   params: any = {};
+  serviceRegister: boolean = false;
   constructor(
     public registroFormService: RegistroFormService,
-    private _route: Router,
     private _activedRoute: ActivatedRoute,
     private _registroProspectoService: RegistroProspectoService,
     private _snackBarService: SnackBarService,
+    private _localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -44,21 +46,30 @@ export class StepOneComponent implements OnInit, OnDestroy {
   }
 
   redirectNextStep(stepIndex: number): void {
-    if (!this.registroFormService.formValidStep1) {
+
+    if (this._localStorageService.get('idPostulante')) {
+      this._registroProspectoService.redirectStep(stepIndex, this.params);
+      return;
+    }
+
+    if (!this.registroFormService.formValidStep1 || this.serviceRegister) {
       this.registroFormService.touchedInputStepOne();
       return;
     }
     const values = this.registroFormService.valuesFormStepOne;
 
+    this.serviceRegister = true;
     this._registroProspectoService.registrarProspecto(values).subscribe(data => {
+      this.serviceRegister = false;
       if (data.cod === 0) {
-        localStorage.setItem('stepOne', JSON.stringify(values));
-        localStorage.setItem('idPostulante', String(data.idPostulante));
-        this._route.navigate([`${stepIndex}`], {queryParams: this.params});
+        this._localStorageService.set('stepOne', JSON.stringify(values));
+        this._localStorageService.set('idPostulante', String(data.idPostulante));
+        this._registroProspectoService.redirectStep(stepIndex, this.params);
       } else {
         this._snackBarService.show({ message: data.msg });
       }
     }, err => {
+      this.serviceRegister = false;
       console.log(err);
     });
   }

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { SnackBarService } from '@app/core/services/snackbar.service';
 import { SharedConstants } from '@app/shared/shared.constants';
 import { Subscription } from 'rxjs';
@@ -17,25 +18,18 @@ export class StepTwoComponent implements OnInit, OnDestroy {
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   project: IProject = {};
   subServiceActive: Subscription = new Subscription();
-  service: boolean = false;
   subActiRoute: Subscription = new Subscription();
   params: any = {};
+  serviceRegConectividad: boolean = false;
   constructor(
     public registroFormService: RegistroFormService,
-    private _route: Router,
     private _registroProspectoService: RegistroProspectoService,
     private _snackBarService: SnackBarService,
     private _activedRoute: ActivatedRoute,
+    private _localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
-    this.subServiceActive = this.registroFormService.serviceActive$.subscribe(() => {
-      this.service = true;
-      setTimeout(() => {
-        this.service = false;
-      }, 10000);
-    });
-
     this.subActiRoute = this._activedRoute.queryParamMap
       .pipe(map((data: any) => ({ ...data.params })))
       .subscribe(params => {
@@ -54,25 +48,21 @@ export class StepTwoComponent implements OnInit, OnDestroy {
   }
 
   redirectNextStep(stepIndex: number): void {
+    if (this.serviceRegConectividad) {
+      return;
+    }
     if (!this.registroFormService.formValidStep2) {
       this.registroFormService.touchedInputStepTwo();
       this._snackBarService.show({ message: 'Realiza el test' });
       return;
     }
+    this.serviceRegConectividad = true;
     const values = this.registroFormService.valuesFormStepTwo;
-    // const values = {
-    //   "operador": "movistar",
-    //   "carga": 35,
-    //   "descarga": 45,
-    //   "ping": "4 perdidos",
-    //   "latencia": "latencia",
-    //   "ip": "192.192.192.192",
-    //   "isp": "isp"
-    // };
-    this._registroProspectoService.registrarConectividad(values).subscribe(data => {
-      localStorage.setItem('stepTwo', JSON.stringify(values));
-      this._route.navigate([`${stepIndex}`], {queryParams: this.params});
-    });
+    this._registroProspectoService.registrarConectividad(values).subscribe(() => {
+      this.serviceRegConectividad = false;
+      this._localStorageService.set('stepTwo', JSON.stringify(values));
+      this._registroProspectoService.redirectStep(stepIndex, this.params);
+    }, () => this.serviceRegConectividad = false);
   }
 
 }

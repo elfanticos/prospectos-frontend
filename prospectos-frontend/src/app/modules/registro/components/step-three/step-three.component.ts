@@ -17,6 +17,7 @@ export class StepThreeComponent implements OnInit {
   project: IProject = {};
   subActiRoute: Subscription = new Subscription();
   params: any = {};
+  serviceRegDispositivo: boolean = false
   constructor(
     public registroFormService: RegistroFormService,
     private _route: Router,
@@ -38,15 +39,21 @@ export class StepThreeComponent implements OnInit {
   }
 
   redirectNextStep(stepIndex: number): void {
+    if (this.serviceRegDispositivo) {
+      return;
+    }
+
     if (!this.registroFormService.formValidStep3) {
       this.registroFormService.touchedInputStepThree();
       return;
     }
+
+    this.serviceRegDispositivo = true;
     const values = this.registroFormService.valuesFormStepThree;
-    this._registroProspectoService.registrarDispositivos(values).subscribe(data => {
-      // localStorage.setItem('stepThree', JSON.stringify(values));
+    this._registroProspectoService.registrarDispositivos(values).subscribe(() => {
+      this.serviceRegDispositivo = false;
       this._route.navigate([`${stepIndex}`], {queryParams: this.params});
-    });
+    }, () => this.serviceRegDispositivo = false);
   }
 
 }
