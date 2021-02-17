@@ -29,7 +29,8 @@ export class FiltroProspectoComponent implements OnInit {
   paises: IPais[] = [];
   departamentos: IDepartamento[] = [];
   provincias: IProvincia[] = [];
-  distritos: IDistrito [] = [];
+  distritos: IDistrito[] = [];
+  distritosDetectados: IDistrito[] = [];
   ICON_ARROW_BUTTON = SharedConstants.ICONS.ICON_ARROW_BUTTON;
   constructor(
     public adminProspectoFormService: AdminProspectoFormService,
@@ -58,6 +59,7 @@ export class FiltroProspectoComponent implements OnInit {
   get departamento() { return this.formSearch.controls['departamento']; }
   get provincia() { return this.formSearch.controls['provincia']; }
   get distrito() { return this.formSearch.controls['distrito']; }
+  get distritoDetectado() { return this.formSearch.controls['distritoDetectado']; }
   get descarga() { return this.formSearch.controls['descarga']; }
   get carga() { return this.formSearch.controls['carga']; }
   get auricular() { return this.formSearch.controls['auricular']; }
@@ -101,7 +103,7 @@ export class FiltroProspectoComponent implements OnInit {
 
   loadProvincias(): void {
     this._comboService.comboProvincia(this.departamento.value).subscribe(provincias => {
-      this.setProvincias(provincias|| []);
+      this.setProvincias(provincias || []);
     });
   }
 

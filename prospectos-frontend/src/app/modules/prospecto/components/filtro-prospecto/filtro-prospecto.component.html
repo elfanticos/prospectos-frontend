@@ -108,6 +108,21 @@
                     </mat-error>
                 </mat-form-field>
             </div>
+
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Distrito Detectado</mat-label>
+                    <mat-select formControlName="distritoDetectado">
+                        <mat-option>Distrito Detectado</mat-option>
+                        <mat-option *ngFor="let d of distritosDetectados;" [value]="d.idDistrito">{{d.nombreDistrito}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="distritoDetectado.errors && distritoDetectado.dirty">
+                        <control-messages [control]="distritoDetectado"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
             <div class="m-textfield__input">
                 <div class="m-input m-0">
                     <div class="input-group">

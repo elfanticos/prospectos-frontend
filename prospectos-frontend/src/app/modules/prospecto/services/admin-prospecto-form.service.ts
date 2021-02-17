@@ -28,6 +28,7 @@ export class AdminProspectoFormService {
             departamento: null,
             provincia: null,
             distrito: null,
+            distritoDetectado: null,
             descarga: null,
             carga: null,
             auricular: null,
